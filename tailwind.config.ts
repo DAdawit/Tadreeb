@@ -14,6 +14,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
       screens: {
         sm: "640px", // Small screens (mobile)
         md: "768px", // Medium screens (tablet)
@@ -28,6 +31,7 @@ const config: Config = {
         tertiary: "#0883BC",
         bgPrimary: "#90BEF6",
         bgSecondary: "#EBEBEB",
+        textPrimary: "#8C8C8C",
       },
     },
   },
