@@ -24,7 +24,7 @@ const NavBar = () => {
                   alt="logo"
                   width={1000}
                   height={1000}
-                  className="h-8 w-8 xxl:h-11 xxl:w-11 object-contain"
+                  className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
                 <h4 className="font-roboto text-sm  xxl:text-2xl text-textPrimary">
                   about us
@@ -36,7 +36,7 @@ const NavBar = () => {
                   alt="logo"
                   width={1000}
                   height={1000}
-                  className="h-8 w-8 xxl:h-11 xxl:w-11 object-contain"
+                  className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
                 <h4 className="font-roboto text-sm  xxl:text-2xl text-textPrimary">
                   +971 000 0000
@@ -48,7 +48,7 @@ const NavBar = () => {
                   alt="logo"
                   width={1000}
                   height={1000}
-                  className="h-8 w-8 xxl:h-11 xxl:w-11 object-contain"
+                  className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
                 <h4 className="font-roboto text-sm  xxl:text-2xl text-textPrimary">
                   contact us
@@ -68,7 +68,7 @@ const NavBar = () => {
                     alt="logo"
                     width={1000}
                     height={1000}
-                    className="h-12 w-36 xxl:h-14 xxl:w-56 object-fill"
+                    className="h-10 w-36 xxl:h-14 xxl:w-56 object-fill"
                   />
                 </div>
               ))}
@@ -78,22 +78,22 @@ const NavBar = () => {
       </div>
       <div className="px-28 flex items-center h-12 xxl:h-16">
         <div className="bg-secondary flex w-full justify-around items-center h-full">
-          <Link href="#" className="text-white">
+          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             course finder
           </Link>
-          <Link href="#" className="text-white">
+          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             training calendar
           </Link>
-          <Link href="#" className="text-white">
+          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             training courses
           </Link>
-          <Link href="#" className="text-white">
+          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             venues
           </Link>
-          <Link href="#" className="text-white">
+          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             certification
           </Link>
-          <Link href="#" className="text-white">
+          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             training type
           </Link>
         </div>
