@@ -7,13 +7,15 @@ const NavBar = () => {
     <nav className="">
       <div className="px-8 xll:px-28 flex justify-between items-centers py-3">
         <div className="flex items-end">
-          <Image
-            src="/logo-tadreeb-1.png"
-            alt="logo"
-            width={1000}
-            height={1000}
-            className="h-16 w-24 xxl:h-24 xxl:w-32 object-contain"
-          />
+          <Link href="/">
+            <Image
+              src="/logo-tadreeb-1.png"
+              alt="logo"
+              width={1000}
+              height={1000}
+              className="h-16 w-24 xxl:h-24 xxl:w-32 object-contain"
+            />
+          </Link>
         </div>
         <div className="flex justify-end">
           <div className="flex flex-col justify-end gap-y-4">
