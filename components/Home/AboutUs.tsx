@@ -4,7 +4,7 @@ import React from "react";
 const AboutUs = () => {
   return (
     <>
-      <div className="h-[60vh] xll:h-[500px] relative">
+      <div className="h-[60vh] xll:h-[500px] relative mb-16">
         <Image
           src="/about 1.png"
           alt="aboutUs page image"
