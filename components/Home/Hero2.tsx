@@ -1,23 +1,16 @@
 import Image from "next/image";
 import React from "react";
 
-const Hero = () => {
+const Hero2 = () => {
   return (
     <>
-      <div className="h-[90vh] relative xl:max-h-[80vh] xll:max-h-[60vh]">
-        <Image
-          src="/banner.png"
-          alt="hero image"
-          height={2000}
-          width={2000}
-          className="h-[90vh] xl:max-h-[80vh] xll:max-h-[60vh] w-screen object-fill object-left-top brightness-75"
-        />
-        <div className="absolute h-full top-0 w-full flex  text-white ">
-          <div className="grid grid-cols-1 md:grid-cols-3 w-full h-full">
+      <div className="bg-heroBg  min-h-screen flex items-center bg-bottom bg-no-repeat">
+        <div className="w-full flex  text-white ">
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full">
             <div className="flex flex-col justify-center w-full col-span-2 px-5">
               <div className="max-w-3xl xxl:max-w-4xl mx-auto grid ">
                 <div className="align-middle sm:pl-8">
-                  <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold ">
+                  <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold brightness-100">
                     Business Coaching &{" "}
                   </h1>
                   <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold mt-5">
@@ -84,12 +77,12 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-3 w-full">
-            <div className="flex justify-center gap-x-3">
-              <button className="bg-white h-3 w-3 rounded-full"></button>
-              <button className="bg-white h-3 w-3 rounded-full"></button>
-              <button className="bg-white h-3 w-3 rounded-full"></button>
-            </div>
+        </div>
+        <div className="absolute bottom-3 w-full">
+          <div className="flex justify-center gap-x-3">
+            <button className="bg-white h-3 w-3 rounded-full"></button>
+            <button className="bg-white h-3 w-3 rounded-full"></button>
+            <button className="bg-white h-3 w-3 rounded-full"></button>
           </div>
         </div>
       </div>
@@ -108,4 +101,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero2;

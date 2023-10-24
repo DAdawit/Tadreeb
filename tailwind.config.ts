@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         aboutBg: "url('/about 1.png')",
+        heroBg: "url('/banner.png')",
       },
 
       fontFamily: {

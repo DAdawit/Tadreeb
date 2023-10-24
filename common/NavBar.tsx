@@ -5,7 +5,7 @@ import React from "react";
 const NavBar = () => {
   return (
     <nav className="">
-      <div className="px-28 flex justify-between items-centers py-3">
+      <div className="px-8 xll:px-28 flex justify-between items-centers py-3">
         <div className="flex items-end">
           <Image
             src="/logo-tadreeb-1.png"
@@ -76,7 +76,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <div className="px-28 flex items-center h-12 xxl:h-16">
+      <div className="px-8 xll:px-28 flex items-center h-12 xxl:h-16">
         <div className="bg-secondary flex w-full justify-around items-center h-full">
           <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             course finder
