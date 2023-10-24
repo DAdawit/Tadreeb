@@ -78,6 +78,8 @@ const Courses = () => {
           </div>
         ) : null}
       </section>
+
+      <hr className="border-t-1 border-primary my-8"></hr>
     </>
   );
 };
