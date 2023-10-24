@@ -1,3 +1,5 @@
+import AboutUs from "@/components/Home/AboutUs";
+import Certificates from "@/components/Home/Certificates";
 import Courses from "@/components/Home/Courses";
 import Hero from "@/components/Home/Hero";
 import Services from "@/components/Home/Services";
@@ -11,6 +13,8 @@ export default function Home() {
       <Services />
       <Courses />
       <UpcomingCourses />
+      <Certificates />
+      <AboutUs />
     </main>
   );
 }
