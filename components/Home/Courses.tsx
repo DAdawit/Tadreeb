@@ -42,20 +42,18 @@ const Courses = () => {
   };
   return (
     <>
-      <div
-        className={`flex justify-between items-center gap-2 max-w-6xl mx-auto  xll:max-w-[1750px] xll:mx-auto `}
-      >
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-x-2 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
         {tabItems.map((item, index) => (
           <button
             key={index}
             onClick={() => handleChange(`${item}` as string)}
-            className="flex  items-center md:justify-center flex-col md:flex-row gap-2 h-full "
+            className="flex items-center md:justify-center flex-col md:flex-row gap-2 h-full "
           >
             <span
               className={
                 tabs === item
-                  ? `text-sm md:text-lg xxl:text-[22px] pb-4 bg-primary rounded-t-lg text-white py-3`
-                  : "text-sm md:text-lg  xxl:text-[22px]  pb-4 bg-secondary rounded-t-lg text-white py-3"
+                  ? `text-sm md:text-base xll:text-[22px] pb-4 bg-primary rounded-t-lg text-white py-3 w-full h-full`
+                  : "text-sm md:text-base  xll:text-[22px]  pb-4 bg-secondary rounded-t-lg text-white py-3 w-full h-full"
               }
             >
               {item}
@@ -66,7 +64,7 @@ const Courses = () => {
       <hr className="border-t-1 border-primary "></hr>
       <section className="mt-8">
         {tabs !== "marketing" ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-[1750px] xll:mx-auto ">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
             {tabContents.map((item, index) => (
               <div
                 key={index}

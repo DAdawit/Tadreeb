@@ -1,10 +1,19 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  // console.log(pathname);
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-4 md:justify-items-center px-5 md:px-8 xl:px-16 text-textFooter py-5">
+      <div
+        className={`${
+          pathname !== "/" ? "bg-textFooter text-white" : ""
+        } grid grid-cols-1 gap-3 md:grid-cols-4 md:justify-items-center px-5 md:px-8 xl:px-16 text-textFooter pt-24 pb-8`}
+      >
         <div className="h-full grid">
           <p className="text-base xll:text-lg ">
             Tadreeb Training and Consulting carefully chooses global venues that
@@ -31,7 +40,11 @@ const Footer = () => {
         </div>
         <div className="h-full  grid">
           <div>
-            <h1 className="text-footerHeader text-2xl xll:text-3xl font-bold mb-5">
+            <h1
+              className={`${
+                pathname !== "/" ? "text-white" : ""
+              }text-footerHeader text-2xl xll:text-3xl font-bold mb-5`}
+            >
               talk to us
             </h1>
             <p className="xll:text-xl">Phone: +971 0 00000 </p>
@@ -47,7 +60,12 @@ const Footer = () => {
           <div className="invisible"></div>
           <div className="invisible"></div>
           <div>
-            <h1 className="text-footerHeader text-base md:text-lg xll:text-3xl font-bold mb-5">
+            <h1
+              className={`${
+                pathname !== "/" ? "text-white" : ""
+              }text-footerHeader text-2xl xll:text-3xl font-bold mb-5`}
+            >
+              {" "}
               follow us
             </h1>
 
@@ -66,7 +84,12 @@ const Footer = () => {
         </div>
         <div className="h-full grid">
           <div className="mb-5">
-            <h1 className="text-footerHeader text-2xl xll:text-3xl font-bold mb-5">
+            <h1
+              className={`${
+                pathname !== "/" ? "text-white" : ""
+              }text-footerHeader text-2xl xll:text-3xl font-bold mb-5`}
+            >
+              {" "}
               contact
             </h1>
             <h3 className="xll:text-xl font-normal">Level 14,</h3>
@@ -87,7 +110,12 @@ const Footer = () => {
         </div>
         <div className="h-full grid ">
           <div>
-            <h1 className="text-footerHeader text-2xl xll:text-3xl font-bold mb-5">
+            <h1
+              className={`${
+                pathname !== "/" ? "text-white" : ""
+              }text-footerHeader text-2xl xll:text-3xl font-bold mb-5`}
+            >
+              {" "}
               contact
             </h1>
             <h2 className="text-footerHeader font-medium text-lg mb-5">
