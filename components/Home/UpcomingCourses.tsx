@@ -2,7 +2,7 @@ import React from "react";
 
 const UpcomingCourses = () => {
   return (
-    <div className="max-w-6xl mx-auto  xll:max-w-[1750px] xll:mx-auto mb-8">
+    <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8">
       <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
         Upcoming Training Programs
       </h1>

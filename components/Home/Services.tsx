@@ -4,8 +4,8 @@ import React from "react";
 const Services = () => {
   return (
     <>
-      <section className="max-w-6xl mx-auto  xll:max-w-[1750px] xll:mx-auto">
-        <div className="container mx-auto px-5 mt-16">
+      <section className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto">
+        <div className="container mx-auto  mt-16">
           <div className="grid justify-items-center md:flex md:justify-between px-5 gap-3">
             <div className="bg-primary text-white rounded-lg py-2 px-4  md:w-max">
               <div className="flex items-center gap-x-2">
