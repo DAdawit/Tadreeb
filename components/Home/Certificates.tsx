@@ -5,7 +5,7 @@ const Certificates = () => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center text-white">
-        <div className="bg-[#2F2F2F]">
+        <div className="bg-[#2F2F2F] py-16">
           <div className="px-8 grid h-full">
             <h1 className="text-center font-bold text-xl xl:2xl xll:text-4xl mt-8">
               Obtain Globally Recognised <br /> Professional Certificates
@@ -26,7 +26,7 @@ const Certificates = () => {
             </div>
           </div>
         </div>
-        <div className="bg-primary w-full py-8">
+        <div className="bg-primary w-full py-16">
           <div className="flex gap-2 px-8 justify-center">
             <Image
               src="/image 9.png"
