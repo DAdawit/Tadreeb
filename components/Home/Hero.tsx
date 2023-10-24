@@ -94,11 +94,11 @@ const Hero = () => {
         </div>
       </div>
       <div className="bg-bgSecondary py-8 px-5">
-        <h2 className="text-center text-black text-xl font-bold xxl:text-3xl font-roboto">
+        <h2 className="text-center text-black text-xl font-bold xll:text-2xl xxl:text-3xl font-roboto">
           Choose your preferred training format, explore our courses and enroll
           today with TADREEB
         </h2>
-        <p className="text-center text-gray-600 mt-5 text-sm xxl:text-xl font-roboro">
+        <p className="text-center text-gray-600 mt-5 text-sm xll:text-md xxl:text-xl font-roboro">
           We are proud to offer a variety of training formats to suit your
           needs, including public training courses, in-house training solutions,
           and online training programs.

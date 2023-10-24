@@ -22,7 +22,7 @@ const config: Config = {
         md: "768px", // Medium screens (tablet)
         lg: "1024px", // Large screens (desktop)
         xl: "1280px",
-        xll: "1620px",
+        xll: "1520px",
         xxl: "1920px", // Extra large screens (wide desktop)
       },
       colors: {
