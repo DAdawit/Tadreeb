@@ -17,14 +17,13 @@ const CourseHero = () => {
           <div className="flex flex-col justify-center w-full col-span-2 px-5">
             <div className="align-middle sm:pl-8">
               <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold ">
-                Executive Development
+                The Strategy and High Impact Leadership
               </h1>
               <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold mt-5">
-                Training Courses
+                Program
               </h1>
               <p className="text-sm mt-8 xxl:text-lg ">
-                Explore Powerful Executive Learning Opportunities <br />
-                that Help You Achieve your Potential Consulting For Entrepreneur
+                Strategic Approaches for The Leader of Tomorrow
               </p>
             </div>
           </div>

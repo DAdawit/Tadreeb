@@ -1,13 +1,13 @@
-import Description from "@/components/Category/Description";
-import ExecutiveTraining from "@/components/Category/ExecutiveTraining";
 import CourseHero from "@/components/Course/CourseHero";
+import CourseSchedule from "@/components/Course/CourseSchedule";
+import Description from "@/components/Course/Description";
 import React from "react";
 
 const page = () => {
   return (
     <div>
       <CourseHero />
-      <ExecutiveTraining />
+      <CourseSchedule />
       <Description />
     </div>
   );
