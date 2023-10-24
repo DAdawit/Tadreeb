@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const AboutUs = () => {
+const AboutUs2 = () => {
   return (
     <>
       <div className="relative mb-16 bg-aboutBg bg-center py-16">
@@ -61,4 +61,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default AboutUs2;

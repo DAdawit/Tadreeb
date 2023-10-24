@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
-const Footer = () => {
+const test = () => {
   return (
-    <>
+    <div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4 md:justify-items-center px-5 md:px-8 xl:px-16 text-textFooter py-16">
         <div className="h-full grid">
           <p className="text-base xll:text-lg ">
@@ -105,8 +105,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Footer;
+export default test;

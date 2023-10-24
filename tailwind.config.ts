@@ -10,10 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        aboutBg: "url('/about 1.png')",
       },
+
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
@@ -32,6 +31,8 @@ const config: Config = {
         bgPrimary: "#90BEF6",
         bgSecondary: "#EBEBEB",
         textPrimary: "#8C8C8C",
+        textFooter: "#595959",
+        footerHeader: "#535353",
       },
     },
   },
