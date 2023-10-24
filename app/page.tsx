@@ -1,14 +1,23 @@
+import Footer from "@/common/Footer";
+import AboutUs from "@/components/Home/AboutUs";
+import Certificates from "@/components/Home/Certificates";
+import Courses from "@/components/Home/Courses";
+import Hero from "@/components/Home/Hero";
+import Hero2 from "@/components/Home/Hero2";
+import Services from "@/components/Home/Services";
+import UpcomingCourses from "@/components/Home/UpcomingCourses";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. In
-        necessitatibus quidem, fugit facere dolorem omnis exercitationem ratione
-        dicta sit delectus obcaecati, velit quos? Mollitia id incidunt harum et
-        quia maiores.
-      </p>
+      <Hero />
+      {/* <Hero2 /> */}
+      <Services />
+      <Courses />
+      <UpcomingCourses />
+      <Certificates />
+      <AboutUs />
     </main>
   );
 }

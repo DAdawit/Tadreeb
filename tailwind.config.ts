@@ -10,16 +10,19 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        aboutBg: "url('/about 1.png')",
+        heroBg: "url('/banner.png')",
+      },
+
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
       },
       screens: {
         sm: "640px", // Small screens (mobile)
         md: "768px", // Medium screens (tablet)
         lg: "1024px", // Large screens (desktop)
         xl: "1280px",
-        xll: "1620px",
+        xll: "1520px",
         xxl: "1920px", // Extra large screens (wide desktop)
       },
       colors: {
@@ -28,9 +31,12 @@ const config: Config = {
         tertiary: "#0883BC",
         bgPrimary: "#90BEF6",
         bgSecondary: "#EBEBEB",
+        textPrimary: "#8C8C8C",
+        textFooter: "#595959",
+        footerHeader: "#535353",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
 export default config;
