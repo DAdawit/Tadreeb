@@ -2,6 +2,14 @@
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
+import {
+  Energy_Courses,
+  Engineering_And_Technical_Courses,
+  Finance_And_Investment_Courses,
+  Operations_And_Logistics_Courses,
+  Sector_Specific_Courses,
+  tabContents,
+} from "./data";
 
 const Courses = () => {
   const [tabs, setTab] = useState<string>("Business & Management Courses");
@@ -18,24 +26,6 @@ const Courses = () => {
     "Engineering & Technical Courses",
     "Energy Courses",
     "Sector Specific Courses",
-  ];
-
-  let tabContents = [
-    "Executive Development",
-    "Management & Leadership",
-    "Creativity & Innovation",
-    "Personal Effectiveness",
-    "Strategic Planning",
-    "Governance, Compliance & Risk",
-    "Sustainability & CSR",
-    "Business Process management",
-    "Customer Service",
-    "Office Administration",
-    "Corporate Communication",
-    "Public Relation",
-    "Sales & marketing",
-    "HR Management",
-    "Learning & Development",
   ];
 
   const handleChange = (name: string) => {
@@ -65,15 +55,83 @@ const Courses = () => {
         </div>
         <hr className="border-t-1 border-primary "></hr>
         <section className="mt-8">
-          {tabs !== "marketing" ? (
+          {tabs === "Business & Management Courses" ? (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
               {tabContents.map((item, index) => (
                 <Link
-                  href="/course"
+                  href="/courseCategory"
                   key={index}
                   className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
                 >
-                  <h1 className="">{item}</h1>
+                  <h1 className="p-2">{item}</h1>
+                </Link>
+              ))}
+            </div>
+          ) : null}
+
+          {tabs === "Operations & Logistics Courses" ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
+              {Operations_And_Logistics_Courses.map((item, index) => (
+                <Link
+                  href="/courseCategory"
+                  key={index}
+                  className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
+                >
+                  <h1 className="p-2">{item}</h1>
+                </Link>
+              ))}
+            </div>
+          ) : null}
+          {tabs === "Finance & Investment Course" ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
+              {Finance_And_Investment_Courses.map((item, index) => (
+                <Link
+                  href="/courseCategory"
+                  key={index}
+                  className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
+                >
+                  <h1 className="p-2">{item}</h1>
+                </Link>
+              ))}
+            </div>
+          ) : null}
+
+          {tabs === "Engineering & Technical Courses" ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
+              {Engineering_And_Technical_Courses.map((item, index) => (
+                <Link
+                  href="/courseCategory"
+                  key={index}
+                  className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
+                >
+                  <h1 className="p-2">{item}</h1>
+                </Link>
+              ))}
+            </div>
+          ) : null}
+
+          {tabs === "Energy Courses" ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
+              {Energy_Courses.map((item, index) => (
+                <Link
+                  href="/courseCategory"
+                  key={index}
+                  className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
+                >
+                  <h1 className="p-2">{item}</h1>
+                </Link>
+              ))}
+            </div>
+          ) : null}
+          {tabs === "Sector Specific Courses" ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
+              {Sector_Specific_Courses.map((item, index) => (
+                <Link
+                  href="/courseCategory"
+                  key={index}
+                  className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
+                >
+                  <h1 className="p-2">{item}</h1>
                 </Link>
               ))}
             </div>
