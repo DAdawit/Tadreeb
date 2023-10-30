@@ -12,7 +12,7 @@ const Description = () => {
           <h1 className="text-[#1E5DAA] lg:text-lg xl:text-xl font-bold">
             INTRODUCTION
           </h1>
-          <p className="text-textPrimary mt-5 lg:text-lg xl:text-xl">
+          <p className="text-textPrimary mt-5 lg:text-lg xll:text-xl">
             In a shrinking world, all organizations and their managers are
             constantly being buffeted by unexpected twists and turns that call
             on them to react quickly, effectively and strategically. This

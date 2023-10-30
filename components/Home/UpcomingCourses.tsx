@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 const UpcomingCourses = () => {
   return (
-    <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8">
+    <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
       <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
         Upcoming Training Programs
       </h1>
@@ -26,7 +27,9 @@ const UpcomingCourses = () => {
               }
             >
               <td className="border-2 border-white">
-                Workshop on Fire Risk Insurance
+                <Link href="/courseCategory" className="hover:text-primary">
+                  Workshop on Fire Risk Insurance
+                </Link>
               </td>
               <td className="border-2 border-white">Dubai</td>
               <td className="border-2 border-white">02-10-2023</td>

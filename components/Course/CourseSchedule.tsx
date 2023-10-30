@@ -36,7 +36,7 @@ const CourseSchedule = () => {
         </tbody>
       </table>
       <div className="flex justify-start mt-8">
-        <button className="px-5 py-3 rounded-full bg-primary text-white md:px-8 md:py-4 text-lg xl:text-2xl ">
+        <button className="px-5 py-2 rounded-full bg-primary text-white xll:px-8 xll:py-4 text-lg  xll:text-2xl ">
           Download PDF
         </button>
       </div>

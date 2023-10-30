@@ -1,12 +1,15 @@
 import Link from "next/link";
 import React from "react";
 
-const ExecutiveTraining = () => {
+const SearchTrainings = () => {
   return (
     <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
-      <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
-        Upcoming Executive Development Training Programs
-      </h1>
+      <div className="flex gap-x-3">
+        <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
+          Search Tranings
+        </h1>
+        <input type="text" placeholder="Search Courses" />
+      </div>
       <table className="text-center w-full mt-8 overflow-x-auto">
         <thead className="bg-secondary h-10">
           <tr className="text-white">
@@ -48,4 +51,4 @@ const ExecutiveTraining = () => {
   );
 };
 
-export default ExecutiveTraining;
+export default SearchTrainings;

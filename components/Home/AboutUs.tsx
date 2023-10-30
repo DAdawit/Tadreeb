@@ -33,19 +33,31 @@ const AboutUs = () => {
                 <div className="grid max-w-sm mx-auto ">
                   <div className="grid mt-3">
                     <label htmlFor=""></label>
-                    <input type="text" className="" />
+                    <input
+                      type="text"
+                      className=""
+                      placeholder="Your Full Name"
+                    />
                   </div>
                   <div className="grid mt-3">
                     <label htmlFor=""></label>
-                    <input type="text" className="" />
+                    <input
+                      type="text"
+                      className=""
+                      placeholder="Your Location"
+                    />
                   </div>
                   <div className="grid mt-3">
                     <label htmlFor=""></label>
-                    <input type="text" className="" />
+                    <input
+                      type="text"
+                      className=""
+                      placeholder="Your Contact Number"
+                    />
                   </div>
                   <div className="grid mt-3">
                     <label htmlFor=""></label>
-                    <input type="text" className="" />
+                    <input type="text" className="" placeholder="Your Email" />
                   </div>
 
                   <button className="bg-primary rounded-lg text-white py-2 mt-3">

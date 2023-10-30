@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { useRouter, usePathname } from "next/navigation";
+import SocialMeadiaIcons from "./SocialMeadiaIcons";
 
 const Footer = () => {
   const router = useRouter();
@@ -11,8 +12,8 @@ const Footer = () => {
     <>
       <div
         className={`${
-          pathname !== "/" ? "bg-textFooter text-white" : ""
-        } grid grid-cols-1 gap-3 md:grid-cols-4 md:justify-items-center px-5 md:px-8 xl:px-16 text-textFooter pt-24 pb-8`}
+          pathname !== "/" ? "bg-textFooter text-white pt-16" : ""
+        } grid grid-cols-1 gap-3 md:grid-cols-4 md:justify-items-center px-5 md:px-8 xl:px-16 text-textFooter pb-8`}
       >
         <div className="h-full grid">
           <p className="text-base xll:text-lg ">
@@ -29,13 +30,23 @@ const Footer = () => {
             <div className="invisible"> </div>
           </div>
           <div>
-            <Image
-              src="/logo-tadreeb-1.png"
-              height={1000}
-              width={1000}
-              alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
-            />
+            {pathname !== "/" ? (
+              <Image
+                src="/logo-tadreeb-2.png"
+                height={1000}
+                width={1000}
+                alt="certificates"
+                className="h-24 xll:h-32 w-28 object-fill"
+              />
+            ) : (
+              <Image
+                src="/logo-tadreeb-1.png"
+                height={1000}
+                width={1000}
+                alt="certificates"
+                className="h-24 xll:h-32 w-28 object-fill"
+              />
+            )}
           </div>
         </div>
         <div className="h-full  grid">
@@ -71,13 +82,19 @@ const Footer = () => {
 
             <div className="w-max flex gap-x-3 mt-3">
               <div>
-                <Image
-                  src="/Frame.png"
-                  alt="hero image"
-                  height={2000}
-                  width={2000}
-                  className="h-8  xxl:h-12 object-contain w-min"
-                />
+                {pathname !== "/" ? (
+                  <div className="flex gap-2">
+                    <SocialMeadiaIcons />
+                  </div>
+                ) : (
+                  <Image
+                    src="/Frame.png"
+                    alt="hero image"
+                    height={2000}
+                    width={2000}
+                    className="h-8  xxl:h-12 object-contain w-min"
+                  />
+                )}
               </div>
             </div>
           </div>

@@ -13,7 +13,7 @@ const SearchCourse = () => {
                 className="w-full"
                 placeholder="Program Category"
               >
-                <option value="" selected disabled>
+                <option value="" disabled>
                   Program Category
                 </option>
               </select>
@@ -25,7 +25,7 @@ const SearchCourse = () => {
                 className="w-full"
                 placeholder="Program Category"
               >
-                <option value="" selected disabled>
+                <option value="" disabled>
                   Program Title
                 </option>
               </select>
@@ -37,7 +37,7 @@ const SearchCourse = () => {
                 className="w-full"
                 placeholder="Program Category"
               >
-                <option value="" selected disabled>
+                <option value="" disabled>
                   Location
                 </option>
               </select>
