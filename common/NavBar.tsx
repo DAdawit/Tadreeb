@@ -84,7 +84,10 @@ const NavBar = () => {
       </div>
       <div className="px-8 xll:px-28 hidden md:flex items-center h-12 xxl:h-16">
         <div className="bg-secondary flex w-full justify-around items-center h-full">
-          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
+          <Link
+            href="/course-finder"
+            className="text-white text-sm xl:text-lg xxl:text-3xl"
+          >
             course finder
           </Link>
           <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
