@@ -10,8 +10,7 @@ const SearchTrainings = () => {
         </h1>
         <input type="text" placeholder="Search Courses" />
       </div>
-      <h1 className="mt-5 text-2xl xll:text-3xl">NOVEMBER 2023</h1>
-      <table className="text-center w-full mt-2 overflow-x-auto">
+      <table className="text-center w-full mt-8 overflow-x-auto">
         <thead className="bg-secondary h-10">
           <tr className="text-white">
             <th className="border-r-2 border-gray-50">Program Title</th>

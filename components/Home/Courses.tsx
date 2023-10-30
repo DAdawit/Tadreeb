@@ -33,7 +33,7 @@ const Courses = () => {
   };
   return (
     <>
-      <section className="px-5 sm:px-0">
+      <section className="px-5 sm:px-0" id="training-course-calendar">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
           {tabItems.map((item, index) => (
             <button

@@ -43,7 +43,7 @@ export default function NavigationDrawer() {
     (event: React.KeyboardEvent | React.MouseEvent) => {
       setState({ ...state, [anchor]: open });
     };
-  // console.log(user?.level);
+
   return (
     <div>
       {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
@@ -84,14 +84,14 @@ export default function NavigationDrawer() {
                 <section className="flex  w-full">
                   <div className="grid gap-y-1 mt-5 w-full">
                     <Link
-                      href="/courseFinder"
+                      href="/course-finder"
                       className="mt-1 py-1 h-min  w-full px-5 border-b-2 border-gray-200"
                       onClick={toggleDrawer("left", false)}
                     >
                       Course Finder
                     </Link>
                     <Link
-                      href="/Traning Calender"
+                      href="/training-course-calendar"
                       className="mt-1 py-1 h-min  w-full px-5 border-b-2 border-gray-200"
                       onClick={toggleDrawer("left", false)}
                     >

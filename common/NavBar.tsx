@@ -1,9 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import NavigationDrawer from "./NavigationDrawer";
+import { NavLinks, TrainingType } from "./data";
+import SubMenuItemsList from "./SubMenuItemsList";
 
 const NavBar = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
   return (
     <nav className="">
       <div className="px-8 xll:px-28 flex justify-between items-centers py-3">
@@ -90,27 +96,36 @@ const NavBar = () => {
           >
             course finder
           </Link>
-          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
+          <Link
+            href="/training-course-calendar"
+            className="text-white text-sm xl:text-lg xxl:text-3xl"
+          >
             training calendar
           </Link>
-          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
+          <Link
+            href="#training-course-calendar"
+            className="text-white text-sm xl:text-lg xxl:text-3xl"
+          >
             training courses
           </Link>
-          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
-            venues
-          </Link>
-          <Link
-            href="#certification"
-            className="text-white text-sm xl:text-lg xxl:text-3xl"
-          >
-            certification
-          </Link>
-          <Link
-            href="#training-type"
-            className="text-white text-sm xl:text-lg xxl:text-3xl"
-          >
-            training type
-          </Link>
+
+          {NavLinks.map((nav) => (
+            <Link
+              key={nav.name}
+              href={`${nav.link}`}
+              onMouseEnter={() => setHoveredItem(nav.name)}
+              onMouseLeave={() => setHoveredItem(null)}
+              className="text-white text-sm xl:text-lg xxl:text-3xl relative"
+            >
+              {nav.name}
+
+              {hoveredItem === nav.name && (
+                <div className="absolute top-9  bg-white text-black z-10 border-t-2 border-primary px-5 py-2">
+                  <SubMenuItemsList subMenu={nav.subMenu as string[]} />
+                </div>
+              )}
+            </Link>
+          ))}
         </div>
         <div className="bg-primary h-full flex items-center justify-center px-3">
           <button className="text-white uppercase text-lg font-medium">
