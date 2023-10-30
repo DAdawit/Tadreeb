@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const ExecutiveTraining = () => {
@@ -27,7 +28,9 @@ const ExecutiveTraining = () => {
               }
             >
               <td className="border-2 border-white">
-                Workshop on Fire Risk Insurance
+                <Link href="/course" className="hover:text-primary">
+                  Workshop on Fire Risk Insurance
+                </Link>
               </td>
               <td className="border-2 border-white">Dubai</td>
               <td className="border-2 border-white">02-10-2023</td>
