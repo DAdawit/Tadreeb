@@ -33,7 +33,7 @@ const Hero = () => {
                   </p>
                 </div>
                 <div className="mt-10 align-bottom h-full flex items-end sm:pl-8">
-                  <div className="flex gap-x-5">
+                  <div className="grid sm:flex gap-x-5">
                     <button className="bg-secondary h-12 w-48 xxl:h-16 rounded-md">
                       LEARN MORE
                     </button>
