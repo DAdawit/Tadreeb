@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import NavigationDrawer from "./NavigationDrawer";
 
 const NavBar = () => {
   return (
@@ -13,12 +14,15 @@ const NavBar = () => {
               alt="logo"
               width={1000}
               height={1000}
-              className="h-16 w-24 xxl:h-24 xxl:w-32 object-contain"
+              className="h-12 w-24 xxl:h-24 xxl:w-32 object-contain"
             />
           </Link>
         </div>
         <div className="flex justify-end">
-          <div className="flex flex-col justify-end gap-y-4">
+          <div className="md:hidden">
+            <NavigationDrawer />
+          </div>
+          <div className="hidden md:flex flex-col justify-end gap-y-4">
             <div className="flex  justify-end w-full items-center gap-x-3">
               <div className="flex items-center justify-end">
                 <Image
@@ -57,7 +61,7 @@ const NavBar = () => {
                 </h4>
               </div>
             </div>
-            <div className="flex gap-x-3 w-min justify-end items-center">
+            <div className="hidden md:flex gap-x-3 w-min justify-end items-center">
               {[
                 "/image-18.png",
                 "/image 19.png",
@@ -78,7 +82,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <div className="px-8 xll:px-28 flex items-center h-12 xxl:h-16">
+      <div className="px-8 xll:px-28 hidden md:flex items-center h-12 xxl:h-16">
         <div className="bg-secondary flex w-full justify-around items-center h-full">
           <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             course finder
@@ -92,10 +96,16 @@ const NavBar = () => {
           <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
             venues
           </Link>
-          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
+          <Link
+            href="#certification"
+            className="text-white text-sm xl:text-lg xxl:text-3xl"
+          >
             certification
           </Link>
-          <Link href="#" className="text-white text-sm xl:text-lg xxl:text-3xl">
+          <Link
+            href="#training-type"
+            className="text-white text-sm xl:text-lg xxl:text-3xl"
+          >
             training type
           </Link>
         </div>

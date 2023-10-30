@@ -11,8 +11,8 @@ const Footer = () => {
     <>
       <div
         className={`${
-          pathname !== "/" ? "bg-textFooter text-white" : ""
-        } grid grid-cols-1 gap-3 md:grid-cols-4 md:justify-items-center px-5 md:px-8 xl:px-16 text-textFooter pt-24 pb-8`}
+          pathname !== "/" ? "bg-textFooter text-white pt-16" : ""
+        } grid grid-cols-1 gap-3 md:grid-cols-4 md:justify-items-center px-5 md:px-8 xl:px-16 text-textFooter pb-8`}
       >
         <div className="h-full grid">
           <p className="text-base xll:text-lg ">
@@ -29,13 +29,23 @@ const Footer = () => {
             <div className="invisible"> </div>
           </div>
           <div>
-            <Image
-              src="/logo-tadreeb-1.png"
-              height={1000}
-              width={1000}
-              alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
-            />
+            {pathname !== "/" ? (
+              <Image
+                src="/logo-tadreeb-2.png"
+                height={1000}
+                width={1000}
+                alt="certificates"
+                className="h-24 xll:h-32 w-28 object-fill"
+              />
+            ) : (
+              <Image
+                src="/logo-tadreeb-1.png"
+                height={1000}
+                width={1000}
+                alt="certificates"
+                className="h-24 xll:h-32 w-28 object-fill"
+              />
+            )}
           </div>
         </div>
         <div className="h-full  grid">
