@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { useRouter, usePathname } from "next/navigation";
+import SocialMeadiaIcons from "./SocialMeadiaIcons";
 
 const Footer = () => {
   const router = useRouter();
@@ -81,13 +82,19 @@ const Footer = () => {
 
             <div className="w-max flex gap-x-3 mt-3">
               <div>
-                <Image
-                  src="/Frame.png"
-                  alt="hero image"
-                  height={2000}
-                  width={2000}
-                  className="h-8  xxl:h-12 object-contain w-min"
-                />
+                {pathname !== "/" ? (
+                  <div className="flex gap-2">
+                    <SocialMeadiaIcons />
+                  </div>
+                ) : (
+                  <Image
+                    src="/Frame.png"
+                    alt="hero image"
+                    height={2000}
+                    width={2000}
+                    className="h-8  xxl:h-12 object-contain w-min"
+                  />
+                )}
               </div>
             </div>
           </div>
