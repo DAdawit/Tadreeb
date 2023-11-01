@@ -18,6 +18,17 @@ export interface FormatsType {
   meta: Meta;
 }
 
+export interface FormatsType {
+  data: FormatType[];
+  links: Links;
+  meta: Meta;
+}
+
+export interface VenueType {
+  data: FormatType[];
+  links: Links;
+  meta: Meta;
+}
 export interface FormatType {
   id: string;
   attributes: Attributes;
