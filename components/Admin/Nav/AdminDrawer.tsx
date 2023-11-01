@@ -87,7 +87,7 @@ export default function AdminDrawer() {
                   <div className="grid gap-y-3 mt-5">
                     <Link
                       href="/admin/dashboard"
-                      className="mt-3 shadow-sm py-2 h-min"
+                      className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
@@ -95,20 +95,17 @@ export default function AdminDrawer() {
                         <h3>Dashboard</h3>
                       </div>
                     </Link>
-                    <SubMenuLists
-                      toggleDrawer={() => toggleDrawer("left", false)}
-                      showChild={members}
-                      onClick={() => setMemebers(!members)}
-                      icon={<AccountCircleIcon />}
-                      title="Account"
-                      childs={[
-                        {
-                          title: "My Account",
-                          link: "/admin/profile",
-                          icon: <PersonIcon />,
-                        },
-                      ]}
-                    />
+                    <Link
+                      href="/admin/training-formats"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <DashboardIcon />
+                        <h3>Training Formats</h3>
+                      </div>
+                    </Link>
+
                     <SubMenuLists
                       toggleDrawer={() => toggleDrawer("left", false)}
                       showChild={users}
