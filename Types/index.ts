@@ -61,3 +61,25 @@ export interface Link {
   label: string;
   active: boolean;
 }
+
+export interface TrainingTypes {
+  data: TrainingType[];
+  links: Links;
+  meta: Meta;
+}
+
+export interface TrainingType {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  name: string;
+  description: string;
+  category: Category;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}

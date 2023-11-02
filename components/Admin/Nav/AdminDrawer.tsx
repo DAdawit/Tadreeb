@@ -115,6 +115,27 @@ export default function AdminDrawer() {
                         <h3>Avenues</h3>
                       </div>
                     </Link>
+                    <Link
+                      href="/admin/training-categories"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <DashboardIcon />
+                        <h3>Training Categories</h3>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/admin/trainings"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <DashboardIcon />
+                        <h3>Trainings</h3>
+                      </div>
+                    </Link>
+
                     <SubMenuLists
                       toggleDrawer={() => toggleDrawer("left", false)}
                       showChild={users}
