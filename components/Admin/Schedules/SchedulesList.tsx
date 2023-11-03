@@ -11,6 +11,7 @@ import EditTraining from "./EditCourse";
 import Link from "next/link";
 import EditCourse from "./EditCourse";
 import { useParams } from "next/navigation";
+import EditSchedule from "./EditSchedule";
 
 type PropType = {
   schedule: ScheduleType;
@@ -27,7 +28,7 @@ const SchedulesList: React.FC<PropType> = ({ schedule, index, refetch }) => {
     setdeleteError("");
     setLoading(true);
     api
-      .delete(`/courses/${id}`)
+      .delete(`/schedules/${id}`)
       .then((res) => {
         notify("Course deleted successfully", "success");
         setLoading(false);
@@ -66,6 +67,14 @@ const SchedulesList: React.FC<PropType> = ({ schedule, index, refetch }) => {
             id={String(schedule.id)}
             text="Are you sure you went to delete !"
             loading={loading}
+          />
+          <EditSchedule
+            refetch={() => refetch()}
+            id={String(schedule.id)}
+            venue_id={String(schedule.venue_id)}
+            start_date={schedule.start_date}
+            end_date={schedule.end_date}
+            fee={schedule.fee}
           />
           {/* <EditCourse
             refetch={refetch}

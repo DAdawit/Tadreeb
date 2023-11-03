@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCourseSchedules } from "@/services/admin";
 import { Spinner } from "@/assets/icons/Spinner";
 import SchedulesList from "@/components/Admin/Schedules/SchedulesList";
+import AddSchedule from "@/components/Admin/Schedules/AddSchedule";
+import PageTitle from "@/common/PageTitle";
 
 const Page = () => {
   const { course } = useParams();
@@ -15,8 +17,12 @@ const Page = () => {
   });
   return (
     <div>
-      {course}
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <div className="container mx-auto p-5 flex">
+        <PageTitle title={`${data?.title}`} />
+      </div>
+      <div className="flex justify-end container mx-auto p-5">
+        <AddSchedule refetch={() => refetch()} />
+      </div>
       <div className="relative overflow-x-auto min-h-screen px-7">
         <table className="w-full text-sm text-left text-gray-500 ">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">

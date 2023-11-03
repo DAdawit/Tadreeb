@@ -123,7 +123,12 @@ const Page: React.FC = () => {
 
       <form onSubmit={handleSubmit(submitData)} className="max-w-lg mx-auto">
         <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
-          <input type="hidden" value={id} {...register("training_id")} />
+          <input
+            type="hidden"
+            value={id}
+            disabled
+            {...register("training_id")}
+          />
 
           <div className="grid gap-y-1">
             <label
