@@ -6,9 +6,10 @@ import EditSeedDialog from "../../EditSeedDialog";
 import { CourseType, FormatType, TrainingType } from "@/Types";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import EditTrainingFormat from "./EditTraining";
-import EditTraining from "./EditTraining";
+import EditTrainingFormat from "./EditCourse";
+import EditTraining from "./EditCourse";
 import Link from "next/link";
+import EditCourse from "./EditCourse";
 
 type PropType = {
   course: CourseType;
@@ -72,13 +73,19 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
             text="Are you sure you went to delete !"
             loading={loading}
           />
-          {/* <EditTraining
-            name={course?.attributes?.name}
-            category_id={training.attributes.category.id}
-            description={training.attributes.description}
+          <EditCourse
             refetch={refetch}
-            id={training.id}
-          /> */}
+            id={String(course.id)}
+            title={course.title}
+            fee={course.fee}
+            description={course.description}
+            course_outline={course.course_outline}
+            start_date={course.start_date}
+            end_date={course.end_date}
+            venue_id={String(course.venue_id)}
+            format_id={String(course.format_id)}
+            training_id={String(course.training_id)}
+          />
         </td>
       </tr>
     </>

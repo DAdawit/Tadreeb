@@ -18,36 +18,62 @@ import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
 import { FormatType } from "@/Types";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCategories } from "@/services/admin";
+import { fetchTrainingFormats, fetchVenues } from "@/services/admin";
 
 type FormValues = {
-  name: string;
+  title: string;
+  fee: number;
   description: string;
-  category_id: string;
+  course_outline: string;
+  start_date: string;
+  end_date: string;
+  venue_id: string;
+  format_id: string;
+  training_id: string;
 };
 
-// port=3307
-
 const schema: ZodType<FormValues> = z.object({
-  name: z.string().min(1, "Name is required"),
+  title: z.string().min(1, "title is required"),
+  fee: z.number().min(1, "fee is required"),
   description: z.string().min(1, "Description is required"),
-  category_id: z.string().min(1, "Category is required"),
+  course_outline: z.string().min(1, "Course Outline is required"),
+  start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
+    message: "start_date must be a valid date string",
+  }),
+  end_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
+    message: "end_date must be a valid date string",
+  }),
+  venue_id: z.string(),
+  format_id: z.string(),
+  training_id: z.string(),
 });
 
 type PropType = {
   refetch: () => void;
-  name: string;
-  category_id: string;
-  description: string;
   id: string;
+  title: string;
+  fee: number;
+  description: string;
+  course_outline: string;
+  start_date: string;
+  end_date: string;
+  venue_id: string;
+  format_id: string;
+  training_id: string;
 };
 
-const EditTraining: React.FC<PropType> = ({
-  refetch,
-  name,
-  category_id,
-  description,
+const EditCourse: React.FC<PropType> = ({
   id,
+  refetch,
+  title,
+  fee,
+  description,
+  course_outline,
+  start_date,
+  end_date,
+  venue_id,
+  format_id,
+  training_id,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [editError, setEditError] = useState<string>("");
@@ -60,15 +86,35 @@ const EditTraining: React.FC<PropType> = ({
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      name: name,
-      category_id: category_id,
+      title: title,
+      fee: fee,
       description: description,
+      course_outline: course_outline,
+      start_date: start_date,
+      end_date: end_date,
+      venue_id: venue_id,
+      format_id: format_id,
+      training_id: training_id,
     },
   });
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["fetchCategories"],
-    queryFn: fetchCategories,
+  const {
+    data: venues,
+    isLoading: venuesLoading,
+    error: venuesError,
+    refetch: venuesRefetch,
+  } = useQuery({
+    queryKey: ["fetchVenues"],
+    queryFn: fetchVenues,
+  });
+  const {
+    data: formats,
+    isLoading: formatsLoading,
+    error: formatsError,
+    refetch: formatsRefetch,
+  } = useQuery({
+    queryKey: ["fetchTrainingFormats"],
+    queryFn: fetchTrainingFormats,
   });
   const [open, setOpen] = React.useState(false);
 
@@ -86,11 +132,11 @@ const EditTraining: React.FC<PropType> = ({
     console.log(values);
 
     await api
-      .put(`/trainings/${id}`, values)
+      .put(`/courses/${id}`, values)
       .then((res) => {
         refetch();
         handleClose();
-        notify("Training updated successfully !", "success");
+        notify("Course updated successfully !", "success");
         reset();
       })
       .catch((err) => {
@@ -122,59 +168,150 @@ const EditTraining: React.FC<PropType> = ({
           },
         }}
       >
-        <DialogTitle id="alert-dialog-title">{"Edit Training"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Edit Course"}</DialogTitle>
         <DialogContent>
           <form
             onSubmit={handleSubmit(submitData)}
-            className="max-w-2xl mx-auto"
+            className="max-w-lg mx-auto"
           >
             <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
+              <input type="hidden" value={id} {...register("training_id")} />
+
               <div className="grid gap-y-1">
                 <label
-                  htmlFor="amount"
+                  htmlFor="title"
                   className="capitalize pl-3 lightText font-semibold"
                 >
-                  Name *
+                  Title *
                 </label>
                 <input
-                  {...register("name")}
-                  placeholder="Name"
-                  name="name"
-                  id="name"
+                  {...register("title")}
+                  placeholder="Title"
+                  name="title"
+                  id="title"
                   className="w-full"
                   type="text"
                 />
-                {errors?.name && (
+                {errors?.title && (
                   <small className="text-red-500 pl-2">
-                    {errors.name.message}
+                    {errors.title.message}
                   </small>
                 )}
               </div>
               <div className="grid gap-y-1">
                 <label
-                  htmlFor="category_id"
+                  htmlFor="fee"
+                  className="capitalize pl-3 lightText font-semibold"
+                >
+                  Fee *
+                </label>
+                <input
+                  {...register("fee", { valueAsNumber: true })}
+                  placeholder="Payment Amount"
+                  name="fee"
+                  id="fee"
+                  className="w-full"
+                  type="number"
+                />
+                {errors?.fee && (
+                  <small className="text-red-500 pl-2">
+                    {errors.fee.message}
+                  </small>
+                )}
+              </div>
+              <div className="grid gap-y-1">
+                <label
+                  htmlFor="start_date"
+                  className="capitalize pl-3 lightText font-semibold"
+                >
+                  Start Date *
+                </label>
+                <input
+                  {...register("start_date")}
+                  name="start_date"
+                  id="start_date"
+                  className="w-full"
+                  type="date"
+                />
+                {errors?.start_date && (
+                  <small className="text-red-500 pl-2">
+                    {errors.start_date.message}
+                  </small>
+                )}
+              </div>
+              <div className="grid gap-y-1">
+                <label
+                  htmlFor="end_date"
+                  className="capitalize pl-3 lightText font-semibold"
+                >
+                  End Date *
+                </label>
+                <input
+                  {...register("end_date")}
+                  name="end_date"
+                  id="end_date"
+                  className="w-full"
+                  type="date"
+                />
+                {errors?.end_date && (
+                  <small className="text-red-500 pl-2">
+                    {errors.end_date.message}
+                  </small>
+                )}
+              </div>
+              <div className="grid gap-y-1">
+                <label
+                  htmlFor="format_id"
                   className="capitalize pl-3 font-semibold"
                 >
-                  Category *
+                  Trainig Format *
                 </label>
 
                 <select
-                  id="category_id"
-                  {...register("category_id")}
+                  id="format_id"
+                  {...register("format_id")}
                   className="w-full"
                 >
                   <option value="" selected disabled>
                     select option
                   </option>
-                  {data?.data.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.attributes.name}
+                  {formats?.data.map((format) => (
+                    <option key={format.id} value={format.id}>
+                      {format.attributes.name}
                     </option>
                   ))}
                 </select>
-                {errors?.category_id && (
+                {errors?.format_id && (
                   <small className="text-red-500 pl-2">
-                    {errors.category_id.message}
+                    {errors.format_id.message}
+                  </small>
+                )}
+              </div>
+              <div className="grid gap-y-1">
+                <label
+                  htmlFor="venue_id"
+                  className="capitalize pl-3 font-semibold"
+                >
+                  Venue *
+                </label>
+
+                <select
+                  id="venue_id"
+                  {...register("venue_id")}
+                  className="w-full"
+                >
+                  <option value="" selected disabled>
+                    select option
+                  </option>
+                  {venues?.data.map((venue) => (
+                    <option key={venue.id} value={venue.id}>
+                      {venue.attributes.name}
+                    </option>
+                  ))}
+                </select>
+                {errors?.venue_id && (
+                  <small className="text-red-500 pl-2">
+                    {errors.venue_id.message}
                   </small>
                 )}
               </div>
@@ -197,13 +334,32 @@ const EditTraining: React.FC<PropType> = ({
                   </small>
                 )}
               </div>
+              <div className="grid gap-y-1">
+                <label
+                  htmlFor="course_outline"
+                  className="capitalize pl-3 font-semibold"
+                >
+                  Course Outline *
+                </label>
+                <textarea
+                  id=""
+                  className="h-48"
+                  {...register("course_outline")}
+                ></textarea>
+
+                {errors?.course_outline && (
+                  <small className="text-red-500 pl-2">
+                    {errors.course_outline.message}
+                  </small>
+                )}
+              </div>
             </section>
             <div className="flex items-center justify-center mt-7 max-w-sm mx-auto">
               <button
                 type="submit"
                 className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"
               >
-                <span>Update</span>
+                <span>Submit</span>
                 <span className="text-white">
                   {loading ? <Spinner /> : null}
                 </span>
@@ -216,4 +372,4 @@ const EditTraining: React.FC<PropType> = ({
   );
 };
 
-export default EditTraining;
+export default EditCourse;
