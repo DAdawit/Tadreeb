@@ -34,14 +34,17 @@ type FormValues = {
 
 const schema: ZodType<FormValues> = z.object({
   title: z.string().min(1, "title is required"),
-  fee: z.number().min(1, "title is required"),
+  fee: z.number().min(1, "fee is required"),
   description: z.string().min(1, "Description is required"),
   course_outline: z.string().min(1, "Course Outline is required"),
-  category_id: z.string().min(1, "Category is required"),
-  start_date: z.string().min(1, "start_date is required"),
-  end_date: z.string().min(1, "start_date is required"),
-  venue_id: z.string().min(1, "venue is required"),
-  format_id: z.string().min(1, "Format is required"),
+  start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
+    message: "start_date must be a valid date string",
+  }),
+  end_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
+    message: "end_date must be a valid date string",
+  }),
+  venue_id: z.string(),
+  format_id: z.string(),
   training_id: z.string(),
 });
 
@@ -77,7 +80,9 @@ const Page: React.FC = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormValues>({ resolver: zodResolver(schema) });
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -93,21 +98,21 @@ const Page: React.FC = () => {
     setAddError("");
     console.log(values);
 
-    // api
-    //   .post("/courses", values)
-    //   .then((res) => {
-    //     notify("training format added successfully", "success");
-    //     reset();
-    //     handleClose();
-    //     router.push("/admin/trainings");
-    //   })
-    //   .catch((err) => {
-    //     notify(err.response.data.errors.detail[0], "error");
-    //     setLoading(false);
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
+    api
+      .post("/courses", values)
+      .then((res) => {
+        notify("training format added successfully", "success");
+        reset();
+        handleClose();
+        router.push(`/admin/trainings/${id}`);
+      })
+      .catch((err) => {
+        notify(err.response.data.errors.detail[0], "error");
+        setLoading(false);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -119,6 +124,7 @@ const Page: React.FC = () => {
       <form onSubmit={handleSubmit(submitData)} className="max-w-lg mx-auto">
         <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
           <input type="hidden" value={id} {...register("training_id")} />
+
           <div className="grid gap-y-1">
             <label
               htmlFor="title"
@@ -228,18 +234,11 @@ const Page: React.FC = () => {
             )}
           </div>
           <div className="grid gap-y-1">
-            <label
-              htmlFor="category_id"
-              className="capitalize pl-3 font-semibold"
-            >
+            <label htmlFor="venue_id" className="capitalize pl-3 font-semibold">
               Venue *
             </label>
 
-            <select
-              id="category_id"
-              {...register("venue_id")}
-              className="w-full"
-            >
+            <select id="venue_id" {...register("venue_id")} className="w-full">
               <option value="" selected disabled>
                 select option
               </option>

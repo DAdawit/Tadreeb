@@ -103,3 +103,58 @@ export interface Category {
   id: string;
   name: string;
 }
+
+export interface TrainingCoursesType {
+  id: number;
+  name: string;
+  category_id: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  courses: CoursesType;
+}
+
+export interface CoursesType {
+  current_page: number;
+  data: CourseType[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface CourseType {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  venue: Venue;
+}
+
+export interface Venue {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}

@@ -1,4 +1,10 @@
-import { FormatsType, TrainingType, TrainingTypes, VenueType } from "@/Types";
+import {
+  FormatsType,
+  TrainingCoursesType,
+  TrainingType,
+  TrainingTypes,
+  VenueType,
+} from "@/Types";
 import api from "@/app/axios";
 
 export async function fetchTrainingFormats(): Promise<FormatsType> {
@@ -44,7 +50,7 @@ export async function fetchTrainings(): Promise<TrainingTypes> {
     });
 }
 
-export async function fetchTraining(id: string): Promise<TrainingType> {
+export async function fetchTraining(id: string): Promise<TrainingCoursesType> {
   return await api
     .get(`/training-courses/${id}`)
     .then((res) => {
