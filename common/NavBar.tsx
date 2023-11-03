@@ -5,11 +5,16 @@ import React, { useState } from "react";
 import NavigationDrawer from "./NavigationDrawer";
 import { NavLinks, TrainingType } from "./data";
 import SubMenuItemsList from "./SubMenuItemsList";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const pathname = usePathname();
 
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
   return (
     <nav className="">
       <div className="px-8 xll:px-28 flex justify-between items-centers py-3">

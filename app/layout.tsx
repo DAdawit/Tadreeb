@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/common/NavBar";
 import Footer from "@/common/Footer";
+import { Toaster } from "react-hot-toast";
+import { ReactQueryProvider } from "./ReactQueryProvider";
+import AuthContextProvider from "@/context/AuthContext";
+import NavBar from "@/common/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        <NavBar />
-        {children}
-        <Footer />
+        <ReactQueryProvider>
+          <AuthContextProvider>
+            <Toaster />
+            <NavBar />
+            {children}
+            <Footer />
+          </AuthContextProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

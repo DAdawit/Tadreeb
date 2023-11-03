@@ -9,6 +9,8 @@ import UpcomingCourses from "@/components/Home/UpcomingCourses";
 export default function Home() {
   return (
     <main>
+      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+
       <Hero />
       <div></div>
       <Trainings />

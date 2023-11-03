@@ -5,9 +5,11 @@ import { useRouter, usePathname } from "next/navigation";
 import SocialMeadiaIcons from "./SocialMeadiaIcons";
 
 const Footer = () => {
-  const router = useRouter();
   const pathname = usePathname();
   // console.log(pathname);
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
   return (
     <>
       <div
