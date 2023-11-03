@@ -8,6 +8,7 @@ import api from "@/app/axios";
 import { notify } from "@/app/toast";
 import EditTrainingFormat from "./EditTraining";
 import EditTraining from "./EditTraining";
+import Link from "next/link";
 
 type PropType = {
   training: TrainingType;
@@ -47,7 +48,12 @@ const TrainingList: React.FC<PropType> = ({ training, index, refetch }) => {
         </th>
 
         <td className="px-6 py-4 row-span-2">
-          <div>{training?.attributes.name}</div>
+          <Link
+            href={`/admin/trainings/${training.id}`}
+            className="hover:text-primary"
+          >
+            {training?.attributes.name}
+          </Link>
         </td>
         <td className="px-6 py-4 row-span-2">
           <div>{training?.attributes.category.name}</div>

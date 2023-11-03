@@ -94,7 +94,7 @@ const AddVenue: React.FC<propType> = ({ refetch }) => {
             <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
               <div className="grid gap-y-1">
                 <label htmlFor="amount" className="capitalize pl-3 lightText">
-                  Training format Name *
+                  Venue Name *
                 </label>
                 <input
                   {...register("name")}

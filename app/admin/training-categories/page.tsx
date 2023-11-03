@@ -42,7 +42,7 @@ const Page = () => {
             {isLoading ? <Spinner /> : null}
             <>
               {data?.meta.total === 0 && (
-                <p>You have not added any members yet!.</p>
+                <p>You have not added any Training Categories yet!.</p>
               )}
               {data?.data &&
                 Array.isArray(data.data) &&

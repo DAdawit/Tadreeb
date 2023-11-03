@@ -83,3 +83,23 @@ export interface Category {
   id: string;
   name: string;
 }
+
+export interface TrainingType {
+  data: Training;
+}
+
+export interface Training {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  name: string;
+  description: string;
+  category: Category;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}
