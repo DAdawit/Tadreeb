@@ -1,0 +1,160 @@
+export interface UserType {
+  user: User;
+  token: string;
+}
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  email_verified_at: any;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface FormatsType {
+  data: FormatType[];
+  links: Links;
+  meta: Meta;
+}
+
+export interface FormatsType {
+  data: FormatType[];
+  links: Links;
+  meta: Meta;
+}
+
+export interface VenueType {
+  data: FormatType[];
+  links: Links;
+  meta: Meta;
+}
+export interface FormatType {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  name: string;
+}
+
+export interface Links {
+  first: string;
+  last: string;
+  prev: any;
+  next: any;
+}
+
+export interface Meta {
+  current_page: number;
+  from: number;
+  last_page: number;
+  links: Link[];
+  path: string;
+  per_page: number;
+  to: number;
+  total: number;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}
+
+export interface TrainingTypes {
+  data: TrainingType[];
+  links: Links;
+  meta: Meta;
+}
+
+export interface TrainingType {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  name: string;
+  description: string;
+  category: Category;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}
+
+export interface TrainingType {
+  data: Training;
+}
+
+export interface Training {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  name: string;
+  description: string;
+  category: Category;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}
+
+export interface TrainingCoursesType {
+  id: number;
+  name: string;
+  category_id: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  courses: CoursesType;
+}
+
+export interface CoursesType {
+  current_page: number;
+  data: CourseType[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface CourseType {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  venue: Venue;
+}
+
+export interface Venue {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}

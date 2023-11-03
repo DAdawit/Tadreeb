@@ -4,7 +4,10 @@ import React from "react";
 const Certificates = () => {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center text-white">
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 justify-items-center text-white"
+        id="certification"
+      >
         <div className="bg-[#2F2F2F] py-16">
           <div className="px-8 grid h-full">
             <h1 className="text-center font-bold text-xl xl:2xl xll:text-4xl mt-8">
