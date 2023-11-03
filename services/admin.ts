@@ -1,6 +1,7 @@
 import {
   FormatsType,
   TrainingCoursesType,
+  TrainingScheduleType,
   TrainingType,
   TrainingTypes,
   VenueType,
@@ -54,6 +55,21 @@ export async function fetchTraining(id: string): Promise<TrainingCoursesType> {
   return await api
     .get(`/training-courses/${id}`)
     .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchCourseSchedules(
+  id: string
+): Promise<TrainingScheduleType> {
+  return await api
+    .get(`/course-schedules/${id}`)
+    .then((res) => {
+      console.log(res.data);
+
       return res?.data.data;
     })
     .catch((err) => {

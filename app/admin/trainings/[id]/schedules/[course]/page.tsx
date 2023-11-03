@@ -1,32 +1,22 @@
 "use client";
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { fetchTraining } from "@/services/admin";
 import { useParams } from "next/navigation";
-import PageTitle from "@/common/PageTitle";
-import Link from "next/link";
-import CoursesList from "@/components/Admin/Courses/CoursesList";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCourseSchedules } from "@/services/admin";
 import { Spinner } from "@/assets/icons/Spinner";
+import SchedulesList from "@/components/Admin/Schedules/SchedulesList";
 
 const Page = () => {
-  const { id } = useParams();
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchTraining", id],
-    queryFn: () => fetchTraining(id as string),
-  });
-  console.log(data);
+  const { course } = useParams();
 
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["fetchCourseSchedules", course],
+    queryFn: () => fetchCourseSchedules(course as string),
+  });
   return (
     <div>
-      <PageTitle title={`${data?.name}`} />
-      <div className="container mx-auto px-5 flex justify-end ">
-        <Link
-          href={`/admin/trainings/${id}/addCourse`}
-          className="px-5 py-2 bg-primary text-white rounded-full"
-        >
-          Add course
-        </Link>
-      </div>
+      {course}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
       <div className="relative overflow-x-auto min-h-screen px-7">
         <table className="w-full text-sm text-left text-gray-500 ">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
@@ -38,13 +28,10 @@ const Page = () => {
                 Course
               </th>
               <th scope="col" className="px-6 py-3">
-                Date
-              </th>
-              <th scope="col" className="px-6 py-3">
                 Venue
               </th>
               <th scope="col" className="px-6 py-3">
-                Fee
+                Fees
               </th>
               <th scope="col" className="px-6 py-3">
                 Actions
@@ -54,15 +41,15 @@ const Page = () => {
           <tbody>
             {isLoading ? <Spinner /> : null}
             <>
-              {data?.courses.total === 0 && (
+              {data && data.schedules.total === 0 && (
                 <p>You have not added any Courses for this Training yet!.</p>
               )}
-              {data?.courses.data &&
-                Array.isArray(data.courses.data) &&
-                data.courses.data.map((course, index) => (
-                  <CoursesList
+              {data?.schedules &&
+                Array.isArray(data?.schedules.data) &&
+                data?.schedules.data.map((course, index) => (
+                  <SchedulesList
                     key={index}
-                    course={course}
+                    schedule={course}
                     index={index}
                     refetch={refetch}
                   />
@@ -71,8 +58,6 @@ const Page = () => {
           </tbody>
         </table>
       </div>
-
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </div>
   );
 };

@@ -158,3 +158,64 @@ export interface Link {
   label: string;
   active: boolean;
 }
+
+// export interface TrainingScheduleType {
+//   data: TrainingSchedule;
+// }
+
+export interface TrainingScheduleType {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  schedules: Schedules;
+}
+
+export interface Schedules {
+  current_page: number;
+  data: ScheduleType[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface ScheduleType {
+  id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  venue_id: number;
+  course_id: number;
+  created_at: string;
+  updated_at: string;
+  venue: VenueType;
+}
+
+export interface VenueType {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}

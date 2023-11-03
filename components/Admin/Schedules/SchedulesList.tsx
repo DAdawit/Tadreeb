@@ -3,7 +3,7 @@ import ConfirmApprove from "@/common/ConfirmApprove";
 import ConfirmDelete from "@/common/ConfirmDelete";
 import React, { useState } from "react";
 import EditSeedDialog from "../../EditSeedDialog";
-import { CourseType, FormatType, TrainingType } from "@/Types";
+import { CourseType, FormatType, ScheduleType, TrainingType } from "@/Types";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
 import EditTrainingFormat from "./EditCourse";
@@ -13,12 +13,12 @@ import EditCourse from "./EditCourse";
 import { useParams } from "next/navigation";
 
 type PropType = {
-  course: CourseType;
+  schedule: ScheduleType;
   index: number;
   refetch: () => void;
 };
 
-const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
+const SchedulesList: React.FC<PropType> = ({ schedule, index, refetch }) => {
   const { id } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -51,31 +51,23 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
         </th>
 
         <td className="px-6 py-4 row-span-2">
-          <Link
-            href={`/admin/trainings/${id}/schedules/${course.id}`}
-            className="hover:text-primary"
-          >
-            {course.title}
-          </Link>
+          {schedule.start_date}- {schedule.end_date}
         </td>
         <td className="px-6 py-4 row-span-2">
-          {course.start_date}- {course.end_date}
+          <div>{schedule?.venue.name}</div>
         </td>
         <td className="px-6 py-4 row-span-2">
-          <div>{course?.venue.name}</div>
-        </td>
-        <td className="px-6 py-4 row-span-2">
-          <div>${course?.fee}</div>
+          <div>${schedule?.fee}</div>
         </td>
 
         <td className="px-6 py-4 col-span-2 flex gap-2">
           <ConfirmDelete
             confirm={confirm}
-            id={String(course.id)}
+            id={String(schedule.id)}
             text="Are you sure you went to delete !"
             loading={loading}
           />
-          <EditCourse
+          {/* <EditCourse
             refetch={refetch}
             id={String(course.id)}
             title={course.title}
@@ -87,11 +79,11 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
             venue_id={String(course.venue_id)}
             format_id={String(course.format_id)}
             training_id={String(course.training_id)}
-          />
+          /> */}
         </td>
       </tr>
     </>
   );
 };
 
-export default CoursesList;
+export default SchedulesList;
