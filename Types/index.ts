@@ -219,3 +219,20 @@ export interface Link {
   label: string;
   active: boolean;
 }
+
+export interface CategoryTrainings {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string;
+  trainings: Training[];
+}
+
+export interface Training {
+  id: string;
+  name: string;
+  category_id: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+}
