@@ -8,6 +8,7 @@ import { ZodType, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Resolver } from "react-hook-form";
 import React from "react";
+import { Spinner } from "@/assets/icons/Spinner";
 type FormValues = {
   venue_id: string;
   format_id: string;
@@ -69,15 +70,18 @@ const SearchCourse = () => {
                 id="venue_id"
                 {...register("venue_id")}
                 className="w-full"
+                placeholder="Program Category"
               >
                 <option value="" selected disabled>
                   Program Title
                 </option>
-                {categories?.data.map((venue) => (
-                  <option key={venue.id} value={venue.id}>
-                    {venue.attributes.name}
-                  </option>
-                ))}
+                {categories &&
+                  Array.isArray(categories.data) &&
+                  categories.data.map((category, index) => (
+                    <option key={category.id} value={category.id}>
+                      {category.attributes.name}
+                    </option>
+                  ))}
               </select>
             </div>
 
@@ -86,15 +90,19 @@ const SearchCourse = () => {
                 id="venue_id"
                 {...register("venue_id")}
                 className="w-full"
+                placeholder="Program Title"
               >
                 <option value="" selected disabled>
-                  select option
+                  Program Title
                 </option>
-                {formats?.data.map((venue) => (
-                  <option key={venue.id} value={venue.id}>
-                    {venue.attributes.name}
-                  </option>
-                ))}
+
+                {formats &&
+                  Array.isArray(formats.data) &&
+                  formats.data.map((format, index) => (
+                    <option key={format.id} value={format.id}>
+                      {format.attributes.name}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="w-full">
@@ -102,15 +110,19 @@ const SearchCourse = () => {
                 id="venue_id"
                 {...register("venue_id")}
                 className="w-full"
+                placeholder="Location"
               >
                 <option value="" selected disabled>
-                  select option
+                  Location
                 </option>
-                {venues?.data.map((venue) => (
-                  <option key={venue.id} value={venue.id}>
-                    {venue.attributes.name}
-                  </option>
-                ))}
+
+                {venues &&
+                  Array.isArray(venues.data) &&
+                  venues.data.map((venue, index) => (
+                    <option key={venue.id} value={venue.id}>
+                      {venue.attributes.name}
+                    </option>
+                  ))}
               </select>
             </div>
 

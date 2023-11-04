@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { fetchLatestCourses } from "@/services/user";
 import LatestCoursesList from "../LoopComponents/LatestCoursesList";
+import { Spinner } from "@/assets/icons/Spinner";
 
 const UpcomingCourses = () => {
   const { data, isLoading, error, refetch } = useQuery({
@@ -13,6 +14,8 @@ const UpcomingCourses = () => {
   });
   return (
     <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
       <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
         Upcoming Training Programs
       </h1>
@@ -25,8 +28,14 @@ const UpcomingCourses = () => {
             <th className="border-r-2 border-gray-50">End Date</th>
           </tr>
         </thead>
+        {isLoading ? <Spinner /> : null}
+
         <tbody>
+          {data && Array.isArray(data) && data.length === 0 && (
+            <p>There is no upcomming course.</p>
+          )}
           {data &&
+            Array.isArray(data) &&
             data.map((course, index) => (
               <LatestCoursesList key={index} index={index} course={course} />
             ))}
