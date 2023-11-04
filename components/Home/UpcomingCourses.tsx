@@ -1,7 +1,16 @@
+"use client";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+
 import React from "react";
+import { fetchLatestCourses } from "@/services/user";
+import LatestCoursesList from "../LoopComponents/LatestCoursesList";
 
 const UpcomingCourses = () => {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["fetchCategories"],
+    queryFn: fetchLatestCourses,
+  });
   return (
     <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
       <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
@@ -17,25 +26,10 @@ const UpcomingCourses = () => {
           </tr>
         </thead>
         <tbody>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-            <tr
-              key={item}
-              className={
-                (index + 1) % 2 == 0
-                  ? "bg-[#F3F3F3] h-10 text-[#595959] text-base xll:text-xl"
-                  : "bg-[#E7E7E7] h-10 text-[#595959] text-base xll:text-xl"
-              }
-            >
-              <td className="border-2 border-white">
-                <Link href="/courseCategory" className="hover:text-primary">
-                  Workshop on Fire Risk Insurance
-                </Link>
-              </td>
-              <td className="border-2 border-white">Dubai</td>
-              <td className="border-2 border-white">02-10-2023</td>
-              <td className="border-2 border-white">05-10-2023</td>
-            </tr>
-          ))}
+          {data &&
+            data.map((course, index) => (
+              <LatestCoursesList key={index} index={index} course={course} />
+            ))}
         </tbody>
       </table>
     </div>

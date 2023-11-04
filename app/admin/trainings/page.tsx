@@ -55,7 +55,7 @@ const Page = () => {
           <tbody>
             {isLoading ? <Spinner /> : null}
             <>
-              {data?.meta.total === 0 && (
+              {data?.meta?.total === 0 && (
                 <p>You have not added any Trainings yet!.</p>
               )}
               {data?.data &&

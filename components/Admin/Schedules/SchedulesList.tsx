@@ -76,19 +76,6 @@ const SchedulesList: React.FC<PropType> = ({ schedule, index, refetch }) => {
             end_date={schedule.end_date}
             fee={schedule.fee}
           />
-          {/* <EditCourse
-            refetch={refetch}
-            id={String(course.id)}
-            title={course.title}
-            fee={course.fee}
-            description={course.description}
-            course_outline={course.course_outline}
-            start_date={course.start_date}
-            end_date={course.end_date}
-            venue_id={String(course.venue_id)}
-            format_id={String(course.format_id)}
-            training_id={String(course.training_id)}
-          /> */}
         </td>
       </tr>
     </>

@@ -2,7 +2,10 @@ import Image from "next/image";
 import React from "react";
 import SearchCourse from "../../common/SearchCourse";
 
-const CategoryHero = () => {
+type PropType = {
+  title: string | undefined;
+};
+const ScheduleHero: React.FC<PropType> = ({ title }) => {
   return (
     <>
       <div className="h-[70vh]  xl:max-h-[60vh] xll:max-h-[60vh] relative">
@@ -17,14 +20,13 @@ const CategoryHero = () => {
           <div className="flex flex-col justify-center w-full col-span-2 px-5">
             <div className="align-middle sm:pl-8">
               <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold ">
-                Executive Development
+                Course Schedule
               </h1>
               <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold mt-5">
-                Training Courses
+                {title}
               </h1>
               <p className="text-sm mt-8 xxl:text-lg ">
-                Explore Powerful Executive Learning Opportunities <br />
-                that Help You Achieve your Potential Consulting For Entrepreneur
+                Filter by Topic, Date, Duration and Format
               </p>
             </div>
           </div>
@@ -37,4 +39,4 @@ const CategoryHero = () => {
   );
 };
 
-export default CategoryHero;
+export default ScheduleHero;

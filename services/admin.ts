@@ -51,7 +51,9 @@ export async function fetchTrainings(): Promise<TrainingTypes> {
     });
 }
 
-export async function fetchTraining(id: string): Promise<TrainingCoursesType> {
+export async function fetchTrainingCourses(
+  id: string
+): Promise<TrainingCoursesType> {
   return await api
     .get(`/training-courses/${id}`)
     .then((res) => {

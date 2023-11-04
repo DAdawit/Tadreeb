@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTraining } from "@/services/admin";
+import { fetchTrainingCourses } from "@/services/admin";
 import { useParams } from "next/navigation";
 import PageTitle from "@/common/PageTitle";
 import Link from "next/link";
@@ -11,8 +11,8 @@ import { Spinner } from "@/assets/icons/Spinner";
 const Page = () => {
   const { id } = useParams();
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchTraining", id],
-    queryFn: () => fetchTraining(id as string),
+    queryKey: ["fetchTrainingCourses", id],
+    queryFn: () => fetchTrainingCourses(id as string),
   });
   console.log(data);
 

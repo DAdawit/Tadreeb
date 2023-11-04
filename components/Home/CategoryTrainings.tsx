@@ -60,7 +60,7 @@ const CategoryTrainings = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
                       {item.trainings.map((training) => (
                         <Link
-                          href="/courseCategory"
+                          href={`/trainings/${training.id}/courses`}
                           key={training.id}
                           className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
                         >

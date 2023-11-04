@@ -10,7 +10,7 @@ import CategoryTrainings from "@/components/Home/CategoryTrainings";
 export default function Home() {
   return (
     <main>
-      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
 
       <Hero />
       <div></div>

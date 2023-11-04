@@ -52,10 +52,10 @@ const Page = () => {
               )}
               {data?.schedules &&
                 Array.isArray(data?.schedules.data) &&
-                data?.schedules.data.map((course, index) => (
+                data?.schedules.data.map((schedule, index) => (
                   <SchedulesList
                     key={index}
-                    schedule={course}
+                    schedule={schedule}
                     index={index}
                     refetch={refetch}
                   />

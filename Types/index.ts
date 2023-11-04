@@ -236,3 +236,19 @@ export interface Training {
   created_at: string;
   updated_at: string;
 }
+
+export interface LatestCoursesType {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  venue: VenueType;
+}
