@@ -7,6 +7,7 @@ import ExecutiveTraining from "@/components/Category/ExecutiveTraining";
 import Description from "@/common/Description";
 import Link from "next/link";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
+import BookCourse from "@/common/BookCourse";
 
 const Page = () => {
   const { training } = useParams();
@@ -69,9 +70,10 @@ const Page = () => {
                     ${course.fee}
                   </td>
                   <td className="border-2 border-white h-full bg-primary">
-                    <button className="bg-primary h-full w-full text-white">
-                      Book Now
-                    </button>
+                    <BookCourse
+                      title={course.title}
+                      course_id={String(course.id)}
+                    />
                   </td>
                 </tr>
               ))}

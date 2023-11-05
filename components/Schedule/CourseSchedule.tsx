@@ -1,11 +1,12 @@
 import { Schedules } from "@/Types";
+import BookCourse from "@/common/BookCourse";
 import { useParams } from "next/navigation";
 import React from "react";
 type PropType = {
   schedules: Schedules | undefined;
+  title: string | undefined;
 };
-
-const CourseSchedule: React.FC<PropType> = ({ schedules }) => {
+const CourseSchedule: React.FC<PropType> = ({ schedules, title }) => {
   return (
     <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
       {/* <pre>{JSON.stringify(schedules, null, 2)}</pre> */}
@@ -43,9 +44,7 @@ const CourseSchedule: React.FC<PropType> = ({ schedules }) => {
               </td>
               <td className="border-2 border-white text-center">${item.fee}</td>
               <td className="border-2 border-white h-full bg-primary">
-                <button className="bg-primary h-full w-full text-white">
-                  Book Now
-                </button>
+                <BookCourse title={title} schedule_id={String(item.id)} />
               </td>
             </tr>
           ))}

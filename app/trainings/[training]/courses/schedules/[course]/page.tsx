@@ -19,7 +19,7 @@ const Page = () => {
     <div>
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
       <ScheduleHero title={data?.title} />
-      <CourseSchedule schedules={data?.schedules} />
+      <CourseSchedule schedules={data?.schedules} title={data?.title} />
       <Description description={data?.description} />
       <CourseOutLine description={data?.course_outline} />
     </div>
