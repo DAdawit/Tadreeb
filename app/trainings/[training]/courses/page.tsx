@@ -50,15 +50,23 @@ const Page = () => {
                   <td className="border-2 border-white">
                     <Link
                       href={`/trainings/${training}/courses/schedules/${course.id}`}
-                      className="hover:text-primary"
+                      className="hover:text-primary text-center"
                     >
                       {course.title}
                     </Link>
                   </td>
-                  <td className="border-2 border-white">{course.venue.name}</td>
-                  <td className="border-2 border-white">{course.start_date}</td>
-                  <td className="border-2 border-white">{course.end_date}</td>
-                  <td className="border-2 border-white">${course.fee}</td>
+                  <td className="border-2 border-white text-center">
+                    {course.venue.name}
+                  </td>
+                  <td className="border-2 border-white text-center">
+                    {course.start_date}
+                  </td>
+                  <td className="border-2 border-white text-center">
+                    {course.end_date}
+                  </td>
+                  <td className="border-2 border-white text-center">
+                    ${course.fee}
+                  </td>
                   <td className="border-2 border-white h-full bg-primary">
                     <button className="bg-primary h-full w-full text-white">
                       Book Now

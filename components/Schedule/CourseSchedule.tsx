@@ -35,11 +35,13 @@ const CourseSchedule: React.FC<PropType> = ({ schedules }) => {
                   : "bg-[#E7E7E7] h-10 text-[#595959] text-base xll:text-xl"
               }
             >
-              <td className="border-2 border-white">
+              <td className="border-2 border-white text-center">
                 {item.start_date}- {item.end_date}
               </td>
-              <td className="border-2 border-white">{item.venue.name}</td>
-              <td className="border-2 border-white">{item.fee}</td>
+              <td className="border-2 border-white text-center">
+                {item.venue.name}
+              </td>
+              <td className="border-2 border-white text-center">${item.fee}</td>
               <td className="border-2 border-white h-full bg-primary">
                 <button className="bg-primary h-full w-full text-white">
                   Book Now

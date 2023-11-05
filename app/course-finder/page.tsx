@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div>
       <CourseHero />
-      <SearchTrainings />
+      {/* <SearchTrainings /> */}
     </div>
   );
 };

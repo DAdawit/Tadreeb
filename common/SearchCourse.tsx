@@ -1,14 +1,14 @@
-import {
-  fetchCategories,
-  fetchTrainingFormats,
-  fetchVenues,
-} from "@/services/admin";
 import { useQuery } from "@tanstack/react-query";
 import { ZodType, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Resolver } from "react-hook-form";
 import React from "react";
 import { Spinner } from "@/assets/icons/Spinner";
+import {
+  fetchSearchCategories,
+  fetchSearchTrainingFormats,
+  fetchSearchVenues,
+} from "@/services/user";
 type FormValues = {
   venue_id: string;
   format_id: string;
@@ -29,7 +29,7 @@ const SearchCourse = () => {
     refetch: venueRefetch,
   } = useQuery({
     queryKey: ["fetchVenues"],
-    queryFn: fetchVenues,
+    queryFn: fetchSearchVenues,
   });
 
   const {
@@ -39,7 +39,7 @@ const SearchCourse = () => {
     refetch: formatsRefetch,
   } = useQuery({
     queryKey: ["fetchTrainingFormats"],
-    queryFn: fetchTrainingFormats,
+    queryFn: fetchSearchTrainingFormats,
   });
 
   const {
@@ -49,7 +49,7 @@ const SearchCourse = () => {
     refetch: refetchCategories,
   } = useQuery({
     queryKey: ["fetchCategories"],
-    queryFn: fetchCategories,
+    queryFn: fetchSearchCategories,
   });
 
   const {
@@ -60,6 +60,9 @@ const SearchCourse = () => {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
+
+  console.log(venues, formats, categories);
+
   return (
     <>
       <div className="max-w-6xl xll:max-w-7xl mx-auto w-full">

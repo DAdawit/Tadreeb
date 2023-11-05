@@ -1,6 +1,7 @@
+import SearchCourse from "@/common/SearchCourse";
 import Image from "next/image";
 import React from "react";
-import SearchCourse from "../../common/SearchCourse";
+// import SearchCourse from "../../common/SearchCourse";
 
 type PropType = {
   title: string | undefined;
