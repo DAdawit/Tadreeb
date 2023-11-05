@@ -20,9 +20,6 @@ const ScheduleHero: React.FC<PropType> = ({ title }) => {
         <div className="absolute h-full top-0 w-full flex  text-white ">
           <div className="flex flex-col justify-center w-full col-span-2 px-5">
             <div className="align-middle sm:pl-8">
-              <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold ">
-                Course Schedule
-              </h1>
               <h1 className="text-3xl  xl:text-4xl  xxl:text-6xl font-bold mt-5">
                 {title}
               </h1>

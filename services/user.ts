@@ -1,5 +1,6 @@
 import {
   CategoryTrainings,
+  ClassRootType,
   CourseWithScheduleType,
   LatestCoursesType,
   VenueType,
@@ -69,6 +70,39 @@ export async function fetchSearchVenues(): Promise<VenueType> {
     .get("/get-venues")
     .then((res) => {
       return res?.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchClassRoomTraining(): Promise<ClassRootType> {
+  return await api
+    .get("/get-classroom-training")
+    .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchOnlineTraining(): Promise<ClassRootType> {
+  return await api
+    .get("/get-online-training")
+    .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchInHouseTraining(): Promise<ClassRootType> {
+  return await api
+    .get("/get-in-house-training")
+    .then((res) => {
+      return res?.data.data;
     })
     .catch((err) => {
       return err;

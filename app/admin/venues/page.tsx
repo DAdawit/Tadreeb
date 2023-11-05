@@ -45,6 +45,7 @@ const Page = () => {
               {data?.meta.total === 0 && (
                 <p>You have not added any Venues yet!.</p>
               )}
+
               {data?.data &&
                 Array.isArray(data.data) &&
                 data.data.map((format, index) => (

@@ -3,10 +3,10 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { fetchTrainingCourses } from "@/services/admin";
-import ScheduleHero from "@/components/Schedule/ScheduleHero";
 import ExecutiveTraining from "@/components/Category/ExecutiveTraining";
 import Description from "@/common/Description";
 import Link from "next/link";
+import ScheduleHero from "@/common/Heros/ScheduleHero";
 
 const Page = () => {
   const { training } = useParams();
@@ -38,6 +38,7 @@ const Page = () => {
           )}
           <tbody>
             {data &&
+              Array.isArray(data.courses.data) &&
               data.courses.data.map((course, index) => (
                 <tr
                   key={course.id}

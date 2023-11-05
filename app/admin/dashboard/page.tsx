@@ -67,12 +67,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="px-5 ">
-          {/* <Statics />
-          <UserAndSponserInformation />
-          <DirectMembers />
-          <LastTransactions /> */}
-        </div>
+        <div className="px-5 "></div>
       </div>
     </>
   );

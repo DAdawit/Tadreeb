@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Trainings = () => {
@@ -7,7 +8,10 @@ const Trainings = () => {
       <section className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto">
         <div className="container mx-auto  mt-16" id="training-type">
           <div className="grid justify-items-center md:flex md:justify-between px-5 gap-3">
-            <div className="bg-primary text-white rounded-lg py-2 px-4  md:w-max">
+            <Link
+              href="/classroom-training"
+              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max"
+            >
               <div className="flex items-center gap-x-2">
                 <div>
                   <Image
@@ -25,8 +29,11 @@ const Trainings = () => {
                   <h4 className="text-sm xll:text-lg">View Courses</h4>
                 </div>
               </div>
-            </div>
-            <div className="bg-primary text-white rounded-lg py-2 px-4  md:w-max">
+            </Link>
+            <Link
+              href="/online-training"
+              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max"
+            >
               <div className="flex items-center gap-x-2">
                 <div>
                   <Image
@@ -42,8 +49,11 @@ const Trainings = () => {
                   <h4 className="text-sm xll:text-lg">View Courses</h4>
                 </div>
               </div>
-            </div>
-            <div className="bg-primary text-white rounded-lg py-2 px-4  md:w-max">
+            </Link>
+            <Link
+              href="/inhouse-training"
+              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max"
+            >
               <div className="flex items-center gap-x-2">
                 <div>
                   <Image
@@ -61,7 +71,7 @@ const Trainings = () => {
                   <h4 className="text-sm xll:text-lg">View Courses</h4>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div className="py-8 px-5 mt-10">
             <h2 className=" text-black text-xl font-bold xll:text-2xl xxl:text-3xl font-roboto">
