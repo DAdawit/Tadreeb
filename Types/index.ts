@@ -24,6 +24,30 @@ export interface FormatsType {
   meta: Meta;
 }
 
+export interface TrainingSearchType {
+  current_page: number;
+  data: TrainingTy[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface TrainingTy {
+  id: number;
+  name: string;
+  category_id: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+}
 export interface VenueType {
   data: FormatType[];
   links: Links;
@@ -85,10 +109,10 @@ export interface Category {
 }
 
 export interface TrainingType {
-  data: Training;
+  data: Training1;
 }
 
-export interface Training {
+export interface Training1 {
   id: string;
   attributes: Attributes;
 }
@@ -459,6 +483,116 @@ export interface Venue2 {
 export interface Venue3 {
   id: number;
   name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}
+
+export interface SearchReasultCourseType {
+  current_page: number;
+  data: CoursSearch[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface CoursSearch {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  venue: Venue;
+  training?: Training;
+  format: Format;
+}
+
+export interface Venue {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Format {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}
+
+export interface AllCoursesThisMonth {
+  current_page: number;
+  data: Course[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface Course {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  venue: Venue;
+  training?: Training;
+  format: Format;
+}
+
+export interface Venue {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Training {
+  id: string;
+  name: string;
+  category_id: number;
+  description: string;
   created_at: string;
   updated_at: string;
 }

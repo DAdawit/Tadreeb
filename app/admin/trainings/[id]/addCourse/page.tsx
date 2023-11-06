@@ -29,7 +29,7 @@ type FormValues = {
   end_date: string;
   venue_id: string;
   format_id: string;
-  training_id: string;
+  training_id?: string;
 };
 
 const schema: ZodType<FormValues> = z.object({
@@ -45,12 +45,11 @@ const schema: ZodType<FormValues> = z.object({
   }),
   venue_id: z.string(),
   format_id: z.string(),
-  training_id: z.string(),
 });
 
 const Page: React.FC = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
@@ -94,10 +93,10 @@ const Page: React.FC = () => {
   };
 
   const submitData = (values: FormValues) => {
+    values.training_id = String(id) ?? "";
     setLoading(true);
     setAddError("");
-    console.log(values);
-
+    console.log("hello", values);
     api
       .post("/courses", values)
       .then((res) => {

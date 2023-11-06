@@ -90,7 +90,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Dashboard</h3>
                       </div>
@@ -100,7 +100,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Training Formats</h3>
                       </div>
@@ -110,7 +110,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Avenues</h3>
                       </div>
@@ -120,7 +120,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Training Categories</h3>
                       </div>
@@ -130,7 +130,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Trainings</h3>
                       </div>
@@ -140,7 +140,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Pending Booked Courses</h3>
                       </div>
@@ -150,7 +150,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Approved Booked Courses</h3>
                       </div>
@@ -160,7 +160,7 @@ export default function AdminDrawer() {
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
                     >
-                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <DashboardIcon />
                         <h3>Rejected Booked Courses</h3>
                       </div>

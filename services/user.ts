@@ -1,17 +1,20 @@
 import {
+  AllCoursesThisMonth,
   CategoryTrainings,
   ClassRootType,
   CourseWithScheduleType,
   LatestCoursesType,
+  TrainingSearchType,
   VenueType,
 } from "@/Types";
 import api from "@/app/axios";
+import { TrainingType } from "@/common/data";
 
-export async function fetchCategoryTrainings(): Promise<CategoryTrainings[]> {
+export async function fetchCategoryTrainings(): Promise<TrainingSearchType> {
   return await api
     .get(`/category-trainings`)
     .then((res) => {
-      // console.log(res.data.data);
+      console.log(res.data.data);
 
       return res?.data.data;
     })
@@ -43,9 +46,9 @@ export async function fetchCoursesWithSchedule(): Promise<CourseWithScheduleType
     });
 }
 
-export async function fetchSearchCategories(): Promise<VenueType> {
+export async function fetchSearchTrainings(): Promise<TrainingSearchType> {
   return await api
-    .get("/get-categories")
+    .get("/get-trainings")
     .then((res) => {
       return res?.data;
     })
@@ -103,6 +106,17 @@ export async function fetchInHouseTraining(): Promise<ClassRootType> {
     .get("/get-in-house-training")
     .then((res) => {
       return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchAllCoursesOnCurrentMonth(): Promise<AllCoursesThisMonth> {
+  return await api
+    .get("/all-courses-this-month")
+    .then((res) => {
+      return res?.data;
     })
     .catch((err) => {
       return err;
