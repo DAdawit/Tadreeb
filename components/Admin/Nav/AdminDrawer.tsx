@@ -135,80 +135,36 @@ export default function AdminDrawer() {
                         <h3>Trainings</h3>
                       </div>
                     </Link>
-
-                    <SubMenuLists
-                      toggleDrawer={() => toggleDrawer("left", false)}
-                      showChild={users}
-                      onClick={() => setUsers(!users)}
-                      icon={<AdminPanelSettingsIcon />}
-                      title="Users"
-                      childs={[
-                        {
-                          title: "Users List",
-                          link: "/admin/users",
-                          icon: <Groups3Icon />,
-                        },
-                      ]}
-                    />
-                    <SubMenuLists
-                      toggleDrawer={() => toggleDrawer("left", false)}
-                      showChild={account}
-                      onClick={() => setAccount(!account)}
-                      icon={<Groups3Icon />}
-                      title="Manage Childs"
-                      childs={[
-                        {
-                          title: "Add Child",
-                          link: "/admin/members",
-                          icon: <PersonAddIcon />,
-                        },
-                        {
-                          title: "Childs Tree",
-                          link: "/admin/membersTree",
-                          icon: <AccountTreeIcon />,
-                        },
-                      ]}
-                    />
-
-                    <SubMenuLists
-                      toggleDrawer={() => toggleDrawer("left", false)}
-                      showChild={gifts}
-                      onClick={() => setGifts(!gifts)}
-                      icon={<RedeemIcon />}
-                      title="Gifts"
-                      childs={[
-                        {
-                          title: "Recived Gifts",
-                          link: "/admin/gifts/harvest",
-                          icon: <TollIcon />,
-                        },
-                      ]}
-                    />
-
-                    <SubMenuLists
-                      toggleDrawer={() => toggleDrawer("left", false)}
-                      showChild={Message}
-                      onClick={() => setMessages(!Message)}
-                      icon={<MessageIcon />}
-                      title="Messages"
-                      childs={[
-                        {
-                          title: "Compose",
-                          link: "/user/messages/compose",
-                          icon: <ForumIcon />,
-                        },
-                        {
-                          title: "Inbox",
-                          link: "/user/messages/inbox",
-                          icon: <InboxIcon />,
-                        },
-                        {
-                          title: "Outbox",
-                          link: "/user/messages/outbox",
-                          icon: <OutboxIcon />,
-                        },
-                      ]}
-                    />
+                    <Link
+                      href="/admin/pending-booked-courses"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <DashboardIcon />
+                        <h3>Pending Booked Courses</h3>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/admin/approved-booked-courses"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <DashboardIcon />
+                        <h3>Approved Booked Courses</h3>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/admin/rejected-booked-courses"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex justify-between items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <DashboardIcon />
+                        <h3>Rejected Booked Courses</h3>
+                      </div>
+                    </Link>
                   </div>
                 </section>
               </div>

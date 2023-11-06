@@ -365,3 +365,106 @@ export interface Link {
   label: string;
   active: boolean;
 }
+
+export interface CourseBooksType {
+  current_page: number;
+  data: BookType[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface BookType {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  course_id?: number;
+  schedule_id?: number;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  course?: Course;
+  schedule?: Schedule;
+}
+
+export interface Course {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  venue: Venue;
+}
+
+export interface Venue {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Schedule {
+  id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  venue_id: number;
+  course_id: number;
+  created_at: string;
+  updated_at: string;
+  course: Course2;
+  venue: Venue3;
+}
+
+export interface Course2 {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  start_date: string;
+  end_date: string;
+  fee: number;
+  created_at: string;
+  updated_at: string;
+  venue: Venue2;
+}
+
+export interface Venue2 {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Venue3 {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}

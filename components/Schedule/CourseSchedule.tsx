@@ -7,6 +7,9 @@ type PropType = {
   title: string | undefined;
 };
 const CourseSchedule: React.FC<PropType> = ({ schedules, title }) => {
+  const { course } = useParams();
+  console.log(course);
+
   return (
     <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
       {/* <pre>{JSON.stringify(schedules, null, 2)}</pre> */}

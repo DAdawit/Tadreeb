@@ -1,4 +1,5 @@
 import {
+  CourseBooksType,
   FormatsType,
   TrainingCoursesType,
   TrainingScheduleType,
@@ -72,6 +73,40 @@ export async function fetchCourseSchedules(
     .then((res) => {
       console.log(res.data);
 
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+export async function fetchBookedCourses(): Promise<CourseBooksType> {
+  return await api
+    .get(`/booked-courses`)
+    .then((res) => {
+      console.log(res.data);
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+export async function fetchApprovedBookedCourses(): Promise<CourseBooksType> {
+  return await api
+    .get(`/approved-booked-courses`)
+    .then((res) => {
+      console.log(res.data);
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchRejectedBookedCourses(): Promise<CourseBooksType> {
+  return await api
+    .get(`/rejected-booked-courses`)
+    .then((res) => {
+      console.log(res.data);
       return res?.data.data;
     })
     .catch((err) => {

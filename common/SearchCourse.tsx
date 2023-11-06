@@ -76,7 +76,7 @@ const SearchCourse = () => {
                 placeholder="Program Category"
               >
                 <option value="" selected disabled>
-                  Program Title
+                  Program Category
                 </option>
                 {categories &&
                   Array.isArray(categories.data) &&
