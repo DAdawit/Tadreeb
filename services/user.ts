@@ -5,6 +5,7 @@ import {
   CourseWithScheduleType,
   LatestCoursesType,
   TrainingSearchType,
+  VenueCouses,
   VenueType,
 } from "@/Types";
 import api from "@/app/axios";
@@ -117,6 +118,32 @@ export async function fetchAllCoursesOnCurrentMonth(): Promise<AllCoursesThisMon
     .get("/all-courses-this-month")
     .then((res) => {
       return res?.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchCoursesByVenueId(id: string): Promise<VenueCouses> {
+  return await api
+    .get(`/get-course-by-venue/${id}`)
+    .then((res) => {
+      console.log(res.data);
+
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchCoursesByFormatId(id: string): Promise<VenueCouses> {
+  return await api
+    .get(`/get-course-by-format/${id}`)
+    .then((res) => {
+      console.log(res.data);
+
+      return res?.data.data;
     })
     .catch((err) => {
       return err;

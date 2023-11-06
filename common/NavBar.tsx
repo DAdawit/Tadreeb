@@ -6,12 +6,34 @@ import NavigationDrawer from "./NavigationDrawer";
 import { NavLinks, TrainingType } from "./data";
 import SubMenuItemsList from "./SubMenuItemsList";
 import { usePathname } from "next/navigation";
+import { fetchSearchTrainingFormats, fetchSearchVenues } from "@/services/user";
+import { useQuery } from "@tanstack/react-query";
+import NavDropDownMenu from "./NavDropDownMenu";
 
 const NavBar = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const pathname = usePathname();
 
+  const {
+    data: formats,
+    isLoading: formatsLoading,
+    error: formatError,
+    refetch: formatsRefetch,
+  } = useQuery({
+    queryKey: ["fetchTrainingFormats"],
+    queryFn: fetchSearchTrainingFormats,
+  });
+
+  const {
+    data: venues,
+    isLoading: venueLoading,
+    error: venueError,
+    refetch: venueRefetch,
+  } = useQuery({
+    queryKey: ["fetchVenues"],
+    queryFn: fetchSearchVenues,
+  });
   if (pathname.startsWith("/admin")) {
     return null;
   }
@@ -113,24 +135,8 @@ const NavBar = () => {
           >
             training courses
           </Link>
-
-          {NavLinks.map((nav) => (
-            <Link
-              key={nav.name}
-              href={`${nav.link}`}
-              onMouseEnter={() => setHoveredItem(nav.name)}
-              onMouseLeave={() => setHoveredItem(null)}
-              className="text-white text-sm xl:text-lg xxl:text-3xl relative"
-            >
-              {nav.name}
-
-              {hoveredItem === nav.name && (
-                <div className="absolute top-9  bg-white text-black z-10 border-t-2 border-primary px-5 py-2">
-                  <SubMenuItemsList subMenu={nav.subMenu as string[]} />
-                </div>
-              )}
-            </Link>
-          ))}
+          <NavDropDownMenu title="venue" pages={venues} />
+          <NavDropDownMenu title="format" pages={formats} />
         </div>
         <div className="bg-primary h-full flex items-center justify-center px-3">
           <button className="text-white uppercase text-lg font-medium">
