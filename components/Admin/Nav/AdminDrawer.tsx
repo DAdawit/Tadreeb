@@ -33,6 +33,14 @@ import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import SubMenuLists from "@/common/SubMenuLists";
 import UserAvatar from "@/common/UserAvatar";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
+import PlaceIcon from "@mui/icons-material/Place";
+import CategoryIcon from "@mui/icons-material/Category";
+import ClassIcon from "@mui/icons-material/Class";
+import SettingsIcon from "@mui/icons-material/Settings";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import RemoveDoneIcon from "@mui/icons-material/RemoveDone";
 type Anchor = "left";
 export default function AdminDrawer() {
   const { user } = useContext(AuthContext);
@@ -82,8 +90,18 @@ export default function AdminDrawer() {
               onKeyDown={toggleDrawer("left", false)}
             >
               <div className="h-full w-full ">
-                <section className=" pt-5">
-                  <div className="flex justify-center"></div>
+                <div className="w-fll flex justify-center mt-3">
+                  <Link href="/">
+                    <Image
+                      src="/logo-tadreeb-1.png"
+                      alt="logo"
+                      width={1000}
+                      height={1000}
+                      className="h-12 w-24 xxl:h-24 xxl:w-32 object-contain"
+                    />
+                  </Link>
+                </div>
+                <section className="">
                   <div className="grid gap-y-3 mt-5">
                     <Link
                       href="/admin/dashboard"
@@ -101,7 +119,7 @@ export default function AdminDrawer() {
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <DashboardIcon />
+                        <FormatAlignCenterIcon />
                         <h3>Training Formats</h3>
                       </div>
                     </Link>
@@ -111,7 +129,7 @@ export default function AdminDrawer() {
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <DashboardIcon />
+                        <PlaceIcon />
                         <h3>Avenues</h3>
                       </div>
                     </Link>
@@ -121,7 +139,7 @@ export default function AdminDrawer() {
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <DashboardIcon />
+                        <CategoryIcon />
                         <h3>Training Categories</h3>
                       </div>
                     </Link>
@@ -131,7 +149,7 @@ export default function AdminDrawer() {
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <DashboardIcon />
+                        <ClassIcon />
                         <h3>Trainings</h3>
                       </div>
                     </Link>
@@ -141,7 +159,7 @@ export default function AdminDrawer() {
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <DashboardIcon />
+                        <PendingActionsIcon />
                         <h3>Pending Booked Courses</h3>
                       </div>
                     </Link>
@@ -151,7 +169,7 @@ export default function AdminDrawer() {
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <DashboardIcon />
+                        <AssignmentTurnedInIcon />
                         <h3>Approved Booked Courses</h3>
                       </div>
                     </Link>
@@ -161,8 +179,18 @@ export default function AdminDrawer() {
                       onClick={toggleDrawer("left", false)}
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <DashboardIcon />
+                        <RemoveDoneIcon />
                         <h3>Rejected Booked Courses</h3>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/admin/change-password"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <SettingsIcon />
+                        <h3>Change Password</h3>
                       </div>
                     </Link>
                   </div>

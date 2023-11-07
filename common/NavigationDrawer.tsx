@@ -81,6 +81,17 @@ export default function NavigationDrawer() {
                     <CloseIcon />
                   </IconButton>
                 </div>
+                <div className="w-fll flex justify-center">
+                  <Link href="/">
+                    <Image
+                      src="/logo-tadreeb-1.png"
+                      alt="logo"
+                      width={1000}
+                      height={1000}
+                      className="h-12 w-24 xxl:h-24 xxl:w-32 object-contain"
+                    />
+                  </Link>
+                </div>
                 <section className="flex  w-full">
                   <div className="grid gap-y-1 mt-5 w-full">
                     <Link

@@ -136,6 +136,13 @@ const NavBar = () => {
             training courses
           </Link>
           <NavDropDownMenu title="venue" pages={venues} />
+          <Link
+            href="#certification"
+            className="text-white text-sm xl:text-lg xxl:text-3xl"
+          >
+            certification
+          </Link>
+
           <NavDropDownMenu title="format" pages={formats} />
         </div>
         <div className="bg-primary h-full flex items-center justify-center px-3">
