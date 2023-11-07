@@ -115,7 +115,7 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="mb-8">
       <div className="flex justify-center">
         <PageTitle title="Add Course" />
       </div>

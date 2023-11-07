@@ -25,7 +25,7 @@ const Page = () => {
   return (
     <div>
       <PageTitle title="Contact Us" />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
 
       <div className="relative overflow-x-auto min-h-screen px-7">
         <table className="w-full text-sm text-left text-gray-500 ">

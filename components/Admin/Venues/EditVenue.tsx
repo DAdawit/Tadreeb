@@ -93,9 +93,7 @@ const EditVenue: React.FC<PropType> = ({ refetch, name, id }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Edit Service Charge"}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Edit Venue"}</DialogTitle>
         <DialogContent>
           <form onSubmit={handleSubmit(submitData)} className="max-w-sm">
             <section className="grid gap-x-5 gap-y-1">

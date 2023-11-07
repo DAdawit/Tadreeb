@@ -6,6 +6,7 @@ import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
+import { Spinner } from "@/assets/icons/Spinner";
 
 type FormValues = {
   fullName: string;
@@ -139,8 +140,9 @@ const AboutUs = () => {
                     )}
                   </div>
 
-                  <button className="bg-primary rounded-lg text-white py-2 mt-3">
-                    Request a Call Back
+                  <button className="bg-primary rounded-lg text-white py-2 mt-3 flex justify-center items-center gap-x-3">
+                    <span>Request a Call Back</span>
+                    {loading ? <Spinner /> : null}
                   </button>
                 </div>
               </form>

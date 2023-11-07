@@ -118,7 +118,7 @@ export async function fetchRejectedBookedCourses(): Promise<CourseBooksType> {
 
 export async function fetchContactUsinfos(): Promise<ContactUsType> {
   return await api
-    .get(`/contact-us`)
+    .get(`/contactus`)
     .then((res) => {
       // console.log(res);
       return res?.data;

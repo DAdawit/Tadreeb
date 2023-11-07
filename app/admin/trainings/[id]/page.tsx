@@ -14,12 +14,12 @@ const Page = () => {
     queryKey: ["fetchTrainingCourses", id],
     queryFn: () => fetchTrainingCourses(id as string),
   });
-  console.log(data);
+  // console.log(data);
 
   return (
     <div>
       <PageTitle title={`${data?.name}`} />
-      <div className="container mx-auto px-5 flex justify-end ">
+      <div className="container mx-auto px-5 flex justify-end py-5">
         <Link
           href={`/admin/trainings/${id}/addCourse`}
           className="px-5 py-2 bg-primary text-white rounded-full"

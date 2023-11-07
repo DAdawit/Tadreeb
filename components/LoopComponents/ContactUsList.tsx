@@ -19,7 +19,7 @@ const ContactUsList: React.FC<PropType> = ({ contact, index, refetch }) => {
     setdeleteError("");
     setLoading(true);
     api
-      .delete(`/contact-us/${id}`)
+      .get(`/deleteContact/${id}`)
       .then((res) => {
         notify("training deleted successfully", "success");
         setLoading(false);
