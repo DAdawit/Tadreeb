@@ -114,7 +114,11 @@ const SearchCourse = () => {
       });
   };
 
-  console.log(courses);
+  const ClearSearch = () => {
+    setSearchResult(null);
+    setSearch(false);
+  };
+  // console.log(courses);
 
   return (
     <>
@@ -202,6 +206,12 @@ const SearchCourse = () => {
         <>
           <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
             <div className="relative overflow-x-auto min-h-screen  bg-white px-5 mt-8">
+              <button
+                className="bg-white text-primary p-1 underline underline-offset-2"
+                onClick={() => ClearSearch()}
+              >
+                Cancel Seach
+              </button>
               <table className="w-full text-sm text-left text-gray-500 ">
                 <thead className="text-xs text-white uppercase bg-secondary">
                   <tr>
@@ -282,7 +292,7 @@ const SearchCourse = () => {
           {" "}
           <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
             <div className="relative overflow-x-auto min-h-screen  bg-white px-5 mt-8">
-              <table className="w-full text-sm text-left text-gray-500 ">
+              <table className="w-full text-sm text-left text-gray-500 overflow-x-auto">
                 <thead className="text-xs text-white uppercase bg-secondary">
                   <tr>
                     <th
@@ -306,7 +316,7 @@ const SearchCourse = () => {
 
                     <th
                       scope="col"
-                      className="px-6 py-3 border-r-2 border-gray-50"
+                      className="px-6 py-3 border-r-2 border-gray-50 whitespace-nowrap"
                     >
                       Training Format
                     </th>
@@ -327,6 +337,12 @@ const SearchCourse = () => {
                       className="px-6 py-3 border-r-2 border-gray-50"
                     >
                       Fee
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 border-r-2 border-gray-50"
+                    >
+                      Book Now
                     </th>
                   </tr>
                 </thead>

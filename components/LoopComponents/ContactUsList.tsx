@@ -5,6 +5,8 @@ import { notify } from "@/app/toast";
 import ConfirmDelete from "@/common/ConfirmDelete";
 import Link from "next/link";
 import React, { useState } from "react";
+import moment from "moment";
+
 type PropType = {
   contact: ContactType | undefined;
   index: number;
@@ -45,7 +47,11 @@ const ContactUsList: React.FC<PropType> = ({ contact, index, refetch }) => {
           {contact?.attributes.phoneNumber}
         </td>
         <td className="px-6 py-4 row-span-2">
-          {contact?.attributes?.created_at}
+          {contact?.attributes?.created_at
+            ? moment(contact.attributes.created_at as string).format(
+                "MMM Do YYYY"
+              )
+            : ""}
         </td>
         <td className="px-6 py-4 row-span-2">
           <ConfirmDelete

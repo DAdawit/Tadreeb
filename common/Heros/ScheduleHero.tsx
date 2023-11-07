@@ -30,7 +30,7 @@ const ScheduleHero: React.FC<PropType> = ({ title }) => {
           </div>
         </div>
       </div>
-      <div className="bg-bgPrimary py-8 px-5">
+      <div className="">
         <SearchCourse />
       </div>
     </>

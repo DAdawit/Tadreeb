@@ -26,9 +26,8 @@ const Page = () => {
     <div>
       <PageTitle title="Contact Us" />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-
-      <div className="relative overflow-x-auto min-h-screen px-7">
-        <table className="w-full text-sm text-left text-gray-500 ">
+      <div className="relative overflow-x-auto  mt-8">
+        <table className="text-center w-full mt-8 overflow-x-auto">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
               <th scope="col " className="px-6 py-3">

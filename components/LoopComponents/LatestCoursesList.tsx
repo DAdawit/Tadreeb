@@ -20,14 +20,20 @@ const LatestCoursesList: React.FC<PropType> = ({ course, index }) => {
         <td className="border-2 border-white">
           <Link
             href={`/trainings/${course?.training_id}/courses/schedules/${course?.id}`}
-            className="hover:text-primary"
+            className="hover:text-primary whitespace-nowrap"
           >
             {course?.title}
           </Link>
         </td>
-        <td className="border-2 border-white">{course?.venue.name}</td>
-        <td className="border-2 border-white">{course?.start_date}</td>
-        <td className="border-2 border-white">{course?.end_date}</td>
+        <td className="border-2 border-white whitespace-nowrap">
+          {course?.venue.name}
+        </td>
+        <td className="border-2 border-white whitespace-nowrap">
+          {course?.start_date}
+        </td>
+        <td className="border-2 border-white whitespace-nowrap">
+          {course?.end_date}
+        </td>
       </tr>
     </>
   );

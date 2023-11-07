@@ -7,6 +7,7 @@ import api from "@/app/axios";
 import { notify } from "@/app/toast";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import BookCourse from "@/common/BookCourse";
 
 type PropType = {
   course: CoursSearch;
@@ -34,26 +35,29 @@ const CourseSearchReasultList: React.FC<PropType> = ({ course, index }) => {
           <Link
             // href="#"
             href={`/trainings/${course?.training?.id}/courses/schedules/${course.id}`}
-            className="hover:text-primary"
+            className="hover:text-primary whitespace-nowrap"
           >
             {course.title}
           </Link>
         </td>
-        <td className="px-6 py-4 row-span-2 border-2 border-white text-base">
+        <td className="px-6 py-4 row-span-2 border-2 border-white text-base whitespace-nowrap">
           {course.start_date}- {course.end_date}
         </td>
 
-        <td className="px-6 py-4 row-span-2 border-2 border-white">
-          <div>{course?.format.name}</div>
+        <td className="px-6 py-4 row-span-2 border-2 border-white whitespace-nowrap">
+          {course?.format.name}
         </td>
         <td className="px-6 py-4 row-span-2 border-2 border-white ">
-          <div>{course?.training?.name}</div>
+          {course?.training?.name}
+        </td>
+        <td className="px-6 py-4 row-span-2 border-2 border-white whitespace-nowrap">
+          {course?.venue.name}
         </td>
         <td className="px-6 py-4 row-span-2 border-2 border-white">
-          <div>{course?.venue.name}</div>
+          ${course?.fee}
         </td>
-        <td className="px-6 py-4 row-span-2 border-2 border-white">
-          <div>${course?.fee}</div>
+        <td className="px-6 py-4 row-span-2 border-2 border-white bg-primary">
+          <BookCourse title={course.title} course_id={String(course.id)} />
         </td>
       </tr>
     </>

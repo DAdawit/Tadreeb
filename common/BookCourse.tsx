@@ -95,13 +95,15 @@ const BookCourse: React.FC<PropType> = ({ title, course_id, schedule_id }) => {
   };
 
   return (
-    <div className="min-w-xl w-full">
-      <button className="text-white" onClick={handleClickOpen}>
+    <div className="w-full">
+      <button
+        className="text-white whitespace-nowrap"
+        onClick={handleClickOpen}
+      >
         Book Now
       </button>
 
       <Dialog
-        maxWidth="lg"
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
@@ -109,10 +111,9 @@ const BookCourse: React.FC<PropType> = ({ title, course_id, schedule_id }) => {
       >
         <DialogTitle id="alert-dialog-title">{"Book Course"}</DialogTitle>
         <DialogContent>
-          <div className="min-w-lg mx-auto w-full">
+          <div className="sm:w-96 mx-auto">
             <h1 className="text-gray-700 font-semibold">{title}</h1>
-            {/* <div>course:{course_id}</div>
-          <div>schedule:{schedule_id}</div> */}
+
             <form
               action="#"
               className="w-full"
