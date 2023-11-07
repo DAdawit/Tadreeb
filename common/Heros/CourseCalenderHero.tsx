@@ -5,7 +5,7 @@ import React from "react";
 type PropType = {
   title: string | undefined;
 };
-const ScheduleHero: React.FC<PropType> = ({ title }) => {
+const CourseCalenderHero: React.FC<PropType> = ({ title }) => {
   return (
     <>
       <div className="h-[70vh]  xl:max-h-[60vh] xll:max-h-[60vh] relative">
@@ -23,7 +23,8 @@ const ScheduleHero: React.FC<PropType> = ({ title }) => {
                 {title}
               </h1>
               <p className="text-sm mt-8 xxl:text-lg ">
-                Filter by Topic, Date, Duration and Format
+                Discover, Enroll, Elevate: Your Path to Success with the <br />
+                Tadreeb Training Course Calendar
               </p>
             </div>
           </div>
@@ -36,4 +37,4 @@ const ScheduleHero: React.FC<PropType> = ({ title }) => {
   );
 };
 
-export default ScheduleHero;
+export default CourseCalenderHero;

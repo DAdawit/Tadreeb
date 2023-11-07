@@ -1,7 +1,8 @@
 "use client";
 import { Spinner } from "@/assets/icons/Spinner";
+import CourseCalenderHero from "@/common/Heros/CourseCalenderHero";
+import ScheduleHero from "@/common/Heros/ScheduleHero";
 import LatestCoursesList from "@/components/LoopComponents/LatestCoursesList";
-import TrainingCoursCalenderHero from "@/components/TrainingCourseCalendar/TrainingCoursCalenderHero";
 import { fetchCoursesWithSchedule } from "@/services/user";
 import { useQuery } from "@tanstack/react-query";
 
@@ -14,7 +15,7 @@ const Page = () => {
   });
   return (
     <div>
-      <TrainingCoursCalenderHero />
+      <CourseCalenderHero title="Training Course Calendar" />
 
       <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
         <h1 className="mt-5 text-2xl xll:text-3xl">NOVEMBER 2023</h1>

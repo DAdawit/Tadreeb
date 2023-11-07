@@ -1,22 +1,11 @@
 "use client";
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, Resolver } from "react-hook-form";
-import { ZodType, z } from "zod";
 import { useState } from "react";
-import api from "@/app/axios";
-import { notify } from "@/app/toast";
-import EditIcon from "@mui/icons-material/Edit";
 import { Tooltip } from "@mui/material";
-import { Spinner } from "@/assets/icons/Spinner";
-import { Course, FormatType, Schedule } from "@/Types";
+import { Course, Schedule } from "@/Types";
 import MoreIcon from "@mui/icons-material/More";
 
 type PropType = {

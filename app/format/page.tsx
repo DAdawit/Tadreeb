@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchSearchTrainingFormats } from "@/services/user";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
@@ -16,7 +15,6 @@ const Page = () => {
     queryFn: fetchSearchTrainingFormats,
   });
 
-  const router = useRouter();
   return (
     <div>
       <ScheduleHero title={"Our Training Formats"} />

@@ -1,7 +1,8 @@
 "use client";
+import { UserType } from "@/Types";
 import React, { AudioHTMLAttributes, Component } from "react";
 import { createContext } from "react";
-import { UserType } from "@/types";
+// import { UserType } from "@/types";
 type AuthContextType = {
   user: UserType | null;
   auth: boolean;

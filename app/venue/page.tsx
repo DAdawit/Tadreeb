@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchSearchVenues } from "@/services/user";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
@@ -16,7 +15,6 @@ const Page = () => {
     queryKey: ["fetchVenues"],
     queryFn: fetchSearchVenues,
   });
-  const router = useRouter();
   return (
     <div>
       <ScheduleHero title={"Our Venues"} />

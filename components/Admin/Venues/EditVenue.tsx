@@ -12,7 +12,6 @@ import { notify } from "@/app/toast";
 import EditIcon from "@mui/icons-material/Edit";
 import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
-import { FormatType } from "@/Types";
 type FormType = {
   name: string;
 };

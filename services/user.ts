@@ -5,17 +5,18 @@ import {
   CourseWithScheduleType,
   LatestCoursesType,
   TrainingSearchType,
+  TryType,
   VenueCouses,
   VenueType,
 } from "@/Types";
 import api from "@/app/axios";
 import { TrainingType } from "@/common/data";
 
-export async function fetchCategoryTrainings(): Promise<TrainingSearchType> {
+export async function fetchCategoryTrainings(): Promise<TryType[]> {
   return await api
     .get(`/category-trainings`)
     .then((res) => {
-      console.log(res.data.data);
+      console.log(res.data);
 
       return res?.data.data;
     })

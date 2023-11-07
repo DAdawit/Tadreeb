@@ -23,6 +23,9 @@ const CategoryTrainings = () => {
       setActiveTab(data[0].name); // Set the active tab once the data is available
     }
   }, [data]);
+
+  console.log(data);
+
   return (
     <>
       <section className="px-5 sm:px-0" id="training-course-calendar">

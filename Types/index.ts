@@ -699,3 +699,20 @@ export interface StatisticsType {
   courses: number;
   venues: number;
 }
+
+export interface TryType {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+  trainings: Training[];
+}
+
+export interface Training {
+  id: string;
+  name: string;
+  category_id: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+}
