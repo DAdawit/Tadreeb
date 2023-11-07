@@ -2,11 +2,7 @@
 import PageTitle from "@/common/PageTitle";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  fetchApprovedBookedCourses,
-  fetchBookedCourses,
-  fetchTrainings,
-} from "@/services/admin";
+import { fetchApprovedBookedCourses } from "@/services/admin";
 import { Spinner } from "@/assets/icons/Spinner";
 import BookList from "@/components/LoopComponents/BookList";
 

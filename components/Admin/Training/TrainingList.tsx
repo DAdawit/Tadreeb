@@ -1,12 +1,9 @@
 "use client";
-import ConfirmApprove from "@/common/ConfirmApprove";
 import ConfirmDelete from "@/common/ConfirmDelete";
 import React, { useState } from "react";
-import EditSeedDialog from "../../EditSeedDialog";
-import { FormatType, TrainingType } from "@/Types";
+import { TrainingType } from "@/Types";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import EditTrainingFormat from "./EditTraining";
 import EditTraining from "./EditTraining";
 import Link from "next/link";
 

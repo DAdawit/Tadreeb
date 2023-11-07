@@ -1,15 +1,11 @@
 "use client";
 import * as React from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { ZodType, z } from "zod";
 import { useState } from "react";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import SecurityIcon from "@mui/icons-material/Security";
 import { Spinner } from "@/assets/icons/Spinner";
 type FormValues = {
   old_password: string;

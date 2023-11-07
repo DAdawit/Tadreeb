@@ -1,20 +1,12 @@
 "use client";
-
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import PageTitle from "@/common/PageTitle";
-import ActiveUsers from "@/common/Dashboard/ActiveUsers";
 import { fetchStatistics } from "@/services/admin";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import PlaceIcon from "@mui/icons-material/Place";
 import CategoryIcon from "@mui/icons-material/Category";
 import ClassIcon from "@mui/icons-material/Class";
-import SettingsIcon from "@mui/icons-material/Settings";
-import PendingActionsIcon from "@mui/icons-material/PendingActions";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import RemoveDoneIcon from "@mui/icons-material/RemoveDone";
-import ContactPageIcon from "@mui/icons-material/ContactPage";
 import SchoolIcon from "@mui/icons-material/School";
 const Page = () => {
   const { data, isLoading, error, refetch } = useQuery({

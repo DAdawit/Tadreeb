@@ -1,19 +1,10 @@
 "use client";
-import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  fetchContactUsinfos,
-  fetchTrainingFormats,
-  fetchVenues,
-} from "@/services/admin";
+import { fetchContactUsinfos } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
-import TrainingFormatsList from "@/components/Admin/TrainingFormats/TrainingFormatsList";
 import api from "@/app/axios";
-import { notify } from "@/app/toast";
 import { Spinner } from "@/assets/icons/Spinner";
-import AddTrainingFormat from "@/components/Admin/TrainingFormats/AddTrainingFormat";
-import VenueList from "@/components/Admin/Venues/VenueList";
-import AddVenue from "@/components/Admin/Venues/AddVenue";
+
 import ContactUsList from "@/components/LoopComponents/ContactUsList";
 
 const Page = () => {

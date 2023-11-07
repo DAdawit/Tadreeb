@@ -3,10 +3,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
-import TrainingFormatsList from "@/components/Admin/TrainingFormats/TrainingFormatsList";
-
 import { Spinner } from "@/assets/icons/Spinner";
-import VenueList from "@/components/Admin/Venues/VenueList";
 import AddCategories from "@/components/Admin/TrainingCategories/AddCategories";
 import CategoryList from "@/components/Admin/TrainingCategories/CategoryList";
 

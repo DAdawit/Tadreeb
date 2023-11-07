@@ -1,12 +1,9 @@
 "use client";
-import ConfirmApprove from "@/common/ConfirmApprove";
-import ConfirmDelete from "@/common/ConfirmDelete";
+
 import React, { useState } from "react";
-import { CoursSearch, CourseType, FormatType, TrainingType } from "@/Types";
-import api from "@/app/axios";
-import { notify } from "@/app/toast";
+import { CoursSearch } from "@/Types";
+
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import BookCourse from "@/common/BookCourse";
 
 type PropType = {

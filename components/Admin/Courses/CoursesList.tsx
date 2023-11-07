@@ -1,13 +1,10 @@
 "use client";
-import ConfirmApprove from "@/common/ConfirmApprove";
 import ConfirmDelete from "@/common/ConfirmDelete";
 import React, { useState } from "react";
-import EditSeedDialog from "../../EditSeedDialog";
-import { CourseType, FormatType, TrainingType } from "@/Types";
+import { CourseType } from "@/Types";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import EditTrainingFormat from "./EditCourse";
-import EditTraining from "./EditCourse";
+
 import Link from "next/link";
 import EditCourse from "./EditCourse";
 import { useParams } from "next/navigation";

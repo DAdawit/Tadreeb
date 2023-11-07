@@ -1,6 +1,6 @@
 "use client";
 import PageLoader from "@/common/PageLoader";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import api from "../axios";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";

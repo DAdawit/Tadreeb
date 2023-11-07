@@ -8,15 +8,9 @@ import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Link from "next/link";
-import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import PaymentsIcon from "@mui/icons-material/Payments";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import CardMembershipIcon from "@mui/icons-material/CardMembership";
+
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
-import SubMenuLists from "@/common/SubMenuLists";
-import UserAvatar from "@/common/UserAvatar";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import PlaceIcon from "@mui/icons-material/Place";
 import CategoryIcon from "@mui/icons-material/Category";

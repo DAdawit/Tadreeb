@@ -1,11 +1,8 @@
 "use client";
-import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrainingFormats } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
 import TrainingFormatsList from "@/components/Admin/TrainingFormats/TrainingFormatsList";
-import api from "@/app/axios";
-import { notify } from "@/app/toast";
 import { Spinner } from "@/assets/icons/Spinner";
 import AddTrainingFormat from "@/components/Admin/TrainingFormats/AddTrainingFormat";
 

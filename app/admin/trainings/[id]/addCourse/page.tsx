@@ -1,9 +1,6 @@
 "use client";
 import * as React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
@@ -12,11 +9,7 @@ import { notify } from "@/app/toast";
 import api from "@/app/axios";
 import { Spinner } from "@/assets/icons/Spinner";
 import { useQuery } from "@tanstack/react-query";
-import {
-  fetchCategories,
-  fetchTrainingFormats,
-  fetchVenues,
-} from "@/services/admin";
+import { fetchTrainingFormats, fetchVenues } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";

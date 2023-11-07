@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
-import { fetchCoursesByVenueId, fetchOnlineTraining } from "@/services/user";
+import { fetchCoursesByVenueId } from "@/services/user";
 import { useParams } from "next/navigation";
 const Page = () => {
   const { id } = useParams();

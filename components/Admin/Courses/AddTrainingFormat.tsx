@@ -9,11 +9,9 @@ import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
 import { useState } from "react";
 import { notify } from "@/app/toast";
-import SecurityIcon from "@mui/icons-material/Security";
-import { useContext } from "react";
+
 import api from "@/app/axios";
 import PaymentIcon from "@mui/icons-material/Payment";
-import { AuthContext } from "@/context/AuthContext";
 import { Spinner } from "@/assets/icons/Spinner";
 type FormValues = {
   name: string;

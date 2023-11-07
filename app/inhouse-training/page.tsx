@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchClassRoomTraining, fetchInHouseTraining } from "@/services/user";
+import { fetchInHouseTraining } from "@/services/user";
 import Link from "next/link";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
 

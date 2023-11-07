@@ -1,12 +1,10 @@
 "use client";
 import axios from "axios";
-import Image from "next/image";
-import Link from "next/link";
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ZodType, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import api from "@/app/axios";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { notify } from "@/app/toast";

@@ -2,7 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { fetchSearchTrainingFormats, fetchSearchVenues } from "@/services/user";
+import { fetchSearchTrainingFormats } from "@/services/user";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
 import Link from "next/link";
 const Page = () => {

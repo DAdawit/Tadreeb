@@ -3,7 +3,6 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { fetchTrainingCourses } from "@/services/admin";
-import ExecutiveTraining from "@/components/Category/ExecutiveTraining";
 import Description from "@/common/Description";
 import Link from "next/link";
 import ScheduleHero from "@/common/Heros/ScheduleHero";

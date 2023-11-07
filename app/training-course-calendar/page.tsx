@@ -1,8 +1,6 @@
 "use client";
 import { Spinner } from "@/assets/icons/Spinner";
-import SearchTrainings from "@/components/CourseFinder/SearchTrainings";
 import LatestCoursesList from "@/components/LoopComponents/LatestCoursesList";
-import Description from "@/components/TrainingCourseCalendar/Description";
 import TrainingCoursCalenderHero from "@/components/TrainingCourseCalendar/TrainingCoursCalenderHero";
 import { fetchCoursesWithSchedule } from "@/services/user";
 import { useQuery } from "@tanstack/react-query";

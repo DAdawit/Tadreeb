@@ -3,7 +3,6 @@ import { BookType, LatestCoursesType } from "@/Types";
 import BookCourseDetail from "@/common/BookCourseDetail";
 import Approved from "@/common/status/Approved";
 import Pending from "@/common/status/Pending";
-import Link from "next/link";
 import React, { useState } from "react";
 import api from "@/app/axios";
 import toast from "react-hot-toast";
