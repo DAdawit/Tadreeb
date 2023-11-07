@@ -4,70 +4,122 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import PageTitle from "@/common/PageTitle";
 import ActiveUsers from "@/common/Dashboard/ActiveUsers";
-
+import { fetchStatistics } from "@/services/admin";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
+import PlaceIcon from "@mui/icons-material/Place";
+import CategoryIcon from "@mui/icons-material/Category";
+import ClassIcon from "@mui/icons-material/Class";
+import SettingsIcon from "@mui/icons-material/Settings";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import RemoveDoneIcon from "@mui/icons-material/RemoveDone";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
+import SchoolIcon from "@mui/icons-material/School";
 const Page = () => {
-  // const { data, isLoading, error, refetch } = useQuery({
-  //   queryKey: ["fetchMembersInPercent"],
-  //   queryFn: fetchMembersInPercent,
-  // });
-  // const {
-  //   data: statutory,
-  //   isLoading: staturyLoading,
-  //   error: staturyError,
-  //   refetch: staturyRefectch,
-  // } = useQuery({
-  //   queryKey: ["fetchAccountStatutoryReport"],
-  //   queryFn: fetchAccountStatutoryReport,
-  // });
-  // const {
-  //   data: members,
-  //   isLoading: membersLoading,
-  //   error: membersError,
-  //   refetch: membersRefectch,
-  // } = useQuery({
-  //   queryKey: ["fetchStaticMembers"],
-  //   queryFn: fetchStaticMembers,
-  // });
-
-  // console.log(data);
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["fetchStatistics"],
+    queryFn: fetchStatistics,
+  });
 
   return (
     <>
-      {/* <pre>{JSON.stringify(statutory, null, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
 
-      <div className="container mx-auto px-5 pb-16">
+      <div className="container mx-auto px-5 pb-16 min-h-screen">
         <div className="px-7 py-5">
           <PageTitle title="Dashboard" />
         </div>
 
-        {/* <ProfileIncompletAlert /> */}
-
-        <div className="">
-          <div className="container grid grid-cols-1 lg:grid-cols-2  flex-1  gap-5 mb-10">
-            <div className=" shadow-lg ">
-              <h3 className="px-5 font-medium text-gray-800 mt-3">
-                Active users
-              </h3>
-
-              <div className="px-3 pb-5 h-min">
-                {/* <ActiveUsers members={members} /> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xll:grid-cols-3 gap-8">
+          <div className="p-5 w-full  rounded-xl shadow-lg">
+            <div className="flex gap-x-5 items-center py-3 ">
+              <div className="bg-red-500 h-14 w-14 rounded-lg flex justify-center items-center">
+                <span className="text-white">
+                  <FormatAlignCenterIcon fontSize="large" />
+                </span>
+              </div>
+              <div className=" grid gap-y-2">
+                <h1 className="text-gray-500 font-medium font-sans">
+                  Total Training Formats
+                </h1>
+                <h3 className="text-3xl font-semibold text-gray-900">
+                  {data?.trainings}
+                </h3>
               </div>
             </div>
-            <div className="flex flex-wrap h-full shadow-lg">
-              <h3 className="px-5 font-medium text-gray-800 mt-3">
-                Members in Percent
-              </h3>
+          </div>
 
-              <div className="pb-5 flex flex-wrap w-full justify-evenly gap-1 ">
-                <div className="">{/* <MembersInPercent data={data} /> */}</div>
-                <div className="">
-                  {/* <ProfileStats data={statutory} /> */}
-                </div>
+          <div className="p-5 w-full  rounded-xl shadow-lg">
+            <div className="flex gap-x-5 items-center py-3 ">
+              <div className="bg-indigo-500 h-14 w-14 rounded-lg flex justify-center items-center">
+                <span className="text-white">
+                  <PlaceIcon fontSize="large" />
+                </span>
+              </div>
+              <div className=" grid gap-y-2">
+                <h1 className="text-gray-500 font-medium font-sans">
+                  Total Number of Venues
+                </h1>
+                <h3 className="text-3xl font-semibold text-gray-900">
+                  {data?.venues}
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-5 w-full  rounded-xl shadow-lg">
+            <div className="flex gap-x-5 items-center py-3 ">
+              <div className="bg-green-500 h-14 w-14 rounded-lg flex justify-center items-center">
+                <span className="text-white">
+                  <CategoryIcon fontSize="large" />
+                </span>
+              </div>
+              <div className=" grid gap-y-2">
+                <h1 className="text-gray-500 font-medium font-sans">
+                  Total Number of Categories
+                </h1>
+                <h3 className="text-3xl font-semibold text-gray-900">
+                  {data?.categories}
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div className="p-5 w-full  rounded-xl shadow-lg">
+            <div className="flex gap-x-5 items-center py-3 ">
+              <div className="bg-purple-500 h-14 w-14 rounded-lg flex justify-center items-center">
+                <span className="text-white">
+                  <ClassIcon fontSize="large" />
+                </span>
+              </div>
+              <div className=" grid gap-y-2">
+                <h1 className="text-gray-500 font-medium font-sans">
+                  Total Number of Trainings
+                </h1>
+                <h3 className="text-3xl font-semibold text-gray-900">
+                  {data?.trainings}
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div className="p-5 w-full  rounded-xl shadow-lg">
+            <div className="flex gap-x-5 items-center py-3 ">
+              <div className="bg-teal-500 h-14 w-14 rounded-lg flex justify-center items-center">
+                <span className="text-white">
+                  <SchoolIcon fontSize="large" />
+                </span>
+              </div>
+              <div className=" grid gap-y-2">
+                <h1 className="text-gray-500 font-medium font-sans">
+                  Total Number of Courses
+                </h1>
+                <h3 className="text-3xl font-semibold text-gray-900">
+                  {data?.trainings}
+                </h3>
               </div>
             </div>
           </div>
         </div>
-        <div className="px-5 "></div>
       </div>
     </>
   );

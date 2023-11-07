@@ -1,5 +1,6 @@
 import SocialMeadiaIcons from "@/common/SocialMeadiaIcons";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
@@ -34,12 +35,18 @@ const Hero = () => {
                 </div>
                 <div className="mt-10 align-bottom h-full flex items-end sm:pl-8">
                   <div className="grid sm:flex gap-x-5 gap-y-2">
-                    <button className="bg-secondary h-12 w-48 xxl:h-16 rounded-md">
+                    <Link
+                      href="#learn-more"
+                      className="bg-secondary h-12 w-48 xxl:h-16 rounded-md flex justify-center items-center"
+                    >
                       LEARN MORE
-                    </button>
-                    <button className="bg-primary h-12 w-48 xxl:h-16 rounded-md">
+                    </Link>
+                    <Link
+                      href="/course-finder"
+                      className="bg-primary h-12 w-48 xxl:h-16 rounded-md flex justify-center items-center"
+                    >
                       BOOK NOW
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,8 @@
 import {
+  ContactUsType,
   CourseBooksType,
   FormatsType,
+  StatisticsType,
   TrainingCoursesType,
   TrainingScheduleType,
   TrainingType,
@@ -107,6 +109,29 @@ export async function fetchRejectedBookedCourses(): Promise<CourseBooksType> {
     .get(`/rejected-booked-courses`)
     .then((res) => {
       console.log(res.data);
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchContactUsinfos(): Promise<ContactUsType> {
+  return await api
+    .get(`/contact-us`)
+    .then((res) => {
+      // console.log(res);
+      return res?.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+export async function fetchStatistics(): Promise<StatisticsType> {
+  return await api
+    .get(`/statistics`)
+    .then((res) => {
+      console.log(res.data.data);
       return res?.data.data;
     })
     .catch((err) => {

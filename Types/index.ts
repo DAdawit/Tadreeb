@@ -648,3 +648,54 @@ export interface Link {
   label: string;
   active: boolean;
 }
+
+export interface ContactUsType {
+  data: ContactType[];
+  links: Links;
+  meta: Meta;
+}
+
+export interface ContactType {
+  id: number;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  fullName: string;
+  location: string;
+  phoneNumber: string;
+  email: string;
+  created_at: String;
+}
+
+export interface Links {
+  first: string;
+  last: string;
+  prev: any;
+  next: any;
+}
+
+export interface Meta {
+  current_page: number;
+  from: number;
+  last_page: number;
+  links: Link[];
+  path: string;
+  per_page: number;
+  to: number;
+  total: number;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}
+
+export interface StatisticsType {
+  formats: number;
+  categories: number;
+  trainings: number;
+  courses: number;
+  venues: number;
+}

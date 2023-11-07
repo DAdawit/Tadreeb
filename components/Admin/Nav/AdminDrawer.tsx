@@ -7,22 +7,6 @@ import Drawer from "@mui/material/Drawer";
 import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People";
-import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Groups3Icon from "@mui/icons-material/Groups3";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import RedeemIcon from "@mui/icons-material/Redeem";
-import PaidIcon from "@mui/icons-material/Paid";
-import TollIcon from "@mui/icons-material/Toll";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import MessageIcon from "@mui/icons-material/Message";
-import ForumIcon from "@mui/icons-material/Forum";
-import InboxIcon from "@mui/icons-material/Inbox";
-import OutboxIcon from "@mui/icons-material/Outbox";
-import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
@@ -41,6 +25,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import RemoveDoneIcon from "@mui/icons-material/RemoveDone";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
 type Anchor = "left";
 export default function AdminDrawer() {
   const { user } = useContext(AuthContext);
@@ -181,6 +166,16 @@ export default function AdminDrawer() {
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <RemoveDoneIcon />
                         <h3>Rejected Booked Courses</h3>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/admin/contact-us"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <ContactPageIcon />
+                        <h3>Contact us</h3>
                       </div>
                     </Link>
                     <Link

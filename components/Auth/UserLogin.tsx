@@ -65,8 +65,8 @@ const UserLogin: React.FC<PropType> = ({ setLogin }) => {
   };
   return (
     <>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-      <pre>{JSON.stringify(auth, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(user, null, 2)}</pre>
+      <pre>{JSON.stringify(auth, null, 2)}</pre> */}
 
       <section className="">
         <h1 className="text-3xl font-semibold text-primary text-center tracking-wide max-w-lg mx-auto ">
@@ -121,7 +121,7 @@ const UserLogin: React.FC<PropType> = ({ setLogin }) => {
             {loading ? <Spinner /> : <LoginIcon />}
           </button>
           <div className="flex text-sm gap-1 mt-5">
-            <button>
+            {/* <button>
               Forgot your password?
               <span
                 className="text-primary cursor-pointer font-normal underline"
@@ -129,7 +129,7 @@ const UserLogin: React.FC<PropType> = ({ setLogin }) => {
               >
                 Click here.
               </span>
-            </button>
+            </button> */}
           </div>
         </form>
       </section>
