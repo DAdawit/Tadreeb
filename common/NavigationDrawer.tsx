@@ -105,7 +105,7 @@ export default function NavigationDrawer() {
                       Training courses
                     </Link>
                     <Link
-                      href="/Traning Calender"
+                      href="/venue"
                       className="mt-1 py-1 h-min  w-full px-5 border-b-2 border-gray-200"
                       onClick={toggleDrawer("left", false)}
                     >
@@ -119,7 +119,7 @@ export default function NavigationDrawer() {
                       Certification
                     </Link>
                     <Link
-                      href="#training-type"
+                      href="format"
                       className="mt-1 py-1 h-min  w-full px-5 border-b-2 border-gray-200"
                       onClick={toggleDrawer("left", false)}
                     >
