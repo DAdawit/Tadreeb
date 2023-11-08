@@ -14,7 +14,7 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("token");
     api.defaults.headers.common["Authorization"] = "";
-    router.push("/");
+    router.push("/admin/login");
   };
 
   return (

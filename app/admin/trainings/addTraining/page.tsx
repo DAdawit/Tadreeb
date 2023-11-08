@@ -73,7 +73,9 @@ const Page: React.FC = () => {
 
   return (
     <div>
-      <PageTitle title="Add Training" />
+      <div className="flex justify-center">
+        <PageTitle title="Add Training" />
+      </div>
 
       <form onSubmit={handleSubmit(submitData)} className="max-w-lg mx-auto">
         <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">

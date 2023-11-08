@@ -1,6 +1,6 @@
 "use client";
 import PageLoader from "@/common/PageLoader";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useCallback } from "react";
 import api from "../axios";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
@@ -8,7 +8,7 @@ import { AuthContext } from "@/context/AuthContext";
 const AuthCheck = () => {
   const router = useRouter();
   const { loading, setLoadingFalse, setUserData } = useContext(AuthContext);
-  const verifyToken = () => {
+  const verifyToken = useCallback(() => {
     api
       .post("/verify-token")
       .then((res) => {
@@ -25,11 +25,11 @@ const AuthCheck = () => {
       .finally(() => {
         setLoadingFalse(false);
       });
-  };
+  }, [router, setLoadingFalse, setUserData]);
 
   useEffect(() => {
     verifyToken();
-  }, []);
+  }, [verifyToken]);
 
   if (loading) {
     return <PageLoader />;

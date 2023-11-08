@@ -82,7 +82,9 @@ const AddTrainingFormat: React.FC<propType> = ({ refetch }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Registration Fee"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          {"Add Training Format"}
+        </DialogTitle>
         <DialogContent>
           <form
             onSubmit={handleSubmit(submitData)}

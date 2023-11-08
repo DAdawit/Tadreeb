@@ -14,10 +14,10 @@ const Page = () => {
   });
 
   return (
-    <div>
+    <div className="min-h-screeen py-8 container mx-auto px-5">
       <PageTitle title="Contact Us" />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      <div className="relative overflow-x-auto  mt-8">
+      <div className="relative overflow-x-auto  mt-3">
         <table className="text-center w-full mt-8 overflow-x-auto">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>

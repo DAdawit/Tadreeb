@@ -13,10 +13,10 @@ const Page = () => {
   });
 
   return (
-    <div>
+    <div className="min-h-screeen py-8 container mx-auto px-5">
       <PageTitle title="Training Formats" />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      <div className="container mx-auto flex justify-end py-8">
+      <div className="flex justify-end py-8">
         <AddTrainingFormat refetch={() => refetch()} />
       </div>
       <div className="relative overflow-x-auto min-h-screen px-7">

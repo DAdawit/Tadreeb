@@ -14,10 +14,9 @@ const Page = () => {
     queryKey: ["fetchTrainingCourses", id],
     queryFn: () => fetchTrainingCourses(id as string),
   });
-  // console.log(data);
 
   return (
-    <div>
+    <div className="min-h-screeen py-8 container mx-auto px-5">
       <PageTitle title={`${data?.name}`} />
       <div className="container mx-auto px-5 flex justify-end py-5">
         <Link
@@ -27,7 +26,7 @@ const Page = () => {
           Add course
         </Link>
       </div>
-      <div className="relative overflow-x-auto  mt-8">
+      <div className="relative overflow-x-auto">
         <table className="text-center w-full mt-8 overflow-x-auto">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>

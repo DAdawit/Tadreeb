@@ -76,15 +76,6 @@ const Page: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    reset();
-    setOpen(false);
-  };
-
   const submitData = (values: FormValues) => {
     values.training_id = String(id) ?? "";
     setLoading(true);
@@ -95,8 +86,7 @@ const Page: React.FC = () => {
       .then((res) => {
         notify("training format added successfully", "success");
         reset();
-        handleClose();
-        router.push(`/admin/trainings/${id}`);
+        router.push(`/admin/trainings`);
       })
       .catch((err) => {
         notify(err.response.data.errors.detail[0], "error");
