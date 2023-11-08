@@ -86,7 +86,7 @@ const Page: React.FC = () => {
       .then((res) => {
         notify("training format added successfully", "success");
         reset();
-        router.push(`/admin/trainings`);
+        router.push(`/admin/trainings/${id}`);
       })
       .catch((err) => {
         notify(err.response.data.errors.detail[0], "error");
