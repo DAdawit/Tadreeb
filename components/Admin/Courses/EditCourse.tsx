@@ -16,12 +16,14 @@ import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrainingFormats, fetchVenues } from "@/services/admin";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 type FormValues = {
   title: string;
   fee: number;
-  description: string;
-  course_outline: string;
+  description?: string;
+  course_outline?: string;
   start_date: string;
   end_date: string;
   venue_id: string;
@@ -32,8 +34,8 @@ type FormValues = {
 const schema: ZodType<FormValues> = z.object({
   title: z.string().min(1, "title is required"),
   fee: z.number().min(1, "fee is required"),
-  description: z.string().min(1, "Description is required"),
-  course_outline: z.string().min(1, "Course Outline is required"),
+  // description: z.string().min(1, "Description is required"),
+  // course_outline: z.string().min(1, "Course Outline is required"),
   start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
     message: "start_date must be a valid date string",
   }),
@@ -75,6 +77,23 @@ const EditCourse: React.FC<PropType> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [editError, setEditError] = useState<string>("");
   // const [data, setData] = useState();
+  const [description2, setDescription2] = useState(description);
+  const [course_outline2, SetCourseOutline2] = useState(course_outline);
+
+  const toolbarOptions = {
+    toolbar: [
+      [{ font: [] }],
+      [{ header: [1, 2, 3] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      ["link", "image", "video"],
+      ["clean"],
+    ],
+  };
   const {
     register,
     handleSubmit,
@@ -127,6 +146,8 @@ const EditCourse: React.FC<PropType> = ({
     setEditError("");
     setLoading(true);
     console.log(values);
+    values.description = description2;
+    values.course_outline = course_outline2;
 
     await api
       .put(`/courses/${id}`, values)
@@ -312,18 +333,20 @@ const EditCourse: React.FC<PropType> = ({
                   </small>
                 )}
               </div>
-              <div className="grid gap-y-1">
+              <div className="grid gap-y-1 mt-8">
                 <label
                   htmlFor="description"
                   className="capitalize pl-3 font-semibold"
                 >
                   Description *
                 </label>
-                <textarea
-                  id=""
-                  className="h-48"
-                  {...register("description")}
-                ></textarea>
+                <ReactQuill
+                  style={{ height: "200px" }}
+                  theme="snow"
+                  modules={toolbarOptions}
+                  value={description2}
+                  onChange={setDescription2}
+                />
 
                 {errors?.description && (
                   <small className="text-red-500 pl-2">
@@ -331,18 +354,20 @@ const EditCourse: React.FC<PropType> = ({
                   </small>
                 )}
               </div>
-              <div className="grid gap-y-1">
+              <div className="grid gap-y-1 mt-16">
                 <label
                   htmlFor="course_outline"
                   className="capitalize pl-3 font-semibold"
                 >
                   Course Outline *
                 </label>
-                <textarea
-                  id=""
-                  className="h-48"
-                  {...register("course_outline")}
-                ></textarea>
+                <ReactQuill
+                  style={{ height: "200px" }}
+                  theme="snow"
+                  modules={toolbarOptions}
+                  value={course_outline2}
+                  onChange={SetCourseOutline2}
+                />
 
                 {errors?.course_outline && (
                   <small className="text-red-500 pl-2">
@@ -351,7 +376,7 @@ const EditCourse: React.FC<PropType> = ({
                 )}
               </div>
             </section>
-            <div className="flex items-center justify-center mt-7 max-w-sm mx-auto">
+            <div className="flex items-center justify-center mt-24 max-w-sm mx-auto">
               <button
                 type="submit"
                 className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"

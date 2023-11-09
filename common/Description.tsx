@@ -16,9 +16,11 @@ const Description: React.FC<PropTye> = ({ description }) => {
           <h1 className="text-[#1E5DAA] lg:text-lg xl:text-xl font-bold">
             INTRODUCTION
           </h1>
-          <p className="text-textPrimary mt-5 lg:text-lg xll:text-xl">
-            {description}
-          </p>
+          {/* dangerouslySetInnerHTML={{ __html: description }} */}
+          <p
+            className="text-textPrimary mt-5 lg:text-lg xll:text-xl"
+            dangerouslySetInnerHTML={{ __html: description || "" }}
+          ></p>
         </div>
       </div>
     </>

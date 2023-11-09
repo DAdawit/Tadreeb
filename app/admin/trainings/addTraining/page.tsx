@@ -11,15 +11,21 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
 import { useRouter } from "next/navigation";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import EditorComponent from "./MyEditor";
+import MyEditor from "./MyEditor";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 type FormValues = {
   name: string;
-  description: string;
   category_id: string;
+  description?: string;
 };
 
 const schema: ZodType<FormValues> = z.object({
   name: z.string().min(1, "Name is required"),
-  description: z.string().min(1, "Description is required"),
+  // description: z.string().min(1, "Description is required"),
   category_id: z.string().min(1, "Category is required"),
 });
 
@@ -27,7 +33,23 @@ const Page: React.FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [addError, setAddError] = useState<string>("");
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [editorState, setEditorState] = useState("");
+  const [description, setDescription] = useState("");
+  const toolbarOptions = {
+    toolbar: [
+      [{ font: [] }],
+      [{ header: [1, 2, 3] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      ["link"],
+      ["clean"],
+    ],
+  };
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["fetchCategories"],
@@ -53,6 +75,7 @@ const Page: React.FC = () => {
     setLoading(true);
     setAddError("");
     console.log(values);
+    values.description = description;
 
     api
       .post("/trainings", values)
@@ -126,18 +149,20 @@ const Page: React.FC = () => {
               </small>
             )}
           </div>
-          <div className="grid gap-y-1">
+          <div className="grid gap-y-1 mt-5">
             <label
               htmlFor="description"
               className="capitalize pl-3 font-semibold"
             >
               Description *
             </label>
-            <textarea
-              id=""
-              className="h-48"
-              {...register("description")}
-            ></textarea>
+            <ReactQuill
+              style={{ height: "200px" }}
+              theme="snow"
+              value={description}
+              modules={toolbarOptions}
+              onChange={setDescription}
+            />
 
             {errors?.description && (
               <small className="text-red-500 pl-2">
@@ -146,7 +171,7 @@ const Page: React.FC = () => {
             )}
           </div>
         </section>
-        <div className="flex items-center justify-center mt-7 max-w-sm mx-auto">
+        <div className="flex items-center justify-center mt-24 max-w-sm mx-auto">
           <button
             type="submit"
             className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"

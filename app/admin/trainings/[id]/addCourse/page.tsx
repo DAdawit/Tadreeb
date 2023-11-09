@@ -13,11 +13,13 @@ import { fetchTrainingFormats, fetchVenues } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 type FormValues = {
   title: string;
   fee: number;
-  description: string;
-  course_outline: string;
+  description?: string;
+  course_outline?: string;
   start_date: string;
   end_date: string;
   venue_id: string;
@@ -28,26 +30,45 @@ type FormValues = {
 const schema: ZodType<FormValues> = z.object({
   title: z.string().min(1, "title is required"),
   fee: z.number().min(1, "fee is required"),
-  description: z.string().min(1, "Description is required"),
-  course_outline: z.string().min(1, "Course Outline is required"),
+  // description: z.string().min(1, "Description is required"),
+  // course_outline: z.string().min(1, "Course Outline is required"),
   start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
     message: "start_date must be a valid date string",
   }),
   end_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
     message: "end_date must be a valid date string",
   }),
-  venue_id: z.string(),
-  format_id: z.string(),
+  venue_id: z.string().min(1, { message: "Venue is required" }),
+  format_id: z.string().min(1, { message: "Training Format is required" }),
 });
 
 const Page: React.FC = () => {
   const { id } = useParams();
   // console.log(id);
 
+  const toolbarOptions = {
+    toolbar: [
+      [{ font: [] }],
+      [{ header: [1, 2, 3] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      ["link", "image", "video"],
+      ["clean"],
+    ],
+  };
+
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [addError, setAddError] = useState<string>("");
   const [open, setOpen] = React.useState(false);
+  const [description, setDescription] = useState("");
+  const [course_outline, SetCourseOutline] = useState("");
+  const [descriptionError, SetDescriptionError] = useState("");
+  const [courseError, SetCourseError] = useState("");
 
   const {
     data: venues,
@@ -76,12 +97,27 @@ const Page: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const submitData = (values: FormValues) => {
+  const submitData = async (values: FormValues) => {
+    // Manually validate description and course_outline
+    values.description = description;
+    values.course_outline = course_outline;
+    if (!description || description.trim() === "") {
+      SetDescriptionError("Description is required");
+      setLoading(false);
+      return;
+    }
+    if (!course_outline || course_outline.trim() === "") {
+      SetCourseError("Course outline is required");
+      setLoading(false);
+      return;
+    }
+
     values.training_id = String(id) ?? "";
     setLoading(true);
     setAddError("");
     console.log("hello", values);
-    api
+
+    await api
       .post("/courses", values)
       .then((res) => {
         notify("training format added successfully", "success");
@@ -90,6 +126,8 @@ const Page: React.FC = () => {
       })
       .catch((err) => {
         notify(err.response.data.errors.detail[0], "error");
+        console.log("hello", err.message);
+        notify(err.response.data.errors.message, "error");
         setLoading(false);
       })
       .finally(() => {
@@ -241,46 +279,45 @@ const Page: React.FC = () => {
               </small>
             )}
           </div>
-          <div className="grid gap-y-1">
+          <div className="grid gap-y-1 mt-5">
             <label
               htmlFor="description"
               className="capitalize pl-3 font-semibold"
             >
               Description *
             </label>
-            <textarea
-              id=""
-              className="h-48"
-              {...register("description")}
-            ></textarea>
+            <ReactQuill
+              style={{ height: "200px" }}
+              theme="snow"
+              value={description}
+              modules={toolbarOptions}
+              onChange={setDescription}
+            />
 
-            {errors?.description && (
-              <small className="text-red-500 pl-2">
-                {errors.description.message}
-              </small>
+            {descriptionError !== "" && (
+              <small className="text-red-500 pl-2">{descriptionError}</small>
             )}
           </div>
-          <div className="grid gap-y-1">
+          <div className="grid gap-y-1 mt-16">
             <label
               htmlFor="course_outline"
               className="capitalize pl-3 font-semibold"
             >
               Course Outline *
             </label>
-            <textarea
-              id=""
-              className="h-48"
-              {...register("course_outline")}
-            ></textarea>
-
-            {errors?.course_outline && (
-              <small className="text-red-500 pl-2">
-                {errors.course_outline.message}
-              </small>
+            <ReactQuill
+              style={{ height: "200px" }}
+              theme="snow"
+              value={course_outline}
+              modules={toolbarOptions}
+              onChange={SetCourseOutline}
+            />
+            {courseError !== "" && (
+              <small className="text-red-500 pl-2">{courseError}</small>
             )}
           </div>
         </section>
-        <div className="flex items-center justify-center mt-7 max-w-sm mx-auto">
+        <div className="flex items-center justify-center mt-24 max-w-sm mx-auto">
           <button
             type="submit"
             className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"

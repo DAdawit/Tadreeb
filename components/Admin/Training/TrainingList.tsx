@@ -56,7 +56,13 @@ const TrainingList: React.FC<PropType> = ({ training, index, refetch }) => {
           <div>{training?.attributes.category.name}</div>
         </td>
         <td className="px-6 py-4 row-span-2">
-          <div>{training?.attributes.description}</div>
+          <p
+            className="text-textPrimary mt-5 lg:text-lg xll:text-xl"
+            dangerouslySetInnerHTML={{
+              __html: training?.attributes.description || "",
+            }}
+          ></p>
+          {/* <div>{training?.attributes.description}</div> */}
         </td>
 
         <td className="px-6 py-4 col-span-2 flex gap-2">
