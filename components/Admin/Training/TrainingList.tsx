@@ -6,6 +6,7 @@ import api from "@/app/axios";
 import { notify } from "@/app/toast";
 import EditTraining from "./EditTraining";
 import Link from "next/link";
+import AdminCourseDescriptions from "../AdminCourseDescriptions";
 
 type PropType = {
   training: TrainingType;
@@ -47,21 +48,24 @@ const TrainingList: React.FC<PropType> = ({ training, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">
           <Link
             href={`/admin/trainings/${training.id}`}
-            className="hover:text-primary"
+            className="hover:text-primary whitespace-nowrap"
           >
             {training?.attributes.name}
           </Link>
         </td>
-        <td className="px-6 py-4 row-span-2">
+        <td className="px-6 py-4 row-span-2 whitespace-nowrap">
           <div>{training?.attributes.category.name}</div>
         </td>
         <td className="px-6 py-4 row-span-2">
-          <p
+          <AdminCourseDescriptions
+            description={training?.attributes.description}
+          />
+          {/* <p
             className="text-textPrimary mt-5 lg:text-lg xll:text-xl"
             dangerouslySetInnerHTML={{
               __html: training?.attributes.description || "",
             }}
-          ></p>
+          ></p> */}
           {/* <div>{training?.attributes.description}</div> */}
         </td>
 

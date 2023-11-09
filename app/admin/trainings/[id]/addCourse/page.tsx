@@ -56,7 +56,7 @@ const Page: React.FC = () => {
       ["blockquote", "code-block"],
       [{ list: "ordered" }, { list: "bullet" }],
       [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
-      ["link", "image", "video"],
+      ["link"],
       ["clean"],
     ],
   };
@@ -317,7 +317,7 @@ const Page: React.FC = () => {
             )}
           </div>
         </section>
-        <div className="flex items-center justify-center mt-24 max-w-sm mx-auto">
+        <div className="flex items-center justify-center mt-24 max-w-sm mx-auto ">
           <button
             type="submit"
             className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"

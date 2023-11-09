@@ -14,10 +14,11 @@ import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@/services/admin";
-
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 type FormValues = {
   name: string;
-  description: string;
+  description?: string;
   category_id: string;
 };
 
@@ -25,7 +26,7 @@ type FormValues = {
 
 const schema: ZodType<FormValues> = z.object({
   name: z.string().min(1, "Name is required"),
-  description: z.string().min(1, "Description is required"),
+  // description: z.string().min(1, "Description is required"),
   category_id: z.string().min(1, "Category is required"),
 });
 
@@ -46,7 +47,22 @@ const EditTraining: React.FC<PropType> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [editError, setEditError] = useState<string>("");
+  const [description2, setDescription2] = useState(description);
   // const [data, setData] = useState();
+  const toolbarOptions = {
+    toolbar: [
+      [{ font: [] }],
+      [{ header: [1, 2, 3] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      ["link"],
+      ["clean"],
+    ],
+  };
   const {
     register,
     handleSubmit,
@@ -79,6 +95,7 @@ const EditTraining: React.FC<PropType> = ({
     setEditError("");
     setLoading(true);
     console.log(values);
+    values.description = description2;
 
     await api
       .put(`/trainings/${id}`, values)
@@ -180,11 +197,13 @@ const EditTraining: React.FC<PropType> = ({
                 >
                   Description *
                 </label>
-                <textarea
-                  id=""
-                  className="h-48"
-                  {...register("description")}
-                ></textarea>
+                <ReactQuill
+                  style={{ height: "200px" }}
+                  theme="snow"
+                  value={description2}
+                  modules={toolbarOptions}
+                  onChange={setDescription2}
+                />
 
                 {errors?.description && (
                   <small className="text-red-500 pl-2">
@@ -193,7 +212,7 @@ const EditTraining: React.FC<PropType> = ({
                 )}
               </div>
             </section>
-            <div className="flex items-center justify-center mt-7 max-w-sm mx-auto">
+            <div className="flex items-center justify-center mt-24 max-w-sm mx-auto">
               <button
                 type="submit"
                 className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"
