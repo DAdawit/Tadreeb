@@ -8,6 +8,7 @@ import AdminCourseDescriptions from "../Admin/AdminCourseDescriptions";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
 import ConfirmDelete from "@/common/ConfirmDelete";
+import EditHero from "../Admin/Hero/EditHero";
 type PropType = {
   hero: HeroType | undefined;
   index: number;
@@ -21,7 +22,7 @@ const HeroSectionLists: React.FC<PropType> = ({ hero, index, refetch }) => {
   const confirm = (id: string) => {
     setdeleteError("");
     setLoading(true);
-    
+
     api
       .delete(`/hero/${id}`)
       .then((res) => {
@@ -59,15 +60,14 @@ const HeroSectionLists: React.FC<PropType> = ({ hero, index, refetch }) => {
         <td className="px-6 py-4   gap-2">
           <AdminCourseDescriptions description={hero?.attributes.description} />
         </td>
-        <td className="px-6 py-4   gap-2">
+        <td className="px-6 py-4   gap-2 flex items-center justify-center gap-x-3">
           <ConfirmDelete
             confirm={confirm}
             id={String(hero?.id)}
             text="Are you sure you went to delete !"
             loading={loading}
           />
-          {/* action */}
-          {/* {course?.end_date} */}
+          <EditHero hero={hero} refetch={() => refetch()} />
         </td>
       </tr>
     </>

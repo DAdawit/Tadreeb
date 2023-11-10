@@ -14,6 +14,7 @@ import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
 import { min } from "moment";
 import HomeMaxIcon from "@mui/icons-material/HomeMax";
+import { HeroType } from "@/Types";
 
 type FormType = {
   title: string;
@@ -28,12 +29,11 @@ const schema: ZodType<FormType> = z.object({
 });
 
 type PropType = {
-  title: string;
-  description: string;
+  hero: HeroType | undefined;
   refetch: () => void;
 };
 
-const EditHero: React.FC<PropType> = ({ refetch }) => {
+const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [data, setData] = useState();
@@ -44,6 +44,10 @@ const EditHero: React.FC<PropType> = ({ refetch }) => {
     reset,
   } = useForm<FormType>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      title: hero?.attributes.title,
+      description: hero?.attributes.description,
+    },
   });
 
   const [open, setOpen] = React.useState(false);
@@ -56,20 +60,22 @@ const EditHero: React.FC<PropType> = ({ refetch }) => {
     setOpen(false);
   };
 
-  const submitData = (values: FormType) => {
+  const submitData = async (values: FormType) => {
     setError("");
     setLoading(true);
     console.log(values);
 
     let formdata = new FormData();
-    formdata.append("title", values.title);
-    formdata.append("description", values.description);
+
+    if (values.title) formdata.append("title", values.title);
+    if (values.description) formdata.append("description", values.description);
+
     if (values.image && values.image[0]) {
       formdata.append("image", values.image[0]);
     }
 
-    api
-      .post(`/hero`, formdata)
+    await api
+      .post(`/update-hero/${hero?.id}`, formdata)
       .then((res) => {
         refetch();
         handleClose();
@@ -78,7 +84,7 @@ const EditHero: React.FC<PropType> = ({ refetch }) => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err.message);
+        // console.log(err.message);
       })
       .finally(() => {
         setLoading(false);
@@ -88,12 +94,8 @@ const EditHero: React.FC<PropType> = ({ refetch }) => {
   return (
     <div>
       <Tooltip title="Edit" placement="top">
-        <button
-          className="text-white bg-primary rounded-full px-4 py-2 flex items-center justify-center gap-x-2"
-          onClick={handleClickOpen}
-        >
-          <span>Add Hero Section</span>
-          <HomeMaxIcon fontSize="small" />
+        <button className="text-primary" onClick={handleClickOpen}>
+          <EditIcon fontSize="small" />
         </button>
       </Tooltip>
 
@@ -105,7 +107,11 @@ const EditHero: React.FC<PropType> = ({ refetch }) => {
       >
         <DialogTitle id="alert-dialog-title">{"Add Hero Section"}</DialogTitle>
         <DialogContent>
-          <form onSubmit={handleSubmit(submitData)} className="max-w-sm">
+          <form
+            onSubmit={handleSubmit(submitData)}
+            className="max-w-sm"
+            encType="multipart/form-data"
+          >
             <section className="grid gap-x-5 gap-y-1">
               <div>
                 <label htmlFor="title" className="capitalize pl-3 lightText">
@@ -155,7 +161,6 @@ const EditHero: React.FC<PropType> = ({ refetch }) => {
                   id="image"
                   className="w-full"
                   type="file"
-                  required
                 />
                 {errors?.image && (
                   <small className="text-red-500 pl-2">
