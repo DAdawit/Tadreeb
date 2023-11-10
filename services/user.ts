@@ -3,6 +3,7 @@ import {
   CategoryTrainings,
   ClassRootType,
   CourseWithScheduleType,
+  HeroType,
   LatestCoursesType,
   TrainingSearchType,
   TryType,
@@ -144,6 +145,17 @@ export async function fetchCoursesByFormatId(id: string): Promise<VenueCouses> {
     .then((res) => {
       console.log(res.data);
 
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchHeroSection(): Promise<HeroType[]> {
+  return await api
+    .get(`/hero-section`)
+    .then((res) => {
       return res?.data.data;
     })
     .catch((err) => {

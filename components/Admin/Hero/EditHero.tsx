@@ -84,7 +84,6 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
       })
       .catch((err) => {
         setLoading(false);
-        // console.log(err.message);
       })
       .finally(() => {
         setLoading(false);
