@@ -5,10 +5,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import Link from "next/link";
-import { HeroType } from "@/Types";
+import { HeroType, Links } from "@/Types";
 import SocialMeadiaIcons from "@/common/SocialMeadiaIcons";
 interface CarosoleProps {
   carosoles: HeroType[];
+  links: Links;
 }
 export default class Carosole extends Component<CarosoleProps> {
   render() {
@@ -69,7 +70,7 @@ export default class Carosole extends Component<CarosoleProps> {
                     </div>
                     <div className="flex w-full py-5 md:justify-end  items-center ">
                       <div className="w-max pl-8 flex md:grid md:align-end pr-8 gap-2 md:justify-center">
-                        <SocialMeadiaIcons />
+                        <SocialMeadiaIcons links={this.props.links} />
                       </div>
                     </div>
                   </div>

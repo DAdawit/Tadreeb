@@ -162,3 +162,21 @@ export async function fetchHeroSection(): Promise<HeroType[]> {
       return err;
     });
 }
+
+export async function getHeroSections() {
+  const res = await fetch("http://127.0.0.1:8000/api/hero-section", {
+    next: {
+      revalidate: 10,
+    },
+  });
+  return res.json();
+}
+
+export async function getSocialMediaLinks() {
+  const res = await fetch("http://127.0.0.1:8000/api/get-social-media-links", {
+    next: {
+      revalidate: 10,
+    },
+  });
+  return res.json();
+}

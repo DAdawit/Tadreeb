@@ -742,3 +742,14 @@ export interface Attributes {
   instagram?: string;
   whatsUp?: string;
 }
+
+
+export interface Links {
+  id: number;
+  facebook: string;
+  linkedin: string;
+  instagram: string;
+  whatsUp: string;
+  created_at: string;
+  updated_at: string;
+}

@@ -8,24 +8,18 @@ import UpcomingCourses from "@/components/Home/UpcomingCourses";
 import CategoryTrainings from "@/components/Home/CategoryTrainings";
 import api from "./axios";
 import Carosole from "@/components/Home/Carosole";
-
-async function getHeroSections() {
-  const res = await fetch("http://127.0.0.1:8000/api/hero-section", {
-    next: {
-      revalidate: 10,
-    },
-  });
-  return res.json();
-}
+import { getHeroSections, getSocialMediaLinks } from "@/services/user";
 
 export default async function Home() {
   const { data } = await getHeroSections();
-  console.log(data);
+  const links = await getSocialMediaLinks();
+  // console.log(links);
 
   return (
     <main>
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      <Carosole carosoles={data} />
+      {/* <pre>{JSON.stringify(links, null, 2)}</pre> */}
+      <Carosole carosoles={data} links={links} />
       {/* <Hero /> */}
       <div></div>
       <Trainings />
