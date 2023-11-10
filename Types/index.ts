@@ -730,3 +730,15 @@ export interface Attributes {
   description: string;
   image: string;
 }
+
+export interface SocialMediaType {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  facebook?: string;
+  linkedin?: string;
+  instagram?: string;
+  whatsUp?: string;
+}

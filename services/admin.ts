@@ -3,6 +3,7 @@ import {
   CourseBooksType,
   FormatsType,
   HeroType,
+  SocialMediaType,
   StatisticsType,
   TrainingCoursesType,
   TrainingScheduleType,
@@ -145,6 +146,18 @@ export async function fetchHeroSection(): Promise<HeroType[]> {
     .get(`/hero`)
     .then((res) => {
       // console.log(res.data.data);
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchSocialMediaLinks(): Promise<SocialMediaType[]> {
+  return await api
+    .get(`/social-media`)
+    .then((res) => {
+      console.log(res.data);
       return res?.data.data;
     })
     .catch((err) => {

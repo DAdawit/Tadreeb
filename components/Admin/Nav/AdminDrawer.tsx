@@ -20,6 +20,9 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import RemoveDoneIcon from "@mui/icons-material/RemoveDone";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import HomeMaxIcon from "@mui/icons-material/HomeMax";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import AddLinkIcon from "@mui/icons-material/AddLink";
+
 type Anchor = "left";
 export default function AdminDrawer() {
   const { user } = useContext(AuthContext);
@@ -100,6 +103,16 @@ export default function AdminDrawer() {
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <HomeMaxIcon />
                         <h3>Hero Section</h3>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/admin/social-media"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <AddLinkIcon />
+                        <h3>Social Media</h3>
                       </div>
                     </Link>
                     <Link
