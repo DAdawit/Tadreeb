@@ -7,7 +7,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Tooltip } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 type PropType = {
-  description: string;
+  description: string | undefined;
 };
 
 const AdminCourseDescriptions: React.FC<PropType> = ({ description }) => {
@@ -23,7 +23,7 @@ const AdminCourseDescriptions: React.FC<PropType> = ({ description }) => {
 
   return (
     <div>
-      <Tooltip title="Edit" placement="top">
+      <Tooltip title="Description" placement="top">
         <button
           className="text-secondary border-2 border-secondary px-4 py-2 rounded-full flex items-center justify-center gap-x-1"
           onClick={handleClickOpen}

@@ -61,9 +61,9 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">
           <div>{course?.venue.name}</div>
         </td>
-        <td className="px-6 py-4 row-span-2">
+        {/* <td className="px-6 py-4 row-span-2">
           <div>${course?.fee}</div>
-        </td>
+        </td> */}
 
         <td className="px-6 py-4 col-span-2 flex gap-2">
           <ConfirmDelete

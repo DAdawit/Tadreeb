@@ -33,7 +33,7 @@ const schema: ZodType<FormValues> = z.object({
 
 const SearchCourse = () => {
   const path = usePathname();
-  console.log(path);
+  // console.log(path);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<boolean>(false);
@@ -252,11 +252,12 @@ const SearchCourse = () => {
                     >
                       Venue
                     </th>
+
                     <th
                       scope="col"
                       className="px-6 py-3 border-r-2 border-gray-50"
                     >
-                      Fee
+                      Book Now
                     </th>
                   </tr>
                 </thead>

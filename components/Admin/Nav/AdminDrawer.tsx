@@ -19,6 +19,7 @@ import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import RemoveDoneIcon from "@mui/icons-material/RemoveDone";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
+import HomeMaxIcon from "@mui/icons-material/HomeMax";
 type Anchor = "left";
 export default function AdminDrawer() {
   const { user } = useContext(AuthContext);
@@ -92,6 +93,16 @@ export default function AdminDrawer() {
                       </div>
                     </Link>
                     <Link
+                      href="/admin/hero-section"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <HomeMaxIcon />
+                        <h3>Hero Section</h3>
+                      </div>
+                    </Link>
+                    <Link
                       href="/admin/training-formats"
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
@@ -108,7 +119,7 @@ export default function AdminDrawer() {
                     >
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <PlaceIcon />
-                        <h3>Avenues</h3>
+                        <h3>Venues</h3>
                       </div>
                     </Link>
                     <Link

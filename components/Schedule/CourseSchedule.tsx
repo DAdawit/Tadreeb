@@ -22,7 +22,7 @@ const CourseSchedule: React.FC<PropType> = ({ schedules, title }) => {
           <tr className="text-white">
             <th className="border-r-2 border-gray-50">Date</th>
             <th className="border-r-2 border-gray-50">Location</th>
-            <th className="border-r-2 border-gray-50">Fee</th>
+            {/* <th className="border-r-2 border-gray-50">Fee</th> */}
             <th className="border-r-2 border-gray-50">Book Now</th>
           </tr>
         </thead>
@@ -45,7 +45,7 @@ const CourseSchedule: React.FC<PropType> = ({ schedules, title }) => {
               <td className="border-2 border-white text-center">
                 {item.venue.name}
               </td>
-              <td className="border-2 border-white text-center">${item.fee}</td>
+              {/* <td className="border-2 border-white text-center">${item.fee}</td> */}
               <td className="border-2 border-white h-full bg-primary">
                 <BookCourse title={title} schedule_id={String(item.id)} />
               </td>

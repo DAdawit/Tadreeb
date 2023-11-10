@@ -2,6 +2,7 @@ import {
   ContactUsType,
   CourseBooksType,
   FormatsType,
+  HeroType,
   StatisticsType,
   TrainingCoursesType,
   TrainingScheduleType,
@@ -132,6 +133,18 @@ export async function fetchStatistics(): Promise<StatisticsType> {
     .get(`/statistics`)
     .then((res) => {
       console.log(res.data.data);
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchHeroSection(): Promise<HeroType[]> {
+  return await api
+    .get(`/hero`)
+    .then((res) => {
+      // console.log(res.data.data);
       return res?.data.data;
     })
     .catch((err) => {

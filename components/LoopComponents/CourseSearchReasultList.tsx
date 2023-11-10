@@ -50,9 +50,7 @@ const CourseSearchReasultList: React.FC<PropType> = ({ course, index }) => {
         <td className="px-6 py-4 row-span-2 border-2 border-white whitespace-nowrap">
           {course?.venue.name}
         </td>
-        <td className="px-6 py-4 row-span-2 border-2 border-white">
-          ${course?.fee}
-        </td>
+
         <td className="px-6 py-4 row-span-2 border-2 border-white bg-primary">
           <BookCourse title={course.title} course_id={String(course.id)} />
         </td>

@@ -716,3 +716,17 @@ export interface Training {
   created_at: string;
   updated_at: string;
 }
+// export interface HeroType {
+//   data: HeroDetail[];
+// }
+
+export interface HeroType {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  title: string;
+  description: string;
+  image: string;
+}

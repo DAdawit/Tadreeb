@@ -94,7 +94,7 @@ const EditTraining: React.FC<PropType> = ({
   const submitData = async (values: FormValues) => {
     setEditError("");
     setLoading(true);
-    console.log(values);
+    // console.log(values);
     values.description = description2;
 
     await api
