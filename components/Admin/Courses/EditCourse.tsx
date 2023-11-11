@@ -15,13 +15,17 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTrainingFormats, fetchVenues } from "@/services/admin";
+import {
+  fetchCertifications,
+  fetchTrainingFormats,
+  fetchVenues,
+} from "@/services/admin";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 type FormValues = {
   title: string;
-  fee: number;
+  certificate_id: string;
   description?: string;
   course_outline?: string;
   start_date: string;
@@ -33,7 +37,6 @@ type FormValues = {
 
 const schema: ZodType<FormValues> = z.object({
   title: z.string().min(1, "title is required"),
-  fee: z.number().min(1, "fee is required"),
   // description: z.string().min(1, "Description is required"),
   // course_outline: z.string().min(1, "Course Outline is required"),
   start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
@@ -42,6 +45,7 @@ const schema: ZodType<FormValues> = z.object({
   end_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
     message: "end_date must be a valid date string",
   }),
+  certificate_id: z.string(),
   venue_id: z.string(),
   format_id: z.string(),
   training_id: z.string(),
@@ -51,7 +55,6 @@ type PropType = {
   refetch: () => void;
   id: string;
   title: string;
-  fee: number;
   description: string;
   course_outline: string;
   start_date: string;
@@ -59,13 +62,13 @@ type PropType = {
   venue_id: string;
   format_id: string;
   training_id: string;
+  certificate_id: string;
 };
 
 const EditCourse: React.FC<PropType> = ({
   id,
   refetch,
   title,
-  fee,
   description,
   course_outline,
   start_date,
@@ -73,6 +76,7 @@ const EditCourse: React.FC<PropType> = ({
   venue_id,
   format_id,
   training_id,
+  certificate_id,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [editError, setEditError] = useState<string>("");
@@ -103,7 +107,6 @@ const EditCourse: React.FC<PropType> = ({
     resolver: zodResolver(schema),
     defaultValues: {
       title: title,
-      fee: fee,
       description: description,
       course_outline: course_outline,
       start_date: start_date,
@@ -111,6 +114,7 @@ const EditCourse: React.FC<PropType> = ({
       venue_id: venue_id,
       format_id: format_id,
       training_id: training_id,
+      certificate_id: certificate_id,
     },
   });
 
@@ -131,6 +135,16 @@ const EditCourse: React.FC<PropType> = ({
   } = useQuery({
     queryKey: ["fetchTrainingFormats"],
     queryFn: fetchTrainingFormats,
+  });
+
+  const {
+    data: certifications,
+    isLoading: loadingCertifications,
+    error: errorCertifications,
+    refetch: refetchCertifications,
+  } = useQuery({
+    queryKey: ["fetchCertifications"],
+    queryFn: fetchCertifications,
   });
   const [open, setOpen] = React.useState(false);
 
@@ -216,27 +230,7 @@ const EditCourse: React.FC<PropType> = ({
                   </small>
                 )}
               </div>
-              <div className="grid gap-y-1">
-                <label
-                  htmlFor="fee"
-                  className="capitalize pl-3 lightText font-semibold"
-                >
-                  Fee *
-                </label>
-                <input
-                  {...register("fee", { valueAsNumber: true })}
-                  placeholder="Payment Amount"
-                  name="fee"
-                  id="fee"
-                  className="w-full"
-                  type="number"
-                />
-                {errors?.fee && (
-                  <small className="text-red-500 pl-2">
-                    {errors.fee.message}
-                  </small>
-                )}
-              </div>
+
               <div className="grid gap-y-1">
                 <label
                   htmlFor="start_date"
@@ -330,6 +324,34 @@ const EditCourse: React.FC<PropType> = ({
                 {errors?.venue_id && (
                   <small className="text-red-500 pl-2">
                     {errors.venue_id.message}
+                  </small>
+                )}
+              </div>
+              <div className="grid gap-y-1">
+                <label
+                  htmlFor="venue_id"
+                  className="capitalize pl-3 font-semibold"
+                >
+                  Certification *
+                </label>
+
+                <select
+                  id="certificate_id"
+                  {...register("certificate_id")}
+                  className="w-full"
+                >
+                  <option value="" selected disabled>
+                    select option
+                  </option>
+                  {certifications?.data.map((certification) => (
+                    <option key={certification.id} value={certification.id}>
+                      {certification.attributes.name}
+                    </option>
+                  ))}
+                </select>
+                {errors?.certificate_id && (
+                  <small className="text-red-500 pl-2">
+                    {errors.certificate_id.message}
                   </small>
                 )}
               </div>

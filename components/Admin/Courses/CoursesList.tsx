@@ -61,9 +61,9 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">
           <div>{course?.venue.name}</div>
         </td>
-        {/* <td className="px-6 py-4 row-span-2">
-          <div>${course?.fee}</div>
-        </td> */}
+        <td className="px-6 py-4 row-span-2">
+          <div>{course?.certificate.name}</div>
+        </td>
 
         <td className="px-6 py-4 col-span-2 flex gap-2">
           <ConfirmDelete
@@ -76,7 +76,6 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
             refetch={refetch}
             id={String(course.id)}
             title={course.title}
-            fee={course.fee}
             description={course.description}
             course_outline={course.course_outline}
             start_date={course.start_date}
@@ -84,6 +83,7 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
             venue_id={String(course.venue_id)}
             format_id={String(course.format_id)}
             training_id={String(course.training_id)}
+            certificate_id={String(course.certificate_id)}
           />
         </td>
       </tr>

@@ -132,6 +132,7 @@ const AddHero: React.FC<PropType> = ({ refetch }) => {
                 <textarea
                   id="description"
                   {...register("description")}
+                  className="h-36"
                 ></textarea>
                 {errors?.description && (
                   <small className="text-red-500 pl-2">

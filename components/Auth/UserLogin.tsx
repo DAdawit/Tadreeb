@@ -37,8 +37,8 @@ const UserLogin: React.FC<PropType> = ({ setLogin }) => {
   } = useForm<FormDataType>({
     resolver: zodResolver(schema),
     defaultValues: {
-      email: "dawit@gmail.com",
-      password: "admin123",
+      email: "admin@gmail.com",
+      password: "pass1234",
     },
   });
 

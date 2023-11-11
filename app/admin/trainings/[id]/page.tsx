@@ -42,9 +42,9 @@ const Page = () => {
               <th scope="col" className="px-6 py-3">
                 Venue
               </th>
-              {/* <th scope="col" className="px-6 py-3">
-                Fee
-              </th> */}
+              <th scope="col" className="px-6 py-3">
+                Certificate
+              </th>
               <th scope="col" className="px-6 py-3">
                 Actions
               </th>

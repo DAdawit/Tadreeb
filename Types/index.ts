@@ -162,12 +162,21 @@ export interface CourseType {
   training_id: number;
   venue_id: number;
   format_id: number;
+  certificate_id: number;
   start_date: string;
   end_date: string;
-  fee: number;
   created_at: string;
   updated_at: string;
   venue: Venue;
+  certificate: Certificate;
+}
+
+export interface Certificate {
+  id: string;
+  name: string;
+  image: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Venue {

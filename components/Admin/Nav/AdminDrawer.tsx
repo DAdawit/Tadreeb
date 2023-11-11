@@ -126,16 +126,6 @@ export default function AdminDrawer() {
                       </div>
                     </Link>
                     <Link
-                      href="/admin/training-formats"
-                      className="mt-1 shadow-sm py-2 h-min"
-                      onClick={toggleDrawer("left", false)}
-                    >
-                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
-                        <FormatAlignCenterIcon />
-                        <h3>Training Formats</h3>
-                      </div>
-                    </Link>
-                    <Link
                       href="/admin/venues"
                       className="mt-1 shadow-sm py-2 h-min"
                       onClick={toggleDrawer("left", false)}
@@ -145,6 +135,17 @@ export default function AdminDrawer() {
                         <h3>Venues</h3>
                       </div>
                     </Link>
+                    <Link
+                      href="/admin/training-formats"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <FormatAlignCenterIcon />
+                        <h3>Training Formats</h3>
+                      </div>
+                    </Link>
+
                     <Link
                       href="/admin/training-categories"
                       className="mt-1 shadow-sm py-2 h-min"
