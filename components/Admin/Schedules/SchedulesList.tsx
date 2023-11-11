@@ -52,9 +52,6 @@ const SchedulesList: React.FC<PropType> = ({ schedule, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">
           <div>{schedule?.venue.name}</div>
         </td>
-        <td className="px-6 py-4 row-span-2">
-          <div>${schedule?.fee}</div>
-        </td>
 
         <td className="px-6 py-4 col-span-2 flex gap-2">
           <ConfirmDelete
@@ -69,7 +66,6 @@ const SchedulesList: React.FC<PropType> = ({ schedule, index, refetch }) => {
             venue_id={String(schedule.venue_id)}
             start_date={schedule.start_date}
             end_date={schedule.end_date}
-            fee={schedule.fee}
           />
         </td>
       </tr>

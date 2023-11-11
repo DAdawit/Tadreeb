@@ -19,7 +19,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchVenues } from "@/services/admin";
 import { useParams } from "next/navigation";
 type FormValues = {
-  fee: number;
   start_date: string;
   end_date: string;
   venue_id: string;
@@ -27,7 +26,6 @@ type FormValues = {
 };
 
 const schema: ZodType<FormValues> = z.object({
-  fee: z.number().min(1, "fee is required"),
   venue_id: z.string(),
   course_id: z.string(),
   start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
@@ -119,27 +117,6 @@ const AddSchedule: React.FC<propType> = ({ refetch }) => {
             <input type="hidden" value={course} {...register("course_id")} />
 
             <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
-              <div className="grid gap-y-1">
-                <label
-                  htmlFor="fee"
-                  className="capitalize pl-3 lightText font-semibold"
-                >
-                  Fee *
-                </label>
-                <input
-                  {...register("fee", { valueAsNumber: true })}
-                  placeholder="Payment Amount"
-                  name="fee"
-                  id="fee"
-                  className="w-full"
-                  type="number"
-                />
-                {errors?.fee && (
-                  <small className="text-red-500 pl-2">
-                    {errors.fee.message}
-                  </small>
-                )}
-              </div>
               <div className="grid gap-y-1">
                 <label
                   htmlFor="venue_id"

@@ -18,7 +18,6 @@ import { Tooltip } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
 type FormValues = {
-  fee: number;
   start_date: string;
   end_date: string;
   venue_id: string;
@@ -26,7 +25,6 @@ type FormValues = {
 };
 
 const schema: ZodType<FormValues> = z.object({
-  fee: z.number().min(1, "fee is required"),
   venue_id: z.string(),
   course_id: z.string(),
   start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
@@ -43,14 +41,12 @@ type propType = {
   venue_id: string;
   start_date: string;
   end_date: string;
-  fee: number;
 };
 const EditSchedule: React.FC<propType> = ({
   refetch,
   venue_id,
   start_date,
   end_date,
-  fee,
   id,
 }) => {
   const { course } = useParams();
@@ -78,7 +74,6 @@ const EditSchedule: React.FC<propType> = ({
       venue_id: venue_id,
       start_date: start_date,
       end_date: end_date,
-      fee: fee,
     },
   });
 
@@ -136,27 +131,6 @@ const EditSchedule: React.FC<propType> = ({
             <input type="hidden" value={course} {...register("course_id")} />
 
             <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
-              <div className="grid gap-y-1">
-                <label
-                  htmlFor="fee"
-                  className="capitalize pl-3 lightText font-semibold"
-                >
-                  Fee *
-                </label>
-                <input
-                  {...register("fee", { valueAsNumber: true })}
-                  placeholder="Payment Amount"
-                  name="fee"
-                  id="fee"
-                  className="w-full"
-                  type="number"
-                />
-                {errors?.fee && (
-                  <small className="text-red-500 pl-2">
-                    {errors.fee.message}
-                  </small>
-                )}
-              </div>
               <div className="grid gap-y-1">
                 <label
                   htmlFor="venue_id"
