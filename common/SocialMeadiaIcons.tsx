@@ -9,7 +9,7 @@ type PropsType = {
 const SocialMeadiaIcons: React.FC<PropsType> = ({ links }) => {
   return (
     <>
-      <Link href={`${links.linkedin}`} target="_blank">
+      <Link href={`${links?.linkedin}`} target="_blank">
         <Image
           src="/linkedin.png"
           alt="hero image"
@@ -18,7 +18,7 @@ const SocialMeadiaIcons: React.FC<PropsType> = ({ links }) => {
           className="h-8  xxl:h-12 object-contain w-min"
         />
       </Link>
-      <Link href={`${links.facebook}`} target="_blank">
+      <Link href={`${links?.facebook}`} target="_blank">
         <Image
           src="/facebook.png"
           alt="hero image"
@@ -27,7 +27,7 @@ const SocialMeadiaIcons: React.FC<PropsType> = ({ links }) => {
           className="h-8  xxl:h-12 object-contain w-min"
         />
       </Link>
-      <Link href={`${links.instagram}`} target="_blank">
+      <Link href={`${links?.instagram}`} target="_blank">
         <Image
           src="/instagram.png"
           alt="hero image"
@@ -36,7 +36,7 @@ const SocialMeadiaIcons: React.FC<PropsType> = ({ links }) => {
           className="h-8  xxl:h-12 object-contain w-min"
         />
       </Link>
-      <Link href={`${links.whatsUp}`} target="_blank">
+      <Link href={`${links?.whatsUp}`} target="_blank">
         <Image
           src="/whatsup.png"
           alt="hero image"

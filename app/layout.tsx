@@ -5,7 +5,7 @@ import Footer from "@/common/Footer";
 import { Toaster } from "react-hot-toast";
 import { ReactQueryProvider } from "./ReactQueryProvider";
 import AuthContextProvider from "@/context/AuthContext";
-import NavBar from "@/common/NavBar";
+import NavBar from "@/common/NavBarComponents/NavBar";
 // import NavBar from "@/common/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });

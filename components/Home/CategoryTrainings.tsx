@@ -12,7 +12,7 @@ const CategoryTrainings = () => {
     queryKey: ["fetchCategoryTrainings"],
     queryFn: fetchCategoryTrainings,
   });
-  const [activeTab, setActiveTab] = useState(data && data[0].name); // Set the initial active tab
+  const [activeTab, setActiveTab] = useState(data && data[0]?.name); // Set the initial active tab
 
   const handleTabClick = (tabName: string) => {
     setActiveTab(tabName);
@@ -59,9 +59,9 @@ const CategoryTrainings = () => {
               .filter((item) => item.name === activeTab)
               .map((item) => (
                 <div key={item.id}>
-                  {item.trainings.length > 0 ? (
+                  {item?.trainings.length > 0 ? (
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
-                      {item.trainings.map((training) => (
+                      {item?.trainings.map((training) => (
                         <Link
                           href={`/trainings/${training.id}/courses`}
                           key={training.id}

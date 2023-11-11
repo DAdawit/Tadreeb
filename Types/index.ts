@@ -709,6 +709,27 @@ export interface StatisticsType {
   venues: number;
 }
 
+export interface FormatTypes {
+  data: FormatType[];
+}
+
+export interface FormatType {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string;
+  trainings: Training[];
+}
+
+export interface Training {
+  id: string;
+  name: string;
+  category_id: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface TryType {
   id: number;
   name: string;

@@ -24,7 +24,6 @@ const Page = () => {
                 <th className="border-r-2 border-gray-50">Location</th>
                 <th className="border-r-2 border-gray-50">Start Date</th>
                 <th className="border-r-2 border-gray-50">End Date</th>
-                <th className="border-r-2 border-gray-50">Fee</th>
                 <th className="border-r-2 border-gray-50">Book Now</th>
               </tr>
             </thead>
@@ -59,9 +58,6 @@ const Page = () => {
                     </td>
                     <td className="border-2 border-white text-center">
                       {course.end_date}
-                    </td>
-                    <td className="border-2 border-white text-center">
-                      ${course.fee}
                     </td>
                     <td className="border-2 border-white h-full bg-primary">
                       <button className="bg-primary h-full w-full text-white">

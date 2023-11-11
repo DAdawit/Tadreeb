@@ -1,42 +1,35 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import NavigationDrawer from "./NavigationDrawer";
-import { NavLinks, TrainingType } from "./data";
-import SubMenuItemsList from "./SubMenuItemsList";
+import NavigationDrawer from "../NavigationDrawer";
+import { NavLinks, TrainingType } from "../data";
+import SubMenuItemsList from "../SubMenuItemsList";
 import { usePathname } from "next/navigation";
-import { fetchSearchTrainingFormats, fetchSearchVenues } from "@/services/user";
-import { useQuery } from "@tanstack/react-query";
+import {
+  fetchSearchTrainingFormats,
+  fetchSearchVenues,
+  getCertificates,
+  getTrainigFormats,
+  getTrainingVenues,
+  getTrainings,
+} from "@/services/user";
+// import { useQuery } from "@tanstack/react-query";
 import NavDropDownMenu from "./NavDropDownMenu";
+import NavDropDownMenuTrainingsMenu from "./NavDropDownMenuTrainingsMenu";
+import NavDropDownMenuTrainingsMenuTest from "./NavDropDownMenuTrainingsMenuTest";
 
-const NavBar = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const pathname = usePathname();
+const NavBar = async () => {
+  const formats = await getTrainigFormats();
+  const venues = await getTrainingVenues();
+  const certificates = await getCertificates();
+  const categories = await getTrainings();
 
-  const {
-    data: formats,
-    isLoading: formatsLoading,
-    error: formatError,
-    refetch: formatsRefetch,
-  } = useQuery({
-    queryKey: ["fetchTrainingFormats"],
-    queryFn: fetchSearchTrainingFormats,
-  });
+  // const pathname = usePathname();
 
-  const {
-    data: venues,
-    isLoading: venueLoading,
-    error: venueError,
-    refetch: venueRefetch,
-  } = useQuery({
-    queryKey: ["fetchVenues"],
-    queryFn: fetchSearchVenues,
-  });
-  if (pathname.startsWith("/admin")) {
-    return null;
-  }
+  // if (pathname.startsWith("/admin")) {
+  //   return null;
+  // }
   return (
     <nav className="">
       <div className="px-8 xll:px-28 flex justify-between items-centers py-3">
@@ -129,19 +122,29 @@ const NavBar = () => {
           >
             training calendar
           </Link>
-          <Link
+          {/* <Link
             href="#training-course-calendar"
             className="text-white text-sm xl:text-lg xxl:text-3xl"
           >
             training courses
-          </Link>
+          </Link> */}
+          <NavDropDownMenuTrainingsMenuTest
+            title="training courses"
+            categories={categories}
+          />
+          {/* <NavDropDownMenuTrainingsMenu
+            title="training courses"
+            categories={categories}
+          /> */}
           <NavDropDownMenu title="venue" pages={venues} />
-          <Link
+          <NavDropDownMenu title="certification" pages={certificates} />
+
+          {/* <Link
             href="#certification"
             className="text-white text-sm xl:text-lg xxl:text-3xl"
           >
             certification
-          </Link>
+          </Link> */}
 
           <NavDropDownMenu title="format" pages={formats} />
         </div>

@@ -333,12 +333,7 @@ const SearchCourse = () => {
                     >
                       Venue
                     </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 border-r-2 border-gray-50"
-                    >
-                      Fee
-                    </th>
+
                     <th
                       scope="col"
                       className="px-6 py-3 border-r-2 border-gray-50"

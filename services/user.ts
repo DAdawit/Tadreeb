@@ -1,8 +1,10 @@
 import {
   AllCoursesThisMonth,
   CategoryTrainings,
+  CertifcationType,
   ClassRootType,
   CourseWithScheduleType,
+  FormatTypes,
   HeroType,
   LatestCoursesType,
   TrainingSearchType,
@@ -180,3 +182,51 @@ export async function getSocialMediaLinks() {
   });
   return res.json();
 }
+
+export async function getTrainigFormats(): Promise<VenueType> {
+  const res = await fetch("http://127.0.0.1:8000/api/get-formats", {
+    next: {
+      revalidate: 10,
+    },
+  });
+  return res.json();
+}
+
+export async function getTrainingVenues(): Promise<VenueType> {
+  const res = await fetch("http://127.0.0.1:8000/api/get-venues", {
+    next: {
+      revalidate: 10,
+    },
+  });
+  return res.json();
+}
+
+export async function getCertificates(): Promise<CertifcationType> {
+  const res = await fetch("http://127.0.0.1:8000/api/get-certificates", {
+    next: {
+      revalidate: 10,
+    },
+  });
+  return res.json();
+}
+export async function getTrainings(): Promise<FormatTypes> {
+  const res = await fetch("http://127.0.0.1:8000/api/category-trainings", {
+    next: {
+      revalidate: 10,
+    },
+  });
+  return res.json();
+}
+
+// export async function fetchCategoryTrainings(): Promise<TryType[]> {
+//   return await api
+//     .get(`/category-trainings`)
+//     .then((res) => {
+//       console.log(res.data);
+
+//       return res?.data.data;
+//     })
+//     .catch((err) => {
+//       return err;
+//     });
+// }

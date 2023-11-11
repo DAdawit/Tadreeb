@@ -1,11 +1,11 @@
 "use client";
-import { VenueType } from "@/Types";
+import { Certifcate, CertifcationType, VenueType } from "@/Types";
 import Link from "next/link";
 import React from "react";
 
 type PropType = {
   title: string;
-  pages?: VenueType;
+  pages?: VenueType | CertifcationType;
 };
 
 const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
@@ -15,14 +15,14 @@ const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
         {title}
       </button>
       <div className="group-hover:block dropdown-menu absolute hidden h-auto">
-        <ul className="top-0 w-auto bg-white shadow px-6 py-3">
+        <ul className="translate-y-2 top-1 w-auto bg-white shadow px-6 py-3 text-base">
           {pages &&
             Array.isArray(pages.data) &&
             pages.data.map((page, index) => (
-              <li key={page.id} value={page.id}>
+              <li key={page.id}>
                 <Link
                   href={`/${title}/${page.id}`}
-                  className="block text-black font-mono uppercase hover:text-black cursor-pointer whitespace-nowrap"
+                  className="text-gray-700 font-normal uppercase hover:text-gray-500 cursor-pointer whitespace-nowrap hover:underline text-small"
                 >
                   {page.attributes.name}
                 </Link>
