@@ -1,4 +1,5 @@
 import {
+  CertifcationType,
   ContactUsType,
   CourseBooksType,
   FormatsType,
@@ -147,6 +148,17 @@ export async function fetchHeroSection(): Promise<HeroType[]> {
     .then((res) => {
       // console.log(res.data.data);
       return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function fetchCertifications(): Promise<CertifcationType> {
+  return await api
+    .get(`/certificates`)
+    .then((res) => {
+      return res?.data;
     })
     .catch((err) => {
       return err;

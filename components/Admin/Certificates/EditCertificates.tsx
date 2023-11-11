@@ -17,23 +17,21 @@ import HomeMaxIcon from "@mui/icons-material/HomeMax";
 import { HeroType } from "@/Types";
 
 type FormType = {
-  title: string;
-  description: string;
+  name: string;
   image?: FileList;
 };
 
 const schema: ZodType<FormType> = z.object({
-  title: z.string().min(3, { message: "Title is required" }),
-  description: z.string().min(3, { message: "Description is required" }),
+  name: z.string().min(3, { message: "Name is required" }),
   image: z.any(),
 });
 
 type PropType = {
-  hero: HeroType | undefined;
+  certification: HeroType | undefined;
   refetch: () => void;
 };
 
-const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
+const EditCertificates: React.FC<PropType> = ({ refetch, certification }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [data, setData] = useState();
@@ -45,8 +43,7 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
   } = useForm<FormType>({
     resolver: zodResolver(schema),
     defaultValues: {
-      title: hero?.attributes.title,
-      description: hero?.attributes.description,
+      name: certification?.attributes.name,
     },
   });
 
@@ -67,15 +64,14 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
 
     let formdata = new FormData();
 
-    if (values.title) formdata.append("title", values.title);
-    if (values.description) formdata.append("description", values.description);
+    if (values.name) formdata.append("name", values.name);
 
     if (values.image && values.image[0]) {
       formdata.append("image", values.image[0]);
     }
 
     await api
-      .post(`/update-hero/${hero?.id}`, formdata)
+      .post(`/update-certification/${certification?.id}`, formdata)
       .then((res) => {
         refetch();
         handleClose();
@@ -104,7 +100,7 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Edit Hero Section"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Edit Certificate"}</DialogTitle>
         <DialogContent>
           <form
             onSubmit={handleSubmit(submitData)}
@@ -114,48 +110,32 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
             <section className="grid gap-x-5 gap-y-1">
               <div>
                 <label htmlFor="title" className="capitalize pl-3 lightText">
-                  Title *
+                  Name *
                 </label>
                 <input
-                  {...register("title")}
+                  {...register("name")}
                   placeholder="Name"
-                  name="title"
-                  id="title"
+                  name="name"
+                  id="name"
                   className="w-full"
                 />
-                {errors?.title && (
+                {errors?.name && (
                   <small className="text-red-500 pl-2">
-                    {errors.title.message}
+                    {errors.name.message}
                   </small>
                 )}
               </div>
-              <div className="grid gap-y-1 mt-2">
-                <label
-                  htmlFor="description"
-                  className="capitalize pl-3 lightText"
-                >
-                  Description *
-                </label>
-                <textarea
-                  id="description"
-                  {...register("description")}
-                ></textarea>
-                {errors?.description && (
-                  <small className="text-red-500 pl-2">
-                    {errors.description.message}
-                  </small>
-                )}
-              </div>
+
               <div className="grid gap-y-1 mt-2">
                 <label
                   htmlFor="account_number"
                   className="capitalize pl-3 lightText"
                 >
-                  Hero Image *
+                  Certificate Image *
                 </label>
                 <input
                   {...register("image")}
-                  placeholder="Banner Image"
+                  placeholder="Certificate Image"
                   name="image"
                   id="image"
                   className="w-full"
@@ -186,4 +166,4 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
   );
 };
 
-export default EditHero;
+export default EditCertificates;

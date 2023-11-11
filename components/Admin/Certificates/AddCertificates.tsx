@@ -14,26 +14,23 @@ import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
 import { min } from "moment";
 import HomeMaxIcon from "@mui/icons-material/HomeMax";
-import { HeroType } from "@/Types";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 type FormType = {
-  title: string;
-  description: string;
+  name: string;
   image?: FileList;
 };
 
 const schema: ZodType<FormType> = z.object({
-  title: z.string().min(3, { message: "Title is required" }),
-  description: z.string().min(3, { message: "Description is required" }),
+  name: z.string().min(3, { message: "Name is required" }),
   image: z.any(),
 });
 
 type PropType = {
-  hero: HeroType | undefined;
   refetch: () => void;
 };
 
-const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
+const AddCertificate: React.FC<PropType> = ({ refetch }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [data, setData] = useState();
@@ -44,10 +41,6 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
     reset,
   } = useForm<FormType>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      title: hero?.attributes.title,
-      description: hero?.attributes.description,
-    },
   });
 
   const [open, setOpen] = React.useState(false);
@@ -60,22 +53,19 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
     setOpen(false);
   };
 
-  const submitData = async (values: FormType) => {
+  const submitData = (values: FormType) => {
     setError("");
     setLoading(true);
     console.log(values);
 
     let formdata = new FormData();
-
-    if (values.title) formdata.append("title", values.title);
-    if (values.description) formdata.append("description", values.description);
-
+    formdata.append("name", values.name);
     if (values.image && values.image[0]) {
       formdata.append("image", values.image[0]);
     }
 
-    await api
-      .post(`/update-hero/${hero?.id}`, formdata)
+    api
+      .post(`/certificates`, formdata)
       .then((res) => {
         refetch();
         handleClose();
@@ -84,6 +74,7 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
       })
       .catch((err) => {
         setLoading(false);
+        console.log(err.message);
       })
       .finally(() => {
         setLoading(false);
@@ -93,8 +84,12 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
   return (
     <div>
       <Tooltip title="Edit" placement="top">
-        <button className="text-primary" onClick={handleClickOpen}>
-          <EditIcon fontSize="small" />
+        <button
+          className="text-white bg-primary rounded-full px-4 py-2 flex items-center justify-center gap-x-2"
+          onClick={handleClickOpen}
+        >
+          <span>Add Certifcation</span>
+          <BadgeIcon fontSize="small" />
         </button>
       </Tooltip>
 
@@ -104,62 +99,43 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Edit Hero Section"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Add Certification"}</DialogTitle>
         <DialogContent>
-          <form
-            onSubmit={handleSubmit(submitData)}
-            className="max-w-sm"
-            encType="multipart/form-data"
-          >
+          <form onSubmit={handleSubmit(submitData)} className="max-w-sm">
             <section className="grid gap-x-5 gap-y-1">
               <div>
                 <label htmlFor="title" className="capitalize pl-3 lightText">
-                  Title *
+                  Name *
                 </label>
                 <input
-                  {...register("title")}
+                  {...register("name")}
                   placeholder="Name"
-                  name="title"
-                  id="title"
+                  name="name"
+                  id="name"
                   className="w-full"
                 />
-                {errors?.title && (
+                {errors?.name && (
                   <small className="text-red-500 pl-2">
-                    {errors.title.message}
+                    {errors.name.message}
                   </small>
                 )}
               </div>
-              <div className="grid gap-y-1 mt-2">
-                <label
-                  htmlFor="description"
-                  className="capitalize pl-3 lightText"
-                >
-                  Description *
-                </label>
-                <textarea
-                  id="description"
-                  {...register("description")}
-                ></textarea>
-                {errors?.description && (
-                  <small className="text-red-500 pl-2">
-                    {errors.description.message}
-                  </small>
-                )}
-              </div>
+
               <div className="grid gap-y-1 mt-2">
                 <label
                   htmlFor="account_number"
                   className="capitalize pl-3 lightText"
                 >
-                  Hero Image *
+                  Cerificate Image *
                 </label>
                 <input
                   {...register("image")}
-                  placeholder="Banner Image"
+                  placeholder="Certificate Image"
                   name="image"
                   id="image"
                   className="w-full"
                   type="file"
+                  required
                 />
                 {errors?.image && (
                   <small className="text-red-500 pl-2">
@@ -175,7 +151,7 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
                 type="submit"
                 className="px-10 py-2 bg-primary text-white rounded-full flex items-center gap-x-2"
               >
-                <span>Update</span>
+                <span>Submit</span>
                 <span>{loading ? <Spinner /> : null}</span>
               </button>
             </div>
@@ -186,4 +162,4 @@ const EditHero: React.FC<PropType> = ({ refetch, hero }) => {
   );
 };
 
-export default EditHero;
+export default AddCertificate;

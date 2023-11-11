@@ -743,7 +743,6 @@ export interface Attributes {
   whatsUp?: string;
 }
 
-
 export interface Links {
   id: number;
   facebook: string;
@@ -752,4 +751,20 @@ export interface Links {
   whatsUp: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface CertifcationType {
+  data: Certifcate[];
+  links: Links;
+  meta: Meta;
+}
+
+export interface Certifcate {
+  id: string;
+  attributes: Attributes;
+}
+
+export interface Attributes {
+  name: string;
+  image: string;
 }

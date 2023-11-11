@@ -22,7 +22,7 @@ import ContactPageIcon from "@mui/icons-material/ContactPage";
 import HomeMaxIcon from "@mui/icons-material/HomeMax";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AddLinkIcon from "@mui/icons-material/AddLink";
-
+import BadgeIcon from "@mui/icons-material/Badge";
 type Anchor = "left";
 export default function AdminDrawer() {
   const { user } = useContext(AuthContext);
@@ -113,6 +113,16 @@ export default function AdminDrawer() {
                       <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
                         <AddLinkIcon />
                         <h3>Social Media</h3>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/admin/certificates"
+                      className="mt-1 shadow-sm py-2 h-min"
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <div className="flex gap-x-3 items-center border-b-[1] border-gray-400 px-7 gap-3">
+                        <BadgeIcon />
+                        <h3>certifications</h3>
                       </div>
                     </Link>
                     <Link
