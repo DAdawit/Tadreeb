@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Certificates = () => {
@@ -23,9 +24,12 @@ const Certificates = () => {
               ISO 29993:2017 certified training consultancy.
             </p>
             <div className="flex justify-center mt-8">
-              <button className="bg-primary h-10 xll:h-16 px-8 rounded-lg">
+              <Link
+                href="/certification"
+                className="bg-primary h-10 xll:h-16 px-8 rounded-lg flex items-center justify-center"
+              >
                 View All Certificates
-              </button>
+              </Link>
             </div>
           </div>
         </div>

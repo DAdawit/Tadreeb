@@ -4,8 +4,9 @@ import React from "react";
 
 type PropType = {
   title: string | undefined;
+  image?: string | undefined;
 };
-const ScheduleHero: React.FC<PropType> = ({ title }) => {
+const ScheduleHero: React.FC<PropType> = ({ title, image }) => {
   return (
     <>
       <div className="h-[70vh]  xl:max-h-[60vh] xll:max-h-[60vh] relative">
@@ -25,6 +26,19 @@ const ScheduleHero: React.FC<PropType> = ({ title }) => {
               <p className="text-sm mt-8 xxl:text-lg ">
                 Filter by Topic, Date, Duration and Format
               </p>
+              <div>
+                {image && image !== "" ? (
+                  <>
+                    <Image
+                      src={`http://127.0.0.1:8000/storage/${image}`}
+                      height={1000}
+                      width={1000}
+                      alt="certificate"
+                      className="h-36 w-36 object-contain"
+                    />
+                  </>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

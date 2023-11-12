@@ -64,11 +64,11 @@ const AboutUs = () => {
                   About Us
                 </h1>
                 <p className="text-white mt-8 text-center">
-                  About Us To provide exceptional training and consulting
-                  services that empower individuals and organizations to achieve
-                  their full potential. We strive to be the preferred partner of
-                  our clients by delivering high quality, customized solutions
-                  that address their unique needs and challenges.
+                  To provide exceptional training and consulting services that
+                  empower individuals and organizations to achieve their full
+                  potential. We strive to be the preferred partner of our
+                  clients by delivering high quality, customized solutions that
+                  address their unique needs and challenges.
                 </p>
                 <p className="text-white mt-8 text-center">
                   We are committed to continuously improving our services and

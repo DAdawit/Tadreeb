@@ -798,3 +798,51 @@ export interface Attributes {
   name: string;
   image: string;
 }
+
+export interface CertificationCoursesType {
+  id: number;
+  name: string;
+  image: string;
+  created_at: string;
+  updated_at: string;
+  courses: Courses;
+}
+
+export interface Courses {
+  current_page: number;
+  data: Daum[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface Daum {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  certificate_id: number;
+  start_date: string;
+  end_date: string;
+  created_at: string;
+  updated_at: string;
+  venue: Venue;
+}
+
+export interface Venue {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}

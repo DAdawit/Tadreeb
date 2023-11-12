@@ -45,7 +45,7 @@ export default function NavigationDrawer() {
     };
 
   return (
-    <div>
+    <div className="font-normal text-gray-700">
       {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
 
       {(["left"] as const).map((anchor) => (
@@ -123,7 +123,7 @@ export default function NavigationDrawer() {
                       Venues
                     </Link>
                     <Link
-                      href="#certification"
+                      href="/certification"
                       className="mt-1 py-1 h-min  w-full px-5 border-b-2 border-gray-200"
                       onClick={toggleDrawer("left", false)}
                     >

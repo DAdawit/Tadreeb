@@ -10,7 +10,7 @@ const Trainings = () => {
           <div className="grid justify-items-center md:flex md:justify-between px-5 gap-3">
             <Link
               href="/classroom-training"
-              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max"
+              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max w-[252px]"
             >
               <div className="flex items-center gap-x-2">
                 <div>
@@ -32,7 +32,7 @@ const Trainings = () => {
             </Link>
             <Link
               href="/online-training"
-              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max"
+              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max w-[252px]"
             >
               <div className="flex items-center gap-x-2">
                 <div>
@@ -52,7 +52,7 @@ const Trainings = () => {
             </Link>
             <Link
               href="/inhouse-training"
-              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max"
+              className="bg-primary text-white rounded-lg py-2 px-4  md:w-max w-[252px]"
             >
               <div className="flex items-center gap-x-2">
                 <div>

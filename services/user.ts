@@ -2,6 +2,7 @@ import {
   AllCoursesThisMonth,
   CategoryTrainings,
   CertifcationType,
+  CertificationCoursesType,
   ClassRootType,
   CourseWithScheduleType,
   FormatTypes,
@@ -146,6 +147,20 @@ export async function fetchCoursesByFormatId(id: string): Promise<VenueCouses> {
     .get(`/get-course-by-format/${id}`)
     .then((res) => {
       console.log(res.data);
+
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+export async function fetchCertificationCourses(
+  id: string
+): Promise<CertificationCoursesType> {
+  return await api
+    .get(`/get-certificate-courses/${id}`)
+    .then((res) => {
+      console.log(res.data.data);
 
       return res?.data.data;
     })

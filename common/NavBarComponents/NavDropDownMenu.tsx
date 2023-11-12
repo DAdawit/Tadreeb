@@ -11,9 +11,12 @@ type PropType = {
 const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
   return (
     <div className="group relative dropdown  px-4 text-white cursor-pointer  tracking-wide z-20">
-      <button className="text-white text-sm xl:text-lg xxl:text-3xl">
+      <Link
+        href={`${title}`}
+        className="text-white text-sm xl:text-lg xxl:text-3xl"
+      >
         {title}
-      </button>
+      </Link>
       <div className="group-hover:block dropdown-menu absolute hidden h-auto">
         <ul className="translate-y-2 top-1 w-auto bg-white shadow px-6 py-3 text-base">
           {pages &&
