@@ -46,7 +46,7 @@ const NavBar = async () => {
         </div>
         <div className="flex justify-end">
           <div className="md:hidden">
-            <NavigationDrawer />
+            <NavigationDrawer categories={categories} />
           </div>
           <div className="hidden md:flex flex-col justify-end gap-y-4">
             <div className="flex  justify-end w-full items-center gap-x-3">
