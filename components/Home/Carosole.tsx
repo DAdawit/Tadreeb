@@ -70,7 +70,7 @@ export default class Carosole extends Component<CarosoleProps> {
                     </div>
                     <div className="flex w-full py-5 md:justify-end  items-center ">
                       <div className="w-max pl-8 flex md:grid md:align-end pr-8 gap-2 md:justify-center">
-                        <SocialMeadiaIcons links={this.props.links} />
+                        <SocialMeadiaIcons />
                       </div>
                     </div>
                   </div>
