@@ -5,8 +5,7 @@ import Footer from "@/common/Footer";
 import { Toaster } from "react-hot-toast";
 import { ReactQueryProvider } from "./ReactQueryProvider";
 import AuthContextProvider from "@/context/AuthContext";
-import NavBar from "@/common/NavBarComponents/NavBar";
-// import NavBar from "@/common/Navbar";
+import HandleNav from "@/common/NavBarComponents/HandleNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +25,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <AuthContextProvider>
             <Toaster />
-            <NavBar />
+            <HandleNav />
             {children}
             <Footer />
           </AuthContextProvider>
