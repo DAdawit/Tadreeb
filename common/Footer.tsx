@@ -87,7 +87,7 @@ const Footer = () => {
               <div>
                 {pathname !== "/" ? (
                   <div className="flex gap-2">
-                    {/* <SocialMeadiaIcons  /> */}
+                    <SocialMeadiaIcons />
                   </div>
                 ) : (
                   <Image
