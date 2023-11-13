@@ -181,7 +181,7 @@ export async function fetchHeroSection(): Promise<HeroType[]> {
 }
 
 export async function getHeroSections() {
-  const res = await fetch("http://127.0.0.1:8000/api/hero-section", {
+  const res = await fetch("https://tadreeb.mozivol.com/api/hero-section", {
     next: {
       revalidate: 10,
     },
@@ -190,16 +190,19 @@ export async function getHeroSections() {
 }
 
 export async function getSocialMediaLinks() {
-  const res = await fetch("http://127.0.0.1:8000/api/get-social-media-links", {
-    next: {
-      revalidate: 10,
-    },
-  });
+  const res = await fetch(
+    "https://tadreeb.mozivol.com/api/get-social-media-links",
+    {
+      next: {
+        revalidate: 10,
+      },
+    }
+  );
   return res.json();
 }
 
 export async function getTrainigFormats(): Promise<VenueType> {
-  const res = await fetch("http://127.0.0.1:8000/api/get-formats", {
+  const res = await fetch("https://tadreeb.mozivol.com/api/get-formats", {
     next: {
       revalidate: 10,
     },
@@ -208,7 +211,7 @@ export async function getTrainigFormats(): Promise<VenueType> {
 }
 
 export async function getTrainingVenues(): Promise<VenueType> {
-  const res = await fetch("http://127.0.0.1:8000/api/get-venues", {
+  const res = await fetch("https://tadreeb.mozivol.com/api/get-venues", {
     next: {
       revalidate: 10,
     },
@@ -217,7 +220,7 @@ export async function getTrainingVenues(): Promise<VenueType> {
 }
 
 export async function getCertificates(): Promise<CertifcationType> {
-  const res = await fetch("http://127.0.0.1:8000/api/get-certificates", {
+  const res = await fetch("https://tadreeb.mozivol.com/api/get-certificates", {
     next: {
       revalidate: 10,
     },
@@ -225,11 +228,14 @@ export async function getCertificates(): Promise<CertifcationType> {
   return res.json();
 }
 export async function getTrainings(): Promise<FormatTypes> {
-  const res = await fetch("http://127.0.0.1:8000/api/category-trainings", {
-    next: {
-      revalidate: 10,
-    },
-  });
+  const res = await fetch(
+    "https://tadreeb.mozivol.com/api/category-trainings",
+    {
+      next: {
+        revalidate: 10,
+      },
+    }
+  );
   return res.json();
 }
 

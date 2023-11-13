@@ -1,12 +1,12 @@
 import { Links } from "@/Types";
+import { getSocialMediaLinks } from "@/services/user";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-type PropsType = {
-  links: Links;
-};
 
-const SocialMeadiaIcons: React.FC<PropsType> = ({ links }) => {
+const SocialMeadiaIcons: React.FC = async () => {
+  const links = await getSocialMediaLinks();
+
   return (
     <>
       <Link href={`${links?.linkedin}`} target="_blank">

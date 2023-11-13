@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { useRouter, usePathname } from "next/navigation";
 import SocialMeadiaIcons from "./SocialMeadiaIcons";
+// import SocialMeadiaIcons from "./SocialMeadiaIcons";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -86,7 +87,7 @@ const Footer = () => {
               <div>
                 {pathname !== "/" ? (
                   <div className="flex gap-2">
-                    <SocialMeadiaIcons />
+                    {/* <SocialMeadiaIcons  /> */}
                   </div>
                 ) : (
                   <Image

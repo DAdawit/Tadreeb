@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -7,29 +7,32 @@ import { NavLinks, TrainingType } from "../data";
 import SubMenuItemsList from "../SubMenuItemsList";
 import { usePathname } from "next/navigation";
 import {
-  fetchSearchTrainingFormats,
-  fetchSearchVenues,
   getCertificates,
   getTrainigFormats,
   getTrainingVenues,
   getTrainings,
 } from "@/services/user";
-// import { useQuery } from "@tanstack/react-query";
 import NavDropDownMenu from "./NavDropDownMenu";
-import NavDropDownMenuTrainingsMenu from "./NavDropDownMenuTrainingsMenu";
 import NavDropDownMenuTrainingsMenuTest from "./NavDropDownMenuTrainingsMenuTest";
+import { CertifcationType, FormatTypes, VenueType } from "@/Types";
+// import NavDropDownMenuTrainingsMenu from "./NavDropDownMenuTrainingsMenu";
+type PropsType = {
+  formats: VenueType | undefined;
+  venues: VenueType;
+  certificates: CertifcationType | undefined;
+  categories: FormatTypes | undefined;
+};
 
-const NavBar = async () => {
-  const formats = await getTrainigFormats();
-  const venues = await getTrainingVenues();
-  const certificates = await getCertificates();
-  const categories = await getTrainings();
-
-  // const pathname = usePathname();
-
-  // if (pathname.startsWith("/admin")) {
-  //   return null;
-  // }
+const NavBar: React.FC<PropsType> = ({
+  formats,
+  venues,
+  certificates,
+  categories,
+}) => {
+  const pathname = usePathname();
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
   return (
     <nav className="">
       <div className="px-8 xll:px-28 flex justify-between items-centers py-3">
@@ -122,30 +125,14 @@ const NavBar = async () => {
           >
             training calendar
           </Link>
-          {/* <Link
-            href="#training-course-calendar"
-            className="text-white text-sm xl:text-lg xxl:text-3xl"
-          >
-            training courses
-          </Link> */}
+
           <NavDropDownMenuTrainingsMenuTest
             title="training courses"
             categories={categories}
           />
-          {/* <NavDropDownMenuTrainingsMenu
-            title="training courses"
-            categories={categories}
-          /> */}
+
           <NavDropDownMenu title="venue" pages={venues} />
           <NavDropDownMenu title="certification" pages={certificates} />
-
-          {/* <Link
-            href="#certification"
-            className="text-white text-sm xl:text-lg xxl:text-3xl"
-          >
-            certification
-          </Link> */}
-
           <NavDropDownMenu title="format" pages={formats} />
         </div>
         <div className="bg-primary h-full flex items-center justify-center px-3">
