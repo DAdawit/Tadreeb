@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styles from "./loader.module.css";
 import { PageLoader } from "@/assets/icons/pageLoader";
 
 const Loader = () => {
