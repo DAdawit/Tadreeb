@@ -43,8 +43,8 @@ export default async function RootLayout({
           <AuthContextProvider>
             <Toaster />
             <NavBar />
-            <Home />
-            {/* {children} */}
+            {/* <Home /> */}
+            {children}
             <Footer />
           </AuthContextProvider>
         </ReactQueryProvider>
