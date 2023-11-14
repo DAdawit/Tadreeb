@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import api from "@/app/axios";
 import UserLogin from "@/components/Auth/UserLogin";
 import ResetPassword from "@/components/Auth/ResetPassword";
 import { AuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import PageLoader from "@/common/PageLoader";
 
 export default function Login() {
   const [login, setLogin] = useState<boolean>(true);

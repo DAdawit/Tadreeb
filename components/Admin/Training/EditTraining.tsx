@@ -1,12 +1,8 @@
 "use client";
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
@@ -16,13 +12,17 @@ import { notify } from "@/app/toast";
 import EditIcon from "@mui/icons-material/Edit";
 import { Tooltip } from "@mui/material";
 import { Spinner } from "@/assets/icons/Spinner";
-import { FormatType } from "@/Types";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@/services/admin";
+import dynamic from "next/dynamic";
 
+const TextEditorDescription = dynamic(
+  () => import("@/common/Editor/TextEditorDescription"),
+  { ssr: false }
+);
 type FormValues = {
   name: string;
-  description: string;
+  description?: string;
   category_id: string;
 };
 
@@ -30,16 +30,16 @@ type FormValues = {
 
 const schema: ZodType<FormValues> = z.object({
   name: z.string().min(1, "Name is required"),
-  description: z.string().min(1, "Description is required"),
+  // description: z.string().min(1, "Description is required"),
   category_id: z.string().min(1, "Category is required"),
 });
 
 type PropType = {
   refetch: () => void;
-  name: string;
-  category_id: string;
-  description: string;
-  id: string;
+  name: string | undefined;
+  category_id: string | undefined;
+  description: string | undefined;
+  id: string | undefined;
 };
 
 const EditTraining: React.FC<PropType> = ({
@@ -51,7 +51,8 @@ const EditTraining: React.FC<PropType> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [editError, setEditError] = useState<string>("");
-  // const [data, setData] = useState();
+  const [description2, setDescription2] = useState(description);
+
   const {
     register,
     handleSubmit,
@@ -83,7 +84,8 @@ const EditTraining: React.FC<PropType> = ({
   const submitData = async (values: FormValues) => {
     setEditError("");
     setLoading(true);
-    console.log(values);
+    // console.log(values);
+    values.description = description2;
 
     await api
       .put(`/trainings/${id}`, values)
@@ -185,11 +187,17 @@ const EditTraining: React.FC<PropType> = ({
                 >
                   Description *
                 </label>
-                <textarea
-                  id=""
-                  className="h-48"
-                  {...register("description")}
-                ></textarea>
+                <TextEditorDescription
+                  description={description2}
+                  setDescription={setDescription2}
+                />
+                {/* <ReactQuill
+                  style={{ height: "200px" }}
+                  theme="snow"
+                  value={description2}
+                  modules={toolbarOptions}
+                  onChange={setDescription2}
+                /> */}
 
                 {errors?.description && (
                   <small className="text-red-500 pl-2">
@@ -198,7 +206,7 @@ const EditTraining: React.FC<PropType> = ({
                 )}
               </div>
             </section>
-            <div className="flex items-center justify-center mt-7 max-w-sm mx-auto">
+            <div className="flex items-center justify-center mt-24 max-w-sm mx-auto">
               <button
                 type="submit"
                 className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"

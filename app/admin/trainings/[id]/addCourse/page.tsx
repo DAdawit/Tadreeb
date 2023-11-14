@@ -1,9 +1,6 @@
 "use client";
 import * as React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
@@ -13,49 +10,63 @@ import api from "@/app/axios";
 import { Spinner } from "@/assets/icons/Spinner";
 import { useQuery } from "@tanstack/react-query";
 import {
-  fetchCategories,
+  fetchCertifications,
   fetchTrainingFormats,
   fetchVenues,
 } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+
+import { useEffect, useMemo } from "react";
+import dynamic from "next/dynamic";
+const TextEditorDescription = dynamic(
+  () => import("@/common/Editor/TextEditorDescription"),
+  { ssr: false }
+);
+const TextEditorCourseOutline = dynamic(
+  () => import("@/common/Editor/TextEditorCourseOutline"),
+  { ssr: false }
+);
 type FormValues = {
   title: string;
-  fee: number;
-  description: string;
-  course_outline: string;
+  certificate_id: string;
+  description?: string;
+  course_outline?: string;
   start_date: string;
   end_date: string;
   venue_id: string;
   format_id: string;
-  training_id: string;
+  training_id?: string;
 };
 
 const schema: ZodType<FormValues> = z.object({
   title: z.string().min(1, "title is required"),
-  fee: z.number().min(1, "fee is required"),
-  description: z.string().min(1, "Description is required"),
-  course_outline: z.string().min(1, "Course Outline is required"),
+  certificate_id: z.string().min(1, "Certification is required"),
+  // description: z.string().min(1, "Description is required"),
+  // course_outline: z.string().min(1, "Course Outline is required"),
   start_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
     message: "start_date must be a valid date string",
   }),
   end_date: z.string().refine((value) => !isNaN(Date.parse(value)), {
     message: "end_date must be a valid date string",
   }),
-  venue_id: z.string(),
-  format_id: z.string(),
-  training_id: z.string(),
+  venue_id: z.string().min(1, { message: "Venue is required" }),
+  format_id: z.string().min(1, { message: "Training Format is required" }),
 });
 
 const Page: React.FC = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [addError, setAddError] = useState<string>("");
   const [open, setOpen] = React.useState(false);
+  const [description, setDescription] = useState("");
+  const [course_outline, SetCourseOutline] = useState("");
+  const [descriptionError, SetDescriptionError] = useState("");
+  const [courseError, SetCourseError] = useState("");
 
   const {
     data: venues,
@@ -75,6 +86,16 @@ const Page: React.FC = () => {
     queryKey: ["fetchTrainingFormats"],
     queryFn: fetchTrainingFormats,
   });
+
+  const {
+    data: certifications,
+    isLoading: loadingCertifications,
+    error: errorCertifications,
+    refetch: refetchCertifications,
+  } = useQuery({
+    queryKey: ["fetchCertifications"],
+    queryFn: fetchCertifications,
+  });
   const {
     register,
     handleSubmit,
@@ -84,46 +105,60 @@ const Page: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const submitData = async (values: FormValues) => {
+    // Manually validate description and course_outline
+    values.description = description;
+    values.course_outline = course_outline;
+    if (!description || description.trim() === "") {
+      SetDescriptionError("Description is required");
+      setLoading(false);
+      return;
+    }
+    if (!course_outline || course_outline.trim() === "") {
+      SetCourseError("Course outline is required");
+      setLoading(false);
+      return;
+    }
 
-  const handleClose = () => {
-    reset();
-    setOpen(false);
-  };
-
-  const submitData = (values: FormValues) => {
+    values.training_id = String(id) ?? "";
     setLoading(true);
     setAddError("");
-    console.log(values);
+    console.log("hello", values);
 
-    api
+    await api
       .post("/courses", values)
       .then((res) => {
         notify("training format added successfully", "success");
         reset();
-        handleClose();
         router.push(`/admin/trainings/${id}`);
       })
       .catch((err) => {
         notify(err.response.data.errors.detail[0], "error");
+        console.log("hello", err.message);
+        notify(err.response.data.errors.message, "error");
         setLoading(false);
       })
       .finally(() => {
         setLoading(false);
       });
   };
-
+  useEffect(() => {
+    document.title = "add course";
+  }, []);
   return (
-    <div>
+    <div className="mb-8">
       <div className="flex justify-center">
         <PageTitle title="Add Course" />
       </div>
 
       <form onSubmit={handleSubmit(submitData)} className="max-w-lg mx-auto">
         <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
-          <input type="hidden" value={id} {...register("training_id")} />
+          <input
+            type="hidden"
+            value={id}
+            disabled
+            {...register("training_id")}
+          />
 
           <div className="grid gap-y-1">
             <label
@@ -146,25 +181,7 @@ const Page: React.FC = () => {
               </small>
             )}
           </div>
-          <div className="grid gap-y-1">
-            <label
-              htmlFor="fee"
-              className="capitalize pl-3 lightText font-semibold"
-            >
-              Fee *
-            </label>
-            <input
-              {...register("fee", { valueAsNumber: true })}
-              placeholder="Payment Amount"
-              name="fee"
-              id="fee"
-              className="w-full"
-              type="number"
-            />
-            {errors?.fee && (
-              <small className="text-red-500 pl-2">{errors.fee.message}</small>
-            )}
-          </div>
+
           <div className="grid gap-y-1">
             <label
               htmlFor="start_date"
@@ -254,46 +271,66 @@ const Page: React.FC = () => {
               </small>
             )}
           </div>
+
           <div className="grid gap-y-1">
+            <label htmlFor="venue_id" className="capitalize pl-3 font-semibold">
+              Certification *
+            </label>
+
+            <select
+              id="certificate_id"
+              {...register("certificate_id")}
+              className="w-full"
+            >
+              <option value="" selected disabled>
+                select option
+              </option>
+              {certifications?.data.map((certification) => (
+                <option key={certification.id} value={certification.id}>
+                  {certification.attributes.name}
+                </option>
+              ))}
+            </select>
+            {errors?.certificate_id && (
+              <small className="text-red-500 pl-2">
+                {errors.certificate_id.message}
+              </small>
+            )}
+          </div>
+          <div className="grid gap-y-1 mt-5">
             <label
               htmlFor="description"
               className="capitalize pl-3 font-semibold"
             >
               Description *
             </label>
-            <textarea
-              id=""
-              className="h-48"
-              {...register("description")}
-            ></textarea>
 
-            {errors?.description && (
-              <small className="text-red-500 pl-2">
-                {errors.description.message}
-              </small>
+            <TextEditorDescription
+              description={description}
+              setDescription={setDescription}
+            />
+
+            {descriptionError !== "" && (
+              <small className="text-red-500 pl-2">{descriptionError}</small>
             )}
           </div>
-          <div className="grid gap-y-1">
+          <div className="grid gap-y-1 mt-16">
             <label
               htmlFor="course_outline"
               className="capitalize pl-3 font-semibold"
             >
               Course Outline *
             </label>
-            <textarea
-              id=""
-              className="h-48"
-              {...register("course_outline")}
-            ></textarea>
-
-            {errors?.course_outline && (
-              <small className="text-red-500 pl-2">
-                {errors.course_outline.message}
-              </small>
+            <TextEditorCourseOutline
+              course_outline={course_outline}
+              SetCourseOutline={SetCourseOutline}
+            />
+            {courseError !== "" && (
+              <small className="text-red-500 pl-2">{courseError}</small>
             )}
           </div>
         </section>
-        <div className="flex items-center justify-center mt-7 max-w-sm mx-auto">
+        <div className="flex items-center justify-center mt-24 max-w-sm mx-auto ">
           <button
             type="submit"
             className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"

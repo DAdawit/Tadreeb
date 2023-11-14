@@ -1,15 +1,13 @@
 "use client";
-import ConfirmApprove from "@/common/ConfirmApprove";
 import ConfirmDelete from "@/common/ConfirmDelete";
 import React, { useState } from "react";
-import EditSeedDialog from "../../EditSeedDialog";
-import { CourseType, FormatType, TrainingType } from "@/Types";
+import { CourseType } from "@/Types";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import EditTrainingFormat from "./EditCourse";
-import EditTraining from "./EditCourse";
+
 import Link from "next/link";
 import EditCourse from "./EditCourse";
+import { useParams } from "next/navigation";
 
 type PropType = {
   course: CourseType;
@@ -18,6 +16,7 @@ type PropType = {
 };
 
 const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
+  const { id } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
 
   const [deleteError, setdeleteError] = useState<string>("");
@@ -50,7 +49,7 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
 
         <td className="px-6 py-4 row-span-2">
           <Link
-            href={`/admin/trainings/${course.id}`}
+            href={`/admin/trainings/${id}/schedules/${course.id}`}
             className="hover:text-primary"
           >
             {course.title}
@@ -63,7 +62,7 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
           <div>{course?.venue.name}</div>
         </td>
         <td className="px-6 py-4 row-span-2">
-          <div>${course?.fee}</div>
+          <div>{course?.certificate.name}</div>
         </td>
 
         <td className="px-6 py-4 col-span-2 flex gap-2">
@@ -77,7 +76,6 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
             refetch={refetch}
             id={String(course.id)}
             title={course.title}
-            fee={course.fee}
             description={course.description}
             course_outline={course.course_outline}
             start_date={course.start_date}
@@ -85,6 +83,7 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
             venue_id={String(course.venue_id)}
             format_id={String(course.format_id)}
             training_id={String(course.training_id)}
+            certificate_id={String(course.certificate_id)}
           />
         </td>
       </tr>

@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import SocialMeadiaIcons from "./SocialMeadiaIcons";
-
-const Footer = () => {
+import { Links } from "@/Types";
+type PropsType = {
+  links: Links | undefined;
+};
+const Footer: React.FC = () => {
   const pathname = usePathname();
-  // console.log(pathname);
   if (pathname.startsWith("/admin")) {
     return null;
   }

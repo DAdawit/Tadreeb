@@ -1,23 +1,50 @@
-import Footer from "@/common/Footer";
+"use client";
 import AboutUs from "@/components/Home/AboutUs";
 import Certificates from "@/components/Home/Certificates";
-import Courses from "@/components/Home/Courses";
-import Hero from "@/components/Home/Hero";
 import Trainings from "@/components/Home/Trainings";
 import UpcomingCourses from "@/components/Home/UpcomingCourses";
+import CategoryTrainings from "@/components/Home/CategoryTrainings";
+import Carosole from "@/components/Home/Carosole";
+import { getHeroSections, getSocialMediaLinks } from "@/services/user";
+import { useQuery } from "@tanstack/react-query";
 
-export default function Home() {
+// const { data } = await getHeroSections();
+// const links = await getSocialMediaLinks();
+import { HeroType, Links } from "@/Types";
+import Loader from "@/common/Loader/Loader";
+
+type CarosoleProps = {
+  data: HeroType[];
+  links: Links;
+};
+const Home: React.FC = () => {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["getHeroSections"],
+    queryFn: getHeroSections,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="h-screen flex justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <main>
-      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
-
-      <Hero />
-      <div></div>
-      <Trainings />
-      <Courses />
-      <UpcomingCourses />
-      <Certificates />
-      <AboutUs />
+      {!isLoading && (
+        <>
+          <Carosole carosoles={data} />
+          <Trainings />
+          <CategoryTrainings />
+          <UpcomingCourses />
+          <Certificates />
+          <AboutUs />
+        </>
+      )}
     </main>
   );
-}
+};
+
+export default Home;
