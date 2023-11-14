@@ -11,7 +11,8 @@ import { useQuery } from "@tanstack/react-query";
 // const { data } = await getHeroSections();
 // const links = await getSocialMediaLinks();
 import { HeroType, Links } from "@/Types";
-import Loader from "@/common/Loader/loader";
+import Loader from "@/common/Loader/Loader";
+
 type CarosoleProps = {
   data: HeroType[];
   links: Links;
