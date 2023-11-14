@@ -27,12 +27,12 @@ const Page = () => {
           {certificates &&
             certificates?.data.map((certification) => (
               <div
-                key={certification.id}
+                key={certification?.id}
                 className="w-64 h-64 shadow-lg grid p-2"
               >
                 <div className="h-16 flex justify-center w-full ">
                   <Image
-                    src={`${certification.attributes.image}`}
+                    src={`${certification?.attributes.image}`}
                     height={1000}
                     width={1000}
                     alt="certificates"
@@ -41,10 +41,10 @@ const Page = () => {
                 </div>
 
                 <h1 className="text-center text-gray-700 mt-5">
-                  {certification.attributes.name}
+                  {certification?.attributes.name}
                 </h1>
                 <Link
-                  href={`/certification/${certification.id}`}
+                  href={`/certification/${certification?.id}`}
                   className=" w-full flex justify-center items-center bg-secondary text-white rounded-lg"
                 >
                   View Courses

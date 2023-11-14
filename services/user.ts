@@ -276,7 +276,7 @@ export async function getCertificates(): Promise<CertifcationType> {
   return await api
     .get(`/get-certificates`)
     .then((res) => {
-      return res?.data.data;
+      return res?.data;
     })
     .catch((err) => {
       return err;
