@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { ReactQueryProvider } from "./ReactQueryProvider";
 import AuthContextProvider from "@/context/AuthContext";
 import NavBar from "@/common/NavBarComponents/NavBar";
+import Home from "./page";
 // import Home from "./page";
 
 // import {
@@ -42,8 +43,8 @@ export default async function RootLayout({
           <AuthContextProvider>
             <Toaster />
             <NavBar />
-            {/* <Home /> */}
-            {children}
+            <Home />
+            {/* {children} */}
             <Footer />
           </AuthContextProvider>
         </ReactQueryProvider>
