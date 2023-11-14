@@ -20,9 +20,16 @@ import {
   fetchTrainingFormats,
   fetchVenues,
 } from "@/services/admin";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
 
+const TextEditorDescription = dynamic(
+  () => import("@/common/Editor/TextEditorDescription"),
+  { ssr: false }
+);
+const TextEditorCourseOutline = dynamic(
+  () => import("@/common/Editor/TextEditorCourseOutline"),
+  { ssr: false }
+);
 type FormValues = {
   title: string;
   certificate_id: string;
@@ -84,20 +91,6 @@ const EditCourse: React.FC<PropType> = ({
   const [description2, setDescription2] = useState(description);
   const [course_outline2, SetCourseOutline2] = useState(course_outline);
 
-  const toolbarOptions = {
-    toolbar: [
-      [{ font: [] }],
-      [{ header: [1, 2, 3] }],
-      ["bold", "italic", "underline", "strike"],
-      [{ color: [] }, { background: [] }],
-      [{ script: "sub" }, { script: "super" }],
-      ["blockquote", "code-block"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
-      ["link", "image", "video"],
-      ["clean"],
-    ],
-  };
   const {
     register,
     handleSubmit,
@@ -362,12 +355,9 @@ const EditCourse: React.FC<PropType> = ({
                 >
                   Description *
                 </label>
-                <ReactQuill
-                  style={{ height: "200px" }}
-                  theme="snow"
-                  modules={toolbarOptions}
-                  value={description2}
-                  onChange={setDescription2}
+                <TextEditorDescription
+                  description={description2}
+                  setDescription={setDescription2}
                 />
 
                 {errors?.description && (
@@ -383,12 +373,9 @@ const EditCourse: React.FC<PropType> = ({
                 >
                   Course Outline *
                 </label>
-                <ReactQuill
-                  style={{ height: "200px" }}
-                  theme="snow"
-                  modules={toolbarOptions}
-                  value={course_outline2}
-                  onChange={SetCourseOutline2}
+                <TextEditorCourseOutline
+                  course_outline={course_outline2}
+                  SetCourseOutline={SetCourseOutline2}
                 />
 
                 {errors?.course_outline && (

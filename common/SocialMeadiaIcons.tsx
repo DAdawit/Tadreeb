@@ -1,14 +1,28 @@
+"use client";
 import { Links } from "@/Types";
-import { getSocialMediaLinks } from "@/services/user";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getSocialMediaLinks } from "@/services/user";
 
-const SocialMeadiaIcons: React.FC = async () => {
-  const links = await getSocialMediaLinks();
-
+// type PropsType = {
+//   links: Links | undefined;
+// };
+const SocialMeadiaIcons: React.FC = () => {
+  const {
+    data: links,
+    isLoading: loadingLinks,
+    error: errorLinks,
+    refetch: refetchLinks,
+  } = useQuery({
+    queryKey: ["getSocialMediaLinks"],
+    queryFn: getSocialMediaLinks,
+  });
   return (
     <>
+      {/* <pre>{JSON.stringify(links, null, 2)}</pre> */}
+
       <Link href={`${links?.linkedin}`} target="_blank">
         <Image
           src="/linkedin.png"

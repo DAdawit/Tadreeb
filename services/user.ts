@@ -8,20 +8,20 @@ import {
   FormatTypes,
   HeroType,
   LatestCoursesType,
+  Links,
+  SocialMediaType,
   TrainingSearchType,
   TryType,
   VenueCouses,
   VenueType,
 } from "@/Types";
-import api from "@/app/axios";
-import { TrainingType } from "@/common/data";
+import api, { devBaseurl } from "@/app/axios";
 
 export async function fetchCategoryTrainings(): Promise<TryType[]> {
   return await api
     .get(`/category-trainings`)
     .then((res) => {
       console.log(res.data);
-
       return res?.data.data;
     })
     .catch((err) => {
@@ -180,74 +180,124 @@ export async function fetchHeroSection(): Promise<HeroType[]> {
     });
 }
 
-export async function getHeroSections() {
-  const res = await fetch("https://tadreeb.mozivol.com/api/hero-section", {
-    next: {
-      revalidate: 10,
-    },
-  });
-  return res.json();
+// prodBaseUrl;
+// devBaseurl;
+// export async function getHeroSections() {
+//   const res = await fetch(`${devBaseurl}/hero-section`, {
+//     next: {
+//       revalidate: 10,
+//     },
+//   });
+//   return res.json();
+// }
+
+export async function getHeroSections(): Promise<HeroType[]> {
+  return await api
+    .get(`/hero-section`)
+    .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
 }
 
-export async function getSocialMediaLinks() {
-  const res = await fetch(
-    "https://tadreeb.mozivol.com/api/get-social-media-links",
-    {
-      next: {
-        revalidate: 10,
-      },
-    }
-  );
-  return res.json();
+// export async function getSocialMediaLinks(): Promise<Links> {
+//   const res = await fetch(`${devBaseurl}/get-social-media-links`, {
+//     next: {
+//       revalidate: 10,
+//     },
+//   });
+//   return res.json();
+// }
+
+export async function getSocialMediaLinks(): Promise<Links> {
+  return await api
+    .get(`/get-social-media-links`)
+    .then((res) => {
+      return res?.data;
+    })
+    .catch((err) => {
+      return err;
+    });
 }
+
+// export async function getTrainigFormats(): Promise<VenueType> {
+//   const res = await fetch(`${devBaseurl}/get-formats`, {
+//     next: {
+//       revalidate: 10,
+//     },
+//   });
+//   return res.json();
+// }
 
 export async function getTrainigFormats(): Promise<VenueType> {
-  const res = await fetch("https://tadreeb.mozivol.com/api/get-formats", {
-    next: {
-      revalidate: 10,
-    },
-  });
-  return res.json();
+  return await api
+    .get(`/get-formats`)
+    .then((res) => {
+      console.log(res.data.data);
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
 }
+
+// export async function getTrainingVenues(): Promise<VenueType> {
+//   const res = await fetch(`${devBaseurl}/get-venues`, {
+//     next: {
+//       revalidate: 10,
+//     },
+//   });
+//   return res.json();
+// }
 
 export async function getTrainingVenues(): Promise<VenueType> {
-  const res = await fetch("https://tadreeb.mozivol.com/api/get-venues", {
-    next: {
-      revalidate: 10,
-    },
-  });
-  return res.json();
+  return await api
+    .get(`/get-venues`)
+    .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
 }
+
+// export async function getCertificates(): Promise<CertifcationType> {
+//   const res = await fetch(`${devBaseurl}/get-certificates`, {
+//     next: {
+//       revalidate: 10,
+//     },
+//   });
+//   return res.json();
+// }
 
 export async function getCertificates(): Promise<CertifcationType> {
-  const res = await fetch("https://tadreeb.mozivol.com/api/get-certificates", {
-    next: {
-      revalidate: 10,
-    },
-  });
-  return res.json();
+  return await api
+    .get(`/get-certificates`)
+    .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
 }
-export async function getTrainings(): Promise<FormatTypes> {
-  const res = await fetch(
-    "https://tadreeb.mozivol.com/api/category-trainings",
-    {
-      next: {
-        revalidate: 10,
-      },
-    }
-  );
-  return res.json();
-}
-
-// export async function fetchCategoryTrainings(): Promise<TryType[]> {
-//   return await api
-//     .get(`/category-trainings`)
-//     .then((res) => {
-//       console.log(res.data);
-
-//       return res?.data.data;
-//     })
-//     .catch((err) => {
-//       return err;
-//     });
+// export async function getTrainings(): Promise<FormatTypes> {
+//   const res = await fetch(`${devBaseurl}/category-trainings`, {
+//     next: {
+//       revalidate: 10,
+//     },
+//   });
+//   return res.json();
 // }
+
+export async function getTrainings(): Promise<FormatTypes[]> {
+  return await api
+    .get(`/category-trainings`)
+    .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}

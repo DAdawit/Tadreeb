@@ -53,7 +53,7 @@ const Page = () => {
           <tbody>
             {isLoading ? <Spinner /> : null}
             <>
-              {data?.courses.total === 0 && (
+              {data && data?.courses.total === 0 && (
                 <p>You have not added any Courses for this Training yet!.</p>
               )}
               {data?.courses.data &&

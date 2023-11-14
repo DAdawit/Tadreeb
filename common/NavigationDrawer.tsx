@@ -6,38 +6,13 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-// import SubMenuLists from "./SubMenuLists";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People";
-import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Groups3Icon from "@mui/icons-material/Groups3";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import RedeemIcon from "@mui/icons-material/Redeem";
-import PaidIcon from "@mui/icons-material/Paid";
-import TollIcon from "@mui/icons-material/Toll";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import MessageIcon from "@mui/icons-material/Message";
-import ForumIcon from "@mui/icons-material/Forum";
-import InboxIcon from "@mui/icons-material/Inbox";
-import OutboxIcon from "@mui/icons-material/Outbox";
-import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
-
-import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import PaymentsIcon from "@mui/icons-material/Payments";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import CloseIcon from "@mui/icons-material/Close";
-import SubMenu from "./NavBarComponents/SubMenus";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { FormatTypes } from "@/Types";
 type Anchor = "left";
 type PropsType = {
-  categories?: FormatTypes | undefined;
+  categories?: FormatTypes[] | undefined;
 };
 const NavigationDrawer: React.FC<PropsType> = ({ categories }) => {
   const [trainingCourse, setTrainingCourse] = useState<boolean>(false);
@@ -159,27 +134,30 @@ const NavigationDrawer: React.FC<PropsType> = ({ categories }) => {
                     <li className="px-3 py-2 ">
                       <div className="w-full">
                         <div className="grid gap-x-3 font-normal">
-                          {categories?.data.map((Category, index) => (
-                            <div key={index} className="grid">
-                              <h1 className="underline whitespace-nowrap text-base text-gray-500 underline-offset-4">
-                                {Category.name}
-                              </h1>
-                              <ul className=" ">
-                                {Category.trainings &&
-                                  Array.isArray(Category.trainings) &&
-                                  Category.trainings.map((training, index) => (
-                                    <li key={training.id}>
-                                      <Link
-                                        href={`/trainings/${training.id}/courses`}
-                                        className="text-gray-800 text-sm"
-                                      >
-                                        {training.name}
-                                      </Link>
-                                    </li>
-                                  ))}
-                              </ul>
-                            </div>
-                          ))}
+                          {categories &&
+                            categories?.map((Category, index) => (
+                              <div key={index} className="grid">
+                                <h1 className="underline whitespace-nowrap text-base text-gray-500 underline-offset-4">
+                                  {Category.name}
+                                </h1>
+                                <ul className=" ">
+                                  {Category.trainings &&
+                                    Array.isArray(Category.trainings) &&
+                                    Category.trainings.map(
+                                      (training, index) => (
+                                        <li key={training.id}>
+                                          <Link
+                                            href={`/trainings/${training.id}/courses`}
+                                            className="text-gray-800 text-sm"
+                                          >
+                                            {training.name}
+                                          </Link>
+                                        </li>
+                                      )
+                                    )}
+                                </ul>
+                              </div>
+                            ))}
                         </div>
                       </div>
                     </li>

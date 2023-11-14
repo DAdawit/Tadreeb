@@ -710,10 +710,6 @@ export interface StatisticsType {
 }
 
 export interface FormatTypes {
-  data: FormatType[];
-}
-
-export interface FormatType {
   id: string;
   name: string;
   created_at: string;

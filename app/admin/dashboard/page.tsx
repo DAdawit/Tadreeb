@@ -8,19 +8,12 @@ import PlaceIcon from "@mui/icons-material/Place";
 import CategoryIcon from "@mui/icons-material/Category";
 import ClassIcon from "@mui/icons-material/Class";
 import SchoolIcon from "@mui/icons-material/School";
-import MyEditor from "../trainings/addTraining/MyEditor";
-import { Editor, EditorState } from "draft-js";
-import "draft-js/dist/Draft.css";
 const Page = () => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["fetchStatistics"],
     queryFn: fetchStatistics,
   });
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
 
-  const onChange = (editorState: EditorState) => setEditorState(editorState);
   return (
     <>
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}

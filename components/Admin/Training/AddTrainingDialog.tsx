@@ -7,26 +7,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
 import { useState } from "react";
-import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import EditIcon from "@mui/icons-material/Edit";
-import { Tooltip } from "@mui/material";
-import { Spinner } from "@/assets/icons/Spinner";
 import { useQuery } from "@tanstack/react-query";
+import api from "@/app/axios";
+import PaymentIcon from "@mui/icons-material/Payment";
+import { Spinner } from "@/assets/icons/Spinner";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
 import { fetchCategories } from "@/services/admin";
-import dynamic from "next/dynamic";
 
-const TextEditorDescription = dynamic(
-  () => import("@/common/Editor/TextEditorDescription"),
-  { ssr: false }
-);
 type FormValues = {
   name: string;
-  description?: string;
   category_id: string;
+  description?: string;
 };
-
-// port=3307
 
 const schema: ZodType<FormValues> = z.object({
   name: z.string().min(1, "Name is required"),
@@ -34,101 +28,99 @@ const schema: ZodType<FormValues> = z.object({
   category_id: z.string().min(1, "Category is required"),
 });
 
-type PropType = {
+type propType = {
   refetch: () => void;
-  name: string | undefined;
-  category_id: string | undefined;
-  description: string | undefined;
-  id: string | undefined;
 };
 
-const EditTraining: React.FC<PropType> = ({
-  refetch,
-  name,
-  category_id,
-  description,
-  id,
-}) => {
+const AddTrainingDialog: React.FC<propType> = ({ refetch }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [editError, setEditError] = useState<string>("");
-  const [description2, setDescription2] = useState(description);
-
+  const [addError, setAddError] = useState<string>("");
+  const [open, setOpen] = useState(false);
+  const [editorState, setEditorState] = useState("");
+  const [description, setDescription] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormValues>({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      name: name,
-      category_id: category_id,
-      description: description,
-    },
-  });
+  } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
-  const { data, isLoading, error } = useQuery({
+  const toolbarOptions = {
+    toolbar: [
+      [{ font: [] }],
+      [{ header: [1, 2, 3] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      ["link"],
+      ["clean"],
+    ],
+  };
+
+  const {
+    data,
+    isLoading,
+    error,
+    refetch: refetchCategories,
+  } = useQuery({
     queryKey: ["fetchCategories"],
     queryFn: fetchCategories,
   });
-  const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    reset();
     setOpen(false);
   };
 
-  const submitData = async (values: FormValues) => {
-    setEditError("");
+  const submitData = (values: FormValues) => {
     setLoading(true);
-    // console.log(values);
-    values.description = description2;
+    setAddError("");
+    console.log(values);
+    values.description = description;
 
-    await api
-      .put(`/trainings/${id}`, values)
+    api
+      .post("/trainings", values)
       .then((res) => {
-        refetch();
-        handleClose();
-        notify("Training updated successfully !", "success");
+        notify("training format added successfully", "success");
         reset();
+        handleClose();
+        // router.push("/admin/trainings");
       })
       .catch((err) => {
+        notify(err.response.data.errors.detail[0], "error");
         setLoading(false);
-        console.log(err.message);
       })
       .finally(() => {
         setLoading(false);
       });
   };
-
   return (
     <div>
-      <Tooltip title="Edit" placement="top">
-        <button className="text-orange-500" onClick={handleClickOpen}>
-          <EditIcon fontSize="small" />
-        </button>
-      </Tooltip>
+      <button
+        className="bg-primary text-white px-5 py-2 rounded-full flex justify-center items-center gap-x-2 transition-all hover:-translate-y-1"
+        onClick={handleClickOpen}
+      >
+        <h3>Add Training Format</h3>
+        <PaymentIcon />
+      </button>
 
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        PaperProps={{
-          style: {
-            width: "80%", // or any value you want
-            maxWidth: "none", // optional, if you want to remove the maxWidth limit
-          },
-        }}
       >
-        <DialogTitle id="alert-dialog-title">{"Edit Training"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Add Training"}</DialogTitle>
         <DialogContent>
           <form
             onSubmit={handleSubmit(submitData)}
-            className="max-w-2xl mx-auto"
+            className="max-w-lg mx-auto"
           >
             <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
               <div className="grid gap-y-1">
@@ -169,8 +161,8 @@ const EditTraining: React.FC<PropType> = ({
                     select option
                   </option>
                   {data?.data.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.attributes.name}
+                    <option key={category?.id} value={category?.id}>
+                      {category?.attributes.name}
                     </option>
                   ))}
                 </select>
@@ -180,23 +172,19 @@ const EditTraining: React.FC<PropType> = ({
                   </small>
                 )}
               </div>
-              <div className="grid gap-y-1">
+              <div className="grid gap-y-1 mt-5">
                 <label
                   htmlFor="description"
                   className="capitalize pl-3 font-semibold"
                 >
                   Description *
                 </label>
-                <TextEditorDescription
-                  description={description2}
-                  setDescription={setDescription2}
-                />
                 {/* <ReactQuill
                   style={{ height: "200px" }}
                   theme="snow"
-                  value={description2}
+                  value={description}
                   modules={toolbarOptions}
-                  onChange={setDescription2}
+                  onChange={setDescription}
                 /> */}
 
                 {errors?.description && (
@@ -206,12 +194,12 @@ const EditTraining: React.FC<PropType> = ({
                 )}
               </div>
             </section>
-            <div className="flex items-center justify-center mt-24 max-w-sm mx-auto">
+            <div className="flex items-center justify-center mt-24 max-w-sm mx-auto pb-16">
               <button
                 type="submit"
                 className="px-10 py-2 bg-primary text-white rounded-full flex justify-center w-full items-center gap-2"
               >
-                <span>Update</span>
+                <span>Submit</span>
                 <span className="text-white">
                   {loading ? <Spinner /> : null}
                 </span>
@@ -224,4 +212,4 @@ const EditTraining: React.FC<PropType> = ({
   );
 };
 
-export default EditTraining;
+export default AddTrainingDialog;

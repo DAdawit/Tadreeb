@@ -2,11 +2,8 @@
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
-
 import { useState } from "react";
-
 import { fetchCategoryTrainings } from "@/services/user";
-
 const CategoryTrainings = () => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["fetchCategoryTrainings"],

@@ -11,12 +11,13 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
 import { useRouter } from "next/navigation";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import EditorComponent from "./MyEditor";
-import MyEditor from "./MyEditor";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+import { useEffect } from "react";
+// import TextEditorDescription from "@/common/Editor/TextEditorDescription";
+const TextEditorDescription = dynamic(
+  () => import("@/common/Editor/TextEditorDescription"),
+  { ssr: false }
+);
 type FormValues = {
   name: string;
   category_id: string;
@@ -93,6 +94,9 @@ const Page: React.FC = () => {
         setLoading(false);
       });
   };
+  useEffect(() => {
+    document.title = "add training";
+  }, []);
 
   return (
     <div>
@@ -138,8 +142,8 @@ const Page: React.FC = () => {
                 select option
               </option>
               {data?.data.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.attributes.name}
+                <option key={category?.id} value={category?.id}>
+                  {category?.attributes.name}
                 </option>
               ))}
             </select>
@@ -156,12 +160,9 @@ const Page: React.FC = () => {
             >
               Description *
             </label>
-            <ReactQuill
-              style={{ height: "200px" }}
-              theme="snow"
-              value={description}
-              modules={toolbarOptions}
-              onChange={setDescription}
+            <TextEditorDescription
+              description={description}
+              setDescription={setDescription}
             />
 
             {errors?.description && (

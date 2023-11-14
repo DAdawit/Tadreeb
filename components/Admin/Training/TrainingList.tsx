@@ -9,7 +9,7 @@ import Link from "next/link";
 import AdminCourseDescriptions from "../AdminCourseDescriptions";
 
 type PropType = {
-  training: TrainingType;
+  training: TrainingType | undefined;
   index: number;
   refetch: () => void;
 };
@@ -47,14 +47,14 @@ const TrainingList: React.FC<PropType> = ({ training, index, refetch }) => {
 
         <td className="px-6 py-4 row-span-2">
           <Link
-            href={`/admin/trainings/${training.id}`}
+            href={`/admin/trainings/${training?.id}`}
             className="hover:text-primary whitespace-nowrap"
           >
             {training?.attributes.name}
           </Link>
         </td>
         <td className="px-6 py-4 row-span-2 whitespace-nowrap">
-          <div>{training?.attributes.category.name}</div>
+          <div>{training?.attributes?.category.name}</div>
         </td>
         <td className="px-6 py-4 row-span-2">
           <AdminCourseDescriptions
@@ -72,16 +72,16 @@ const TrainingList: React.FC<PropType> = ({ training, index, refetch }) => {
         <td className="px-6 py-4 col-span-2 flex gap-2">
           <ConfirmDelete
             confirm={confirm}
-            id={training.id}
+            id={String(training?.id)}
             text="Are you sure you went to delete !"
             loading={loading}
           />
           <EditTraining
             name={training?.attributes?.name}
-            category_id={training.attributes.category.id}
-            description={training.attributes.description}
+            category_id={String(training?.attributes?.category.id)}
+            description={training?.attributes?.description}
             refetch={refetch}
-            id={training.id}
+            id={String(training?.id)}
           />
         </td>
       </tr>

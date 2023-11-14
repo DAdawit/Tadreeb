@@ -17,8 +17,17 @@ import {
 import PageTitle from "@/common/PageTitle";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+
+import { useEffect, useMemo } from "react";
+import dynamic from "next/dynamic";
+const TextEditorDescription = dynamic(
+  () => import("@/common/Editor/TextEditorDescription"),
+  { ssr: false }
+);
+const TextEditorCourseOutline = dynamic(
+  () => import("@/common/Editor/TextEditorCourseOutline"),
+  { ssr: false }
+);
 type FormValues = {
   title: string;
   certificate_id: string;
@@ -49,21 +58,6 @@ const schema: ZodType<FormValues> = z.object({
 const Page: React.FC = () => {
   const { id } = useParams();
   // console.log(id);
-
-  const toolbarOptions = {
-    toolbar: [
-      [{ font: [] }],
-      [{ header: [1, 2, 3] }],
-      ["bold", "italic", "underline", "strike"],
-      [{ color: [] }, { background: [] }],
-      [{ script: "sub" }, { script: "super" }],
-      ["blockquote", "code-block"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
-      ["link"],
-      ["clean"],
-    ],
-  };
 
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
@@ -148,7 +142,9 @@ const Page: React.FC = () => {
         setLoading(false);
       });
   };
-
+  useEffect(() => {
+    document.title = "add course";
+  }, []);
   return (
     <div className="mb-8">
       <div className="flex justify-center">
@@ -308,12 +304,10 @@ const Page: React.FC = () => {
             >
               Description *
             </label>
-            <ReactQuill
-              style={{ height: "200px" }}
-              theme="snow"
-              value={description}
-              modules={toolbarOptions}
-              onChange={setDescription}
+
+            <TextEditorDescription
+              description={description}
+              setDescription={setDescription}
             />
 
             {descriptionError !== "" && (
@@ -327,12 +321,9 @@ const Page: React.FC = () => {
             >
               Course Outline *
             </label>
-            <ReactQuill
-              style={{ height: "200px" }}
-              theme="snow"
-              value={course_outline}
-              modules={toolbarOptions}
-              onChange={SetCourseOutline}
+            <TextEditorCourseOutline
+              course_outline={course_outline}
+              SetCourseOutline={SetCourseOutline}
             />
             {courseError !== "" && (
               <small className="text-red-500 pl-2">{courseError}</small>

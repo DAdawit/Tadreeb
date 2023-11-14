@@ -8,7 +8,6 @@ import {
   StatisticsType,
   TrainingCoursesType,
   TrainingScheduleType,
-  TrainingType,
   TrainingTypes,
   VenueType,
 } from "@/Types";

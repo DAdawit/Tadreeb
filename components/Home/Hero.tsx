@@ -1,4 +1,3 @@
-import SocialMeadiaIcons from "@/common/SocialMeadiaIcons";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -53,7 +52,7 @@ const Hero = () => {
             </div>
             <div className="flex w-full py-5 md:justify-end  items-center ">
               <div className="w-max pl-8 flex md:grid md:align-end pr-8 gap-2 md:justify-center">
-                <SocialMeadiaIcons />
+                {/* <SocialMeadiaIcons /> */}
               </div>
             </div>
           </div>

@@ -19,9 +19,11 @@ const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
       </Link>
       <div className="group-hover:block dropdown-menu absolute hidden h-auto">
         <ul className="translate-y-2 top-1 w-auto bg-white shadow px-6 py-3 text-base">
+          {/* <pre>{JSON.stringify(pages, null, 2)}</pre> */}
+
           {pages &&
-            Array.isArray(pages.data) &&
-            pages.data.map((page, index) => (
+            Array.isArray(pages) &&
+            pages.map((page, index) => (
               <li key={page.id}>
                 <Link
                   href={`/${title}/${page.id}`}

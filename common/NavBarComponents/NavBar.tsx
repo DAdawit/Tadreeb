@@ -1,38 +1,71 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import NavigationDrawer from "../NavigationDrawer";
-import { NavLinks, TrainingType } from "../data";
-import SubMenuItemsList from "../SubMenuItemsList";
 import { usePathname } from "next/navigation";
+import NavDropDownMenu from "./NavDropDownMenu";
+import NavDropDownMenuTrainingsMenuTest from "./NavDropDownMenuTrainingsMenuTest";
+import { CertifcationType, FormatTypes, VenueType } from "@/Types";
+import { useQuery } from "@tanstack/react-query";
 import {
   getCertificates,
   getTrainigFormats,
   getTrainingVenues,
   getTrainings,
 } from "@/services/user";
-import NavDropDownMenu from "./NavDropDownMenu";
-import NavDropDownMenuTrainingsMenuTest from "./NavDropDownMenuTrainingsMenuTest";
-import { CertifcationType, FormatTypes, VenueType } from "@/Types";
-// import NavDropDownMenuTrainingsMenu from "./NavDropDownMenuTrainingsMenu";
-type PropsType = {
-  formats: VenueType | undefined;
-  venues: VenueType;
-  certificates: CertifcationType | undefined;
-  categories: FormatTypes | undefined;
-};
 
-const NavBar: React.FC<PropsType> = ({
-  formats,
-  venues,
-  certificates,
-  categories,
-}) => {
+// type PropsType = {
+//   formats: VenueType | undefined;
+//   venues: VenueType | undefined;
+//   certificates: CertifcationType | undefined;
+//   categories: FormatTypes | undefined;
+// };
+
+const NavBar: React.FC = () => {
+  const {
+    data: formats,
+    isLoading: loadingFormats,
+    error: errorFormats,
+    refetch: refetchFormats,
+  } = useQuery({
+    queryKey: ["getTrainigFormats"],
+    queryFn: getTrainigFormats,
+  });
+
+  const {
+    data: venues,
+    isLoading: loadingVenues,
+    error: errorVenues,
+    refetch: refetchVenues,
+  } = useQuery({
+    queryKey: ["getTrainingVenues"],
+    queryFn: getTrainingVenues,
+  });
+  const {
+    data: certificates,
+    isLoading: loadingCertificates,
+    error: errorCertificates,
+    refetch: refetchCertificates,
+  } = useQuery({
+    queryKey: ["certificates"],
+    queryFn: getCertificates,
+  });
+  const {
+    data: categories,
+    isLoading: loadingCategories,
+    error: errorCategories,
+    refetch: refetchCategories,
+  } = useQuery({
+    queryKey: ["getTrainings"],
+    queryFn: getTrainings,
+  });
+
   const pathname = usePathname();
   if (pathname.startsWith("/admin")) {
     return null;
   }
+
   return (
     <nav className="">
       <div className="px-8 xll:px-28 flex justify-between items-centers py-3">
@@ -141,6 +174,7 @@ const NavBar: React.FC<PropsType> = ({
           </button>
         </div>
       </div>
+      {/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
     </nav>
   );
 };
