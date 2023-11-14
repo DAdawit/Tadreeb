@@ -3,10 +3,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
-import TrainingFormatsList from "@/components/Admin/TrainingFormats/TrainingFormatsList";
-
 import { Spinner } from "@/assets/icons/Spinner";
-import VenueList from "@/components/Admin/Venues/VenueList";
 import AddCategories from "@/components/Admin/TrainingCategories/AddCategories";
 import CategoryList from "@/components/Admin/TrainingCategories/CategoryList";
 
@@ -17,10 +14,10 @@ const Page = () => {
   });
 
   return (
-    <div>
+    <div className="min-h-screeen py-8 container mx-auto px-5">
       <PageTitle title="Training Categories" />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      <div className="container mx-auto flex justify-end py-8">
+      <div className="container mx-auto flex justify-end py-5">
         <AddCategories refetch={() => refetch()} />
       </div>
       <div className="relative overflow-x-auto min-h-screen px-7">

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import SearchCourse from "./SearchCourse";
+import SearchCourse from "../../common/SearchCourse";
 
 const CategoryHero = () => {
   return (

@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -9,11 +8,8 @@ import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
 import { useState } from "react";
 import { notify } from "@/app/toast";
-import SecurityIcon from "@mui/icons-material/Security";
-import { useContext } from "react";
 import api from "@/app/axios";
 import PaymentIcon from "@mui/icons-material/Payment";
-import { AuthContext } from "@/context/AuthContext";
 import { Spinner } from "@/assets/icons/Spinner";
 type FormValues = {
   name: string;

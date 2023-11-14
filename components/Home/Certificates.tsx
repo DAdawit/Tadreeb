@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Certificates = () => {
   return (
     <>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 justify-items-center text-white"
+        className="grid grid-cols-1 lg:grid-cols-2 justify-items-center text-white"
         id="certification"
       >
         <div className="bg-[#2F2F2F] py-16">
@@ -23,9 +24,12 @@ const Certificates = () => {
               ISO 29993:2017 certified training consultancy.
             </p>
             <div className="flex justify-center mt-8">
-              <button className="bg-primary h-10 xll:h-16 px-8 rounded-lg">
+              <Link
+                href="/certification"
+                className="bg-primary h-10 xll:h-16 px-8 rounded-lg flex items-center justify-center"
+              >
                 View All Certificates
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -36,28 +40,28 @@ const Certificates = () => {
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
             <Image
               src="/image 10.png"
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
             <Image
               src="/image 11.png"
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
             <Image
               src="/image 12.png"
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
           </div>
           <div className="flex gap-2 mt-8 px-8 justify-center">
@@ -66,21 +70,21 @@ const Certificates = () => {
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
             <Image
               src="/image 14.png"
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-52 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-52 object-fill"
             />
             <Image
               src="/image 15.png"
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
           </div>
           <div className="flex gap-2 mt-8 px-8 justify-center">
@@ -89,14 +93,14 @@ const Certificates = () => {
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
             <Image
               src="/image 17.png"
               height={1000}
               width={1000}
               alt="certificates"
-              className="h-24 xll:h-32 w-28 object-fill"
+              className="h-20 sm:h-24 xll:h-32 w-20 sm:w-28 object-fill"
             />
           </div>
         </div>

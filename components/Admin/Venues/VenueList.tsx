@@ -1,12 +1,9 @@
 "use client";
-import ConfirmApprove from "@/common/ConfirmApprove";
 import ConfirmDelete from "@/common/ConfirmDelete";
 import React, { useState } from "react";
-import EditSeedDialog from "../../EditSeedDialog";
 import { FormatType } from "@/Types";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import EditTrainingFormat from "./EditVenue";
 import EditVenue from "./EditVenue";
 
 type PropType = {

@@ -35,6 +35,7 @@ const config: Config = {
         textFooter: "#595959",
         footerHeader: "#535353",
       },
+      display: ["group-hover"],
     },
   },
   plugins: [require("@tailwindcss/forms")],
