@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 // const { data } = await getHeroSections();
 // const links = await getSocialMediaLinks();
 import { HeroType, Links } from "@/Types";
+import Loader from "@/common/Loader/loader";
 type CarosoleProps = {
   data: HeroType[];
   links: Links;
@@ -21,16 +22,26 @@ const Home: React.FC = () => {
     queryFn: getHeroSections,
   });
 
+  if (isLoading) {
+    return (
+      <div className="h-screen flex justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <main>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      {/* <pre>{JSON.stringify(links, null, 2)}</pre> */}
-      <Carosole carosoles={data} />
-      <Trainings />
-      <CategoryTrainings />
-      <UpcomingCourses />
-      <Certificates />
-      <AboutUs />
+      {!isLoading && (
+        <>
+          <Carosole carosoles={data} />
+          <Trainings />
+          <CategoryTrainings />
+          <UpcomingCourses />
+          <Certificates />
+          <AboutUs />
+        </>
+      )}
     </main>
   );
 };
