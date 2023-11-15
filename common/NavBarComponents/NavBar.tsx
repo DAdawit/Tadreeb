@@ -174,7 +174,7 @@ const NavBar: React.FC = () => {
           </button>
         </div>
       </div>
-      {/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(certificates, null, 2)}</pre> */}
     </nav>
   );
 };
