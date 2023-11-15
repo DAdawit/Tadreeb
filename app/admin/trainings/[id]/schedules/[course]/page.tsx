@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCourseSchedules } from "@/services/admin";
@@ -8,17 +8,31 @@ import SchedulesList from "@/components/Admin/Schedules/SchedulesList";
 import AddSchedule from "@/components/Admin/Schedules/AddSchedule";
 import PageTitle from "@/common/PageTitle";
 import Link from "next/link";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
   const { course } = useParams();
   const { id } = useParams();
 
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchCourseSchedules", course],
-    queryFn: () => fetchCourseSchedules(course as string),
+    queryKey: ["fetchCourseSchedules", course, current_page],
+    queryFn: () =>
+      fetchCourseSchedules(course as string, current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
       <div className="container mx-auto flex">
         <PageTitle title={`${data?.title}`} />
       </div>
@@ -71,6 +85,11 @@ const Page = () => {
           </tbody>
         </table>
       </div>
+      <PaginationComponent
+        count={data?.schedules.last_page}
+        page={data?.schedules.current_page}
+        handleChange={handlePageChange}
+      />
     </div>
   );
 };

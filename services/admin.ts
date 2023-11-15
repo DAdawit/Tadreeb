@@ -57,10 +57,11 @@ export async function fetchTrainings(page: number): Promise<TrainingTypes> {
 }
 
 export async function fetchTrainingCourses(
-  id: string
+  id: string,
+  page: number
 ): Promise<TrainingCoursesType> {
   return await api
-    .get(`/training-courses/${id}`)
+    .get(`/training-courses/${id}?page=${page}`)
     .then((res) => {
       return res?.data.data;
     })
@@ -70,10 +71,11 @@ export async function fetchTrainingCourses(
 }
 
 export async function fetchCourseSchedules(
-  id: string
+  id: string,
+  page?: number
 ): Promise<TrainingScheduleType> {
   return await api
-    .get(`/course-schedules/${id}`)
+    .get(`/course-schedules/${id}?page=${page}`)
     .then((res) => {
       console.log(res.data);
 

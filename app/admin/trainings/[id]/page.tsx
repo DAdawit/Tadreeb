@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrainingCourses } from "@/services/admin";
 import { useParams } from "next/navigation";
@@ -7,18 +7,29 @@ import PageTitle from "@/common/PageTitle";
 import Link from "next/link";
 import CoursesList from "@/components/Admin/Courses/CoursesList";
 import { Spinner } from "@/assets/icons/Spinner";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
   const { id } = useParams();
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchTrainingCourses", id],
-    queryFn: () => fetchTrainingCourses(id as string),
+    queryKey: ["fetchTrainingCourses", id, current_page],
+    queryFn: () => fetchTrainingCourses(id as string, current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
       <PageTitle title={`${data?.name}`} />
-      {/* {data?.category_id} */}
       <div className="container mx-auto px-5 flex justify-between py-5">
         <Link
           href={`/admin/trainings`}
@@ -77,7 +88,11 @@ const Page = () => {
           </tbody>
         </table>
       </div>
-
+      <PaginationComponent
+        count={data?.courses?.last_page}
+        page={data?.courses.current_page}
+        handleChange={handlePageChange}
+      />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </div>
   );
