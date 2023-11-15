@@ -88,6 +88,7 @@ const Page = () => {
           </tbody>
         </table>
       </div>
+
       <PaginationComponent
         count={data?.courses?.last_page}
         page={data?.courses.current_page}

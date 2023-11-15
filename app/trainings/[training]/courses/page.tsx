@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { fetchTrainingCourses } from "@/services/admin";
@@ -7,13 +7,25 @@ import Description from "@/common/Description";
 import Link from "next/link";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
 import BookCourse from "@/common/BookCourse";
-
+import PaginationComponent from "@/common/Pagination/Pagination";
 const Page = () => {
   const { training } = useParams();
+  const { id } = useParams();
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchTraining", training],
-    queryFn: () => fetchTrainingCourses(training as string),
+    queryKey: ["fetchTrainingCourses", training, current_page],
+    queryFn: () =>
+      fetchTrainingCourses(training as string, current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
   return (
     <div>
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
@@ -75,6 +87,14 @@ const Page = () => {
           </tbody>
         </table>
       </div>
+      {(data?.courses.next_page_url !== null ||
+        data?.courses.prev_page_url !== null) && (
+        <PaginationComponent
+          count={data?.courses?.last_page}
+          page={data?.courses.current_page}
+          handleChange={handlePageChange}
+        />
+      )}
 
       <Description description={data?.description} />
     </div>

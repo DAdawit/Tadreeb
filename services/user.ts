@@ -40,9 +40,11 @@ export async function fetchLatestCourses(): Promise<LatestCoursesType[]> {
       return err;
     });
 }
-export async function fetchCoursesWithSchedule(): Promise<CourseWithScheduleType> {
+export async function fetchCoursesWithSchedule(
+  page: number
+): Promise<CourseWithScheduleType> {
   return await api
-    .get(`/courses-with-schedule`)
+    .get(`/courses-with-schedule?page=${page}`)
     .then((res) => {
       // console.log(res.data);
       return res?.data.data;

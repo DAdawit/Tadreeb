@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Spinner } from "@/assets/icons/Spinner";
 import CourseCalenderHero from "@/common/Heros/CourseCalenderHero";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
@@ -7,15 +8,31 @@ import { fetchCoursesWithSchedule } from "@/services/user";
 import { useQuery } from "@tanstack/react-query";
 
 import React from "react";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchCourseSchedules"],
-    queryFn: fetchCoursesWithSchedule,
+    queryKey: ["fetchCoursesWithSchedule", current_page],
+    queryFn: () => fetchCoursesWithSchedule(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
+  // const { data, isLoading, error, refetch } = useQuery({
+  //   queryKey: ["fetchCourseSchedules"],
+  //   queryFn: fetchCoursesWithSchedule,
+  // });
   return (
     <div>
       <CourseCalenderHero title="Training Course Calendar" />
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
 
       <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
         <h1 className="mt-5 text-2xl xll:text-3xl">NOVEMBER 2023</h1>
@@ -42,6 +59,13 @@ const Page = () => {
           </tbody>
         </table>
       </div>
+      {(data?.next_page_url !== null || data?.prev_page_url !== null) && (
+        <PaginationComponent
+          count={data?.last_page}
+          page={data?.current_page}
+          handleChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
