@@ -55,7 +55,7 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
             {course.title}
           </Link>
         </td>
-        <td className="px-6 py-4 row-span-2">
+        <td className="px-6 py-4 row-span-2 whitespace-nowrap">
           {course.start_date}- {course.end_date}
         </td>
         <td className="px-6 py-4 row-span-2">
