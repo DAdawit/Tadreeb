@@ -65,9 +65,11 @@ export async function fetchSearchTrainings(): Promise<TrainingSearchType> {
     });
 }
 
-export async function fetchSearchTrainingFormats(): Promise<VenueType> {
+export async function fetchSearchTrainingFormats(
+  page: number
+): Promise<VenueType> {
   return await api
-    .get("/get-formats")
+    .get(`/get-formats?page=${page}`)
     .then((res) => {
       return res?.data;
     })
@@ -147,9 +149,12 @@ export async function fetchCoursesByVenueId(
     });
 }
 
-export async function fetchCoursesByFormatId(id: string): Promise<VenueCouses> {
+export async function fetchCoursesByFormatId(
+  id: string,
+  page: number
+): Promise<VenueCouses> {
   return await api
-    .get(`/get-course-by-format/${id}`)
+    .get(`/get-course-by-format/${id}?page=${page}`)
     .then((res) => {
       console.log(res.data);
 

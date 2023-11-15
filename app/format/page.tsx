@@ -1,23 +1,34 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchSearchTrainingFormats } from "@/services/user";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
 import Link from "next/link";
+import PaginationComponent from "@/common/Pagination/Pagination";
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const {
     data: formats,
     isLoading: formatsLoading,
     error: formatError,
     refetch: formatsRefetch,
   } = useQuery({
-    queryKey: ["fetchTrainingFormats"],
-    queryFn: fetchSearchTrainingFormats,
+    queryKey: ["fetchTrainingFormats", current_page],
+    queryFn: () => fetchSearchTrainingFormats(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div>
       <ScheduleHero title={"Our Training Formats"} />
+      {/* <pre>{JSON.stringify(formats, null, 2)}</pre> */}
 
       <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
         <table className="text-center w-full mt-8 overflow-x-auto">
@@ -60,6 +71,13 @@ const Page = () => {
           </tbody>
         </table>
       </div>
+      {(formats?.links.next !== null || formats?.links.prev !== null) && (
+        <PaginationComponent
+          count={formats?.meta.last_page}
+          page={current_page}
+          handleChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
