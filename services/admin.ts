@@ -24,9 +24,9 @@ export async function fetchTrainingFormats(): Promise<FormatsType> {
     });
 }
 
-export async function fetchVenues(): Promise<VenueType> {
+export async function fetchVenues(id: number): Promise<VenueType> {
   return await api
-    .get("/venues")
+    .get(`/venues?page=${id}`)
     .then((res) => {
       return res?.data;
     })
@@ -153,9 +153,11 @@ export async function fetchHeroSection(): Promise<HeroType[]> {
     });
 }
 
-export async function fetchCertifications(): Promise<CertifcationType> {
+export async function fetchCertifications(
+  page: number
+): Promise<CertifcationType> {
   return await api
-    .get(`/certificates`)
+    .get(`/certificates?page=${page}`)
     .then((res) => {
       return res?.data;
     })

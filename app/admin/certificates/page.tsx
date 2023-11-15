@@ -1,19 +1,30 @@
 "use client";
 import { Spinner } from "@/assets/icons/Spinner";
 import PageTitle from "@/common/PageTitle";
+import PaginationComponent from "@/common/Pagination/Pagination";
 import AddCertificate from "@/components/Admin/Certificates/AddCertificates";
 import AddHero from "@/components/Admin/Hero/AddHero";
 import CertificationList from "@/components/LoopComponents/CertificationList";
 import HeroSectionLists from "@/components/LoopComponents/HeroSectionLists";
 import { fetchCertifications } from "@/services/admin";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchCertifications"],
-    queryFn: fetchCertifications,
+    queryKey: ["fetchCertifications", current_page],
+    queryFn: () => fetchCertifications(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
   return (
     <div className="container mx-auto px-5 ">
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
@@ -57,6 +68,11 @@ const Page = () => {
             </>
           </tbody>
         </table>
+        <PaginationComponent
+          count={data?.meta.last_page}
+          page={data?.meta.current_page}
+          handleChange={handlePageChange}
+        />
       </div>
     </div>
   );

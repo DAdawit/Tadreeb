@@ -10,12 +10,21 @@ import { Spinner } from "@/assets/icons/Spinner";
 import AddTrainingFormat from "@/components/Admin/TrainingFormats/AddTrainingFormat";
 import VenueList from "@/components/Admin/Venues/VenueList";
 import AddVenue from "@/components/Admin/Venues/AddVenue";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchVenues"],
-    queryFn: fetchVenues,
+    queryKey: ["fetchVenues", current_page],
+    queryFn: () => fetchVenues(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
@@ -59,6 +68,11 @@ const Page = () => {
             </>
           </tbody>
         </table>
+        <PaginationComponent
+          count={data?.meta.last_page}
+          page={data?.meta.current_page}
+          handleChange={handlePageChange}
+        />
       </div>
     </div>
   );
