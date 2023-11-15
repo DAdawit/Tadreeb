@@ -122,10 +122,13 @@ const SearchCourse = () => {
 
   return (
     <>
-      <div className=" bg-bgPrimary py-8">
+      <div className="bg-bgPrimary py-8">
         <div className="max-w-6xl xll:max-w-7xl mx-auto w-full">
-          <form onSubmit={handleSubmit(submitData)} className="w-full">
-            <div className="flex justify-between lg:gap-16">
+          <form
+            onSubmit={handleSubmit(submitData)}
+            className="flex justify-center"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-5 justify-items-center gap-5 px-5">
               <div className="w-full">
                 <select
                   id="training_id"
@@ -195,9 +198,14 @@ const SearchCourse = () => {
                   className="w-full"
                 />
               </div>
-              <button className="bg-secondary text-white px-5" type="submit">
-                SEARCH
-              </button>
+              <div className="w-full h-full">
+                <button
+                  className="bg-secondary text-white px-5 h-full py-2"
+                  type="submit"
+                >
+                  SEARCH
+                </button>
+              </div>
             </div>
           </form>
         </div>
@@ -255,7 +263,7 @@ const SearchCourse = () => {
 
                     <th
                       scope="col"
-                      className="px-6 py-3 border-r-2 border-gray-50"
+                      className="px-6 py-3 border-r-2 border-gray-50 whitespace-nowrap"
                     >
                       Book Now
                     </th>
@@ -267,9 +275,7 @@ const SearchCourse = () => {
                   <tbody>
                     {loading ? <Spinner /> : null}
                     <>
-                      {searchResults?.total === 0 && (
-                        <p>No search reasult found.</p>
-                      )}
+                      {searchResults?.total === 0 && <p>empty.</p>}
                       {searchResults?.data &&
                         Array.isArray(searchResults.data) &&
                         searchResults.data.map((course, index) => (
@@ -336,7 +342,7 @@ const SearchCourse = () => {
 
                     <th
                       scope="col"
-                      className="px-6 py-3 border-r-2 border-gray-50"
+                      className="px-6 py-3 border-r-2 border-gray-50 whitespace-nowrap"
                     >
                       Book Now
                     </th>
@@ -348,7 +354,7 @@ const SearchCourse = () => {
                   <tbody>
                     {loading ? <Spinner /> : null}
                     <>
-                      {courses?.total === 0 && <p>No search reasult found.</p>}
+                      {courses?.total === 0 && <p>empty.</p>}
                       {courses?.data &&
                         Array.isArray(courses.data) &&
                         courses.data.map((course, index) => (
