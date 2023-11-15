@@ -5,15 +5,22 @@ import PageTitle from "@/common/PageTitle";
 import { Spinner } from "@/assets/icons/Spinner";
 import Link from "next/link";
 import TrainingList from "@/components/Admin/Training/TrainingList";
-// import AddTrainingDialog from "@/components/Admin/Training/AddTrainingDialog";
-// import dynamic from "next/dynamic";
-// const DynamicLink = dynamic(() => import("next/link"), { ssr: false });
+import { useState } from "react";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchTrainings"],
-    queryFn: fetchTrainings,
+    queryKey: ["fetchTrainings", current_page],
+    queryFn: () => fetchTrainings(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
@@ -68,6 +75,11 @@ const Page = () => {
             </>
           </tbody>
         </table>
+        <PaginationComponent
+          count={data?.meta.last_page}
+          page={data?.meta.current_page}
+          handleChange={handlePageChange}
+        />
       </div>
     </div>
   );

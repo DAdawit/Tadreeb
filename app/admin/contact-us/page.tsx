@@ -2,16 +2,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchContactUsinfos } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
-import api from "@/app/axios";
 import { Spinner } from "@/assets/icons/Spinner";
-
+import { useState } from "react";
 import ContactUsList from "@/components/LoopComponents/ContactUsList";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchContactUsinfos"],
-    queryFn: fetchContactUsinfos,
+    queryKey: ["fetchContactUsinfos", current_page],
+    queryFn: () => fetchContactUsinfos(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
@@ -63,6 +71,11 @@ const Page = () => {
           </tbody>
         </table>
       </div>
+      <PaginationComponent
+        count={data?.meta.last_page}
+        page={data?.meta.current_page}
+        handleChange={handlePageChange}
+      />
     </div>
   );
 };

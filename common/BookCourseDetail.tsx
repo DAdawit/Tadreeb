@@ -14,6 +14,7 @@ type PropType = {
   fullName: string | undefined;
   email: string | undefined;
   phoneNumber: string | undefined;
+  address: string | undefined;
 };
 
 const BookCourseDetail: React.FC<PropType> = ({
@@ -22,6 +23,7 @@ const BookCourseDetail: React.FC<PropType> = ({
   fullName,
   email,
   phoneNumber,
+  address,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
@@ -72,7 +74,7 @@ const BookCourseDetail: React.FC<PropType> = ({
                 </div>
                 <div className="flex gap-x-2">
                   <h1 className="text-gray-800 font-bold">PhoneNumber: </h1>
-                  <h1 className="text-gray-600">${phoneNumber}</h1>
+                  <h1 className="text-gray-600">{phoneNumber}</h1>
                 </div>
                 <div className="flex gap-x-2">
                   <h1 className="text-gray-800 font-bold">Course: </h1>
@@ -83,8 +85,8 @@ const BookCourseDetail: React.FC<PropType> = ({
                   <h1 className="text-gray-600">{course?.start_date}</h1>
                 </div>
                 <div className="flex gap-x-2">
-                  <h1 className="text-gray-800 font-bold">Payment Amount: </h1>
-                  <h1 className="text-gray-600">${course?.fee}</h1>
+                  <h1 className="text-gray-800 font-bold">Adress: </h1>
+                  <h1 className="text-gray-600">{address}</h1>
                 </div>
                 <div className="flex gap-x-2">
                   <h1 className="text-gray-800 font-bold">End Date: </h1>

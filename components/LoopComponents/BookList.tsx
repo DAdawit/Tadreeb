@@ -52,7 +52,7 @@ const BookList: React.FC<PropType> = ({ book, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">{index + 1}</td>
         <td className="px-6 py-4 row-span-2">{book?.firstName}</td>
         <td className="px-6 py-4 row-span-2">{book?.lastName}</td>
-        <td className="px-6 py-4 row-span-2">{book?.email}</td>
+        {/* <td className="px-6 py-4 row-span-2">{book?.email}</td> */}
         <td className="px-6 py-4 row-span-2">{book?.phoneNumber}</td>
         <td className="px-6 py-4 row-span-2">{book?.address}</td>
 
@@ -71,6 +71,7 @@ const BookList: React.FC<PropType> = ({ book, index, refetch }) => {
             fullName={book?.firstName + "" + book?.lastName}
             email={book?.email}
             phoneNumber={book?.phoneNumber}
+            address={book?.address}
           />
         </td>
         <td className="px-6 py-4 row-span-2 flex gap-x-3">

@@ -1,16 +1,26 @@
 "use client";
 import PageTitle from "@/common/PageTitle";
-import React from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRejectedBookedCourses } from "@/services/admin";
 import { Spinner } from "@/assets/icons/Spinner";
 import BookList from "@/components/LoopComponents/BookList";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchRejectedBookedCourses"],
-    queryFn: fetchRejectedBookedCourses,
+    queryKey: ["fetchRejectedBookedCourses", current_page],
+    queryFn: () => fetchRejectedBookedCourses(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
   return (
     <div>
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
@@ -71,6 +81,11 @@ const Page = () => {
             </tbody>
           </table>
         </div>
+        <PaginationComponent
+          count={data?.last_page}
+          page={data?.current_page}
+          handleChange={handlePageChange}
+        />
       </div>
     </div>
   );

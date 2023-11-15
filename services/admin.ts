@@ -45,9 +45,9 @@ export async function fetchCategories(page: number): Promise<VenueType> {
       return err;
     });
 }
-export async function fetchTrainings(): Promise<TrainingTypes> {
+export async function fetchTrainings(page: number): Promise<TrainingTypes> {
   return await api
-    .get("/trainings")
+    .get(`/trainings?page=${page}`)
     .then((res) => {
       return res?.data;
     })
@@ -83,9 +83,11 @@ export async function fetchCourseSchedules(
       return err;
     });
 }
-export async function fetchBookedCourses(): Promise<CourseBooksType> {
+export async function fetchBookedCourses(
+  page: number
+): Promise<CourseBooksType> {
   return await api
-    .get(`/booked-courses`)
+    .get(`/booked-courses?page=${page}`)
     .then((res) => {
       console.log(res.data);
       return res?.data.data;
@@ -94,9 +96,11 @@ export async function fetchBookedCourses(): Promise<CourseBooksType> {
       return err;
     });
 }
-export async function fetchApprovedBookedCourses(): Promise<CourseBooksType> {
+export async function fetchApprovedBookedCourses(
+  page: number
+): Promise<CourseBooksType> {
   return await api
-    .get(`/approved-booked-courses`)
+    .get(`/approved-booked-courses?page=${page}`)
     .then((res) => {
       console.log(res.data);
       return res?.data.data;
@@ -106,9 +110,11 @@ export async function fetchApprovedBookedCourses(): Promise<CourseBooksType> {
     });
 }
 
-export async function fetchRejectedBookedCourses(): Promise<CourseBooksType> {
+export async function fetchRejectedBookedCourses(
+  page: number
+): Promise<CourseBooksType> {
   return await api
-    .get(`/rejected-booked-courses`)
+    .get(`/rejected-booked-courses?page=${page}`)
     .then((res) => {
       console.log(res.data);
       return res?.data.data;
@@ -118,9 +124,11 @@ export async function fetchRejectedBookedCourses(): Promise<CourseBooksType> {
     });
 }
 
-export async function fetchContactUsinfos(): Promise<ContactUsType> {
+export async function fetchContactUsinfos(
+  page: number
+): Promise<ContactUsType> {
   return await api
-    .get(`/contactus`)
+    .get(`/contactus?page=${page}`)
     .then((res) => {
       // console.log(res);
       return res?.data;

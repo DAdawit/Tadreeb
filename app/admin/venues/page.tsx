@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrainingFormats, fetchVenues } from "@/services/admin";
 import PageTitle from "@/common/PageTitle";
