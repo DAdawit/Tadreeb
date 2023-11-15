@@ -122,13 +122,10 @@ const SearchCourse = () => {
 
   return (
     <>
-      <div className="bg-bgPrimary py-8">
-        <div className="max-w-6xl xll:max-w-7xl mx-auto w-full">
-          <form
-            onSubmit={handleSubmit(submitData)}
-            className="flex justify-center"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-5 justify-items-center gap-5 px-5">
+      <div className="bg-bgPrimary py-8 flex px-5 ">
+        <div className="max-w-6xl xll:max-w-7xl mx-auto">
+          <form onSubmit={handleSubmit(submitData)} className="">
+            <div className="w-full grid grid-cols-2 md:flex justify-between gap-5 ">
               <div className="w-full">
                 <select
                   id="training_id"
@@ -213,14 +210,14 @@ const SearchCourse = () => {
       {search ? (
         <>
           <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
-            <div className="relative overflow-x-auto min-h-screen  bg-white px-5 mt-8">
+            <div className="relative overflow-x-auto m  bg-white px-5 mt-8">
               <button
                 className="bg-white text-primary p-1 underline underline-offset-2"
                 onClick={() => ClearSearch()}
               >
                 Cancel Seach
               </button>
-              <table className="w-full text-sm text-left text-gray-500 ">
+              <table className="w-full text-sm text-left text-gray-500 overflow-x-auto">
                 <thead className="text-xs text-white uppercase bg-secondary">
                   <tr>
                     <th
@@ -296,7 +293,6 @@ const SearchCourse = () => {
 
       {path === "/course-finder" && !search ? (
         <>
-          {" "}
           <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
             <div className="relative overflow-x-auto min-h-screen  bg-white px-5 mt-8">
               <table className="w-full text-sm text-left text-gray-500 overflow-x-auto">

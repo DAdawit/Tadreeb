@@ -30,9 +30,7 @@ const CourseCalenderHero: React.FC<PropType> = ({ title }) => {
           </div>
         </div>
       </div>
-      <div className="">
-        <SearchCourse />
-      </div>
+      <SearchCourse />
     </>
   );
 };
