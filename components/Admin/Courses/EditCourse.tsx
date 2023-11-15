@@ -366,7 +366,7 @@ const EditCourse: React.FC<PropType> = ({
                   </small>
                 )}
               </div>
-              <div className="grid gap-y-1 mt-16">
+              <div className="grid gap-y-1 mt-24">
                 <label
                   htmlFor="course_outline"
                   className="capitalize pl-3 font-semibold"
