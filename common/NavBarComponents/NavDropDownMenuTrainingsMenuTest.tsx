@@ -15,20 +15,20 @@ const NavDropDownMenuTrainingsMenuTest: React.FC<PropType> = ({
       <ul className="flex items-center justify-center">
         <li className="px-3 py-2 relative group">
           <button
-            className="text-white text-sm xl:text-lg xxl:text-3xl"
+            className="text-white text-sm xl:text-lg xxl:text-3xl whitespace-nowrap"
             aria-haspopup="true"
           >
             {title}
           </button>
 
-          <div className="absolute lg:-left-24 top-3  group-hover:translate-y-5 translate-y-0 invisible group-hover:opacity-100 group-hover:visible  group-hover:transform z-50 min-w-[560px] transform">
+          <div className="absolute lg:-left-24 top-3  group-hover:translate-y-5 translate-y-0 invisible group-hover:opacity-100 group-hover:visible  group-hover:transform z-50 min-w-[520px] lg:min-w-[720px] transform">
             <div className="relative top-3 p-6 bg-white shadow-xl w-full">
               {/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
 
               <div className="flex flex-wrap gap-x-3 font-normal">
                 {categories &&
                   categories?.map((Category, index) => (
-                    <div key={index} className="grid">
+                    <div key={index} className="grid h-min">
                       <h1 className="underline whitespace-nowrap text-base text-gray-500 underline-offset-4">
                         {Category.name}
                       </h1>

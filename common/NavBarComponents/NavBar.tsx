@@ -145,16 +145,16 @@ const NavBar: React.FC = () => {
         </div>
       </div>
       <div className="px-8 xll:px-28 hidden md:flex items-center h-12 xxl:h-16">
-        <div className="bg-secondary flex w-full justify-around items-center h-full">
+        <div className="bg-secondary flex w-full justify-around items-center h-full gap-x-3 px-2">
           <Link
             href="/course-finder"
-            className="text-white text-sm xl:text-lg xxl:text-3xl"
+            className="text-white text-sm xl:text-lg xxl:text-3xl whitespace-nowrap"
           >
             course finder
           </Link>
           <Link
             href="/training-course-calendar"
-            className="text-white text-sm xl:text-lg xxl:text-3xl"
+            className="text-white text-sm xl:text-lg xxl:text-3xl whitespace-nowrap"
           >
             training calendar
           </Link>
@@ -168,7 +168,7 @@ const NavBar: React.FC = () => {
           <NavDropDownMenu title="certification" pages={certificates} />
           <NavDropDownMenu title="format" pages={formats} />
         </div>
-        <div className="bg-primary h-full flex items-center justify-center px-3">
+        <div className="bg-primary h-full hidden lg:flex items-center justify-center px-3">
           <button className="text-white uppercase text-lg font-medium">
             download
           </button>
