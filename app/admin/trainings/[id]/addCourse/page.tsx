@@ -155,15 +155,18 @@ const Page: React.FC = () => {
       <div className="flex justify-center">
         <PageTitle title="Add Course" />
       </div>
-      <div className="max-w-lg mx-auto pl-5">
+      <div className="max-w-lg mx-auto pl-6">
         <Link
           href={`/admin/trainings/${id}`}
-          className="text-gray text-lg font-semibold"
+          className="text-gray-500 text-lg underline underline-offset-2"
         >
           back
         </Link>
       </div>
-      <form onSubmit={handleSubmit(submitData)} className="max-w-lg mx-auto">
+      <form
+        onSubmit={handleSubmit(submitData)}
+        className="max-w-lg mx-auto mt-2"
+      >
         <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
           <input
             type="hidden"

@@ -7,9 +7,11 @@ import { Spinner } from "@/assets/icons/Spinner";
 import SchedulesList from "@/components/Admin/Schedules/SchedulesList";
 import AddSchedule from "@/components/Admin/Schedules/AddSchedule";
 import PageTitle from "@/common/PageTitle";
+import Link from "next/link";
 
 const Page = () => {
   const { course } = useParams();
+  const { id } = useParams();
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["fetchCourseSchedules", course],
@@ -20,9 +22,16 @@ const Page = () => {
       <div className="container mx-auto flex">
         <PageTitle title={`${data?.title}`} />
       </div>
-      <div className="flex justify-end container mx-auto p-5">
+      <div className="flex justify-between container mx-auto p-5">
+        <Link
+          href={`/admin/trainings/${id}`}
+          className="text-gray-500 text-lg underline underline-offset-2"
+        >
+          back
+        </Link>
         <AddSchedule refetch={() => refetch()} />
       </div>
+      <div className="max-w-lg mx-auto pl-6"></div>
       <div className="relative overflow-x-auto">
         <table className="text-center w-full mt-8 overflow-x-auto">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
