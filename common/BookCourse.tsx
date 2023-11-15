@@ -25,6 +25,7 @@ type FormValues = {
   lastName: string;
   email: string;
   phoneNumber: number;
+  address: string;
   course_id?: string;
   schedule_id?: string;
 };
@@ -34,6 +35,7 @@ const schema: ZodType<FormValues> = z.object({
   lastName: z.string().min(1, "Last Name is required"),
   email: z.string().min(1, "email is required"),
   phoneNumber: z.number().min(1, "Phone Number is required"),
+  address: z.string().min(1, "Address is required"),
 });
 
 type PropType = {
@@ -169,6 +171,19 @@ const BookCourse: React.FC<PropType> = ({ title, course_id, schedule_id }) => {
                   {errors?.phoneNumber && (
                     <small className="text-red-500 pl-2">
                       {errors.phoneNumber.message}
+                    </small>
+                  )}
+                </div>
+                <div className="grid mt-3">
+                  <input
+                    type="text"
+                    className=""
+                    placeholder="Address"
+                    {...register("address")}
+                  />
+                  {errors?.address && (
+                    <small className="text-red-500 pl-2">
+                      {errors.address.message}
                     </small>
                   )}
                 </div>

@@ -20,19 +20,12 @@ const Page = () => {
       <PageTitle title="Trainings" />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
       <div className="container mx-auto flex justify-end">
-        {/* <DynamicLink
-          href="/admin/trainings/addTraining"
-          className="bg-primary px-5 py-2 rounded-full text-white"
-        >
-          Add Training
-        </DynamicLink> */}
         <Link
           href="/admin/trainings/addTraining"
           className="bg-primary px-5 py-2 rounded-full text-white"
         >
           Add Training
         </Link>
-        {/* <AddTrainingDialog refetch={() => refetch()} /> */}
       </div>
       <div className="relative overflow-x-auto">
         <table className="text-center w-full mt-8 overflow-x-auto">

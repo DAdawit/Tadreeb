@@ -37,8 +37,12 @@ const Page = () => {
                   Phone Number
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  Address
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Status
                 </th>
+
                 <th scope="col" className="px-6 py-3">
                   Course/Schedule
                 </th>

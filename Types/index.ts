@@ -421,6 +421,7 @@ export interface BookType {
   lastName: string;
   email: string;
   phoneNumber: string;
+  address:string;
   course_id?: number;
   schedule_id?: number;
   status: string;

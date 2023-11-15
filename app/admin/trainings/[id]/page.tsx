@@ -18,9 +18,10 @@ const Page = () => {
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
       <PageTitle title={`${data?.name}`} />
+      {/* {data?.category_id} */}
       <div className="container mx-auto px-5 flex justify-end py-5">
         <Link
-          href={`/admin/trainings/${id}/addCourse`}
+          href={`/admin/trainings/${id}/addCourse?category=${data?.category_id}`}
           className="px-5 py-2 bg-primary text-white rounded-full"
         >
           Add course

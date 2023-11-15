@@ -54,6 +54,8 @@ const BookList: React.FC<PropType> = ({ book, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">{book?.lastName}</td>
         <td className="px-6 py-4 row-span-2">{book?.email}</td>
         <td className="px-6 py-4 row-span-2">{book?.phoneNumber}</td>
+        <td className="px-6 py-4 row-span-2">{book?.address}</td>
+
         <td className="px-6 py-4 row-span-2">
           {book?.status === "pending" ? <Pending /> : null}
           {book?.status === "approved" ? <Approved /> : null}

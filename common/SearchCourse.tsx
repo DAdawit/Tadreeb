@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { Spinner } from "@/assets/icons/Spinner";
 import {
   fetchAllCoursesOnCurrentMonth,
+  fetchCategoryTrainings,
   fetchSearchTrainingFormats,
   fetchSearchTrainings,
   fetchSearchVenues,
@@ -20,14 +21,14 @@ import { usePathname } from "next/navigation";
 type FormValues = {
   venue_id?: string;
   format_id?: string;
-  training_id?: string;
+  category_id?: string;
   search?: string;
 };
 
 const schema: ZodType<FormValues> = z.object({
   venue_id: z.string(),
   format_id: z.string(),
-  training_id: z.string(),
+  category_id: z.string(),
   search: z.string(),
 });
 
@@ -49,6 +50,15 @@ const SearchCourse = () => {
     queryFn: fetchAllCoursesOnCurrentMonth,
   });
 
+  const {
+    data: categories,
+    isLoading: categoiresLoading,
+    error: categoriesError,
+    refetch: categoriesRefetch,
+  } = useQuery({
+    queryKey: ["fetchCategoryTrainings"],
+    queryFn: fetchCategoryTrainings,
+  });
   const {
     data: venues,
     isLoading: venueLoading,
@@ -92,7 +102,7 @@ const SearchCourse = () => {
     // alert("hello");
     if (
       values.format_id === "" &&
-      values.training_id === "" &&
+      values.category_id === "" &&
       values.venue_id === "" &&
       values.search === ""
     ) {
@@ -128,19 +138,19 @@ const SearchCourse = () => {
             <div className="w-full grid grid-cols-2 md:flex justify-between gap-5 ">
               <div className="w-full">
                 <select
-                  id="training_id"
-                  {...register("training_id")}
+                  id="category_id"
+                  {...register("category_id")}
                   className="w-full"
                   placeholder="Program Category"
                 >
                   <option value="" selected>
                     Program Category
                   </option>
-                  {trainings &&
-                    Array.isArray(trainings.data) &&
-                    trainings.data.map((training) => (
-                      <option key={training.id} value={training.id}>
-                        {training.name}
+                  {categories &&
+                    Array.isArray(categories) &&
+                    categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
                       </option>
                     ))}
                 </select>

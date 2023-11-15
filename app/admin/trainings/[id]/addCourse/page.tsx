@@ -17,9 +17,11 @@ import {
 import PageTitle from "@/common/PageTitle";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 import { useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const TextEditorDescription = dynamic(
   () => import("@/common/Editor/TextEditorDescription"),
   { ssr: false }
@@ -38,6 +40,7 @@ type FormValues = {
   venue_id: string;
   format_id: string;
   training_id?: string;
+  category_id?: string;
 };
 
 const schema: ZodType<FormValues> = z.object({
@@ -58,7 +61,8 @@ const schema: ZodType<FormValues> = z.object({
 const Page: React.FC = () => {
   const { id } = useParams();
   // console.log(id);
-
+  const searchParam = useSearchParams();
+  const category = searchParam.get("category");
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [addError, setAddError] = useState<string>("");
@@ -121,6 +125,7 @@ const Page: React.FC = () => {
     }
 
     values.training_id = String(id) ?? "";
+    values.category_id = String(category) ?? "";
     setLoading(true);
     setAddError("");
     console.log("hello", values);
@@ -150,7 +155,14 @@ const Page: React.FC = () => {
       <div className="flex justify-center">
         <PageTitle title="Add Course" />
       </div>
-
+      <div className="max-w-lg mx-auto pl-5">
+        <Link
+          href={`/admin/trainings/${id}`}
+          className="text-gray text-lg font-semibold"
+        >
+          back
+        </Link>
+      </div>
       <form onSubmit={handleSubmit(submitData)} className="max-w-lg mx-auto">
         <section className="grid grid-cols-1  px-5 gap-x-5 gap-y-1 max-w-2xl">
           <input
@@ -314,7 +326,7 @@ const Page: React.FC = () => {
               <small className="text-red-500 pl-2">{descriptionError}</small>
             )}
           </div>
-          <div className="grid gap-y-1 mt-16">
+          <div className="grid gap-y-1 mt-20">
             <label
               htmlFor="course_outline"
               className="capitalize pl-3 font-semibold"
