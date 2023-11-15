@@ -76,9 +76,9 @@ export async function fetchSearchTrainingFormats(): Promise<VenueType> {
     });
 }
 
-export async function fetchSearchVenues(): Promise<VenueType> {
+export async function fetchSearchVenues(page: number): Promise<VenueType> {
   return await api
-    .get("/get-venues")
+    .get(`/get-venues?page=${page}`)
     .then((res) => {
       return res?.data;
     })
@@ -131,9 +131,12 @@ export async function fetchAllCoursesOnCurrentMonth(): Promise<AllCoursesThisMon
     });
 }
 
-export async function fetchCoursesByVenueId(id: string): Promise<VenueCouses> {
+export async function fetchCoursesByVenueId(
+  id: string,
+  page: number
+): Promise<VenueCouses> {
   return await api
-    .get(`/get-course-by-venue/${id}`)
+    .get(`/get-course-by-venue/${id}?page=${page}`)
     .then((res) => {
       console.log(res.data);
 
@@ -157,10 +160,11 @@ export async function fetchCoursesByFormatId(id: string): Promise<VenueCouses> {
     });
 }
 export async function fetchCertificationCourses(
-  id: string
+  id: string,
+  page: number
 ): Promise<CertificationCoursesType> {
   return await api
-    .get(`/get-certificate-courses/${id}`)
+    .get(`/get-certificate-courses/${id}?page=${page}`)
     .then((res) => {
       console.log(res.data.data);
 
@@ -274,7 +278,18 @@ export async function getTrainingVenues(): Promise<VenueType> {
 //   return res.json();
 // }
 
-export async function getCertificates(): Promise<CertifcationType> {
+export async function getCertificates(page: number): Promise<CertifcationType> {
+  return await api
+    .get(`/get-certificates?page=${page}`)
+    .then((res) => {
+      return res?.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function getCertificatesForNav(): Promise<CertifcationType> {
   return await api
     .get(`/get-certificates`)
     .then((res) => {

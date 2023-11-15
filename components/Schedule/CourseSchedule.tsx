@@ -12,8 +12,6 @@ const CourseSchedule: React.FC<PropType> = ({ schedules, title }) => {
 
   return (
     <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
-      {/* <pre>{JSON.stringify(schedules, null, 2)}</pre> */}
-
       <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
         Course Schedule
       </h1>

@@ -25,10 +25,6 @@ const Page = () => {
     setCurrentPage(value);
   };
 
-  // const { data, isLoading, error, refetch } = useQuery({
-  //   queryKey: ["fetchCourseSchedules"],
-  //   queryFn: fetchCoursesWithSchedule,
-  // });
   return (
     <div>
       <CourseCalenderHero title="Training Course Calendar" />

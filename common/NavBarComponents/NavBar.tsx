@@ -10,6 +10,7 @@ import { CertifcationType, FormatTypes, VenueType } from "@/Types";
 import { useQuery } from "@tanstack/react-query";
 import {
   getCertificates,
+  getCertificatesForNav,
   getTrainigFormats,
   getTrainingVenues,
   getTrainings,
@@ -48,8 +49,8 @@ const NavBar: React.FC = () => {
     error: errorCertificates,
     refetch: refetchCertificates,
   } = useQuery({
-    queryKey: ["certificates"],
-    queryFn: getCertificates,
+    queryKey: ["getCertificatesForNav"],
+    queryFn: getCertificatesForNav,
   });
   const {
     data: categories,

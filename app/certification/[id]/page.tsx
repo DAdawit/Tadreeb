@@ -1,17 +1,34 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
 import { fetchCertificationCourses } from "@/services/user";
 import { useParams } from "next/navigation";
 import BookCourse from "@/common/BookCourse";
+import PaginationComponent from "@/common/Pagination/Pagination";
 const Page = () => {
   const { id } = useParams();
+
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchCertificationCourses", id],
-    queryFn: () => fetchCertificationCourses(id as string),
+    queryKey: ["fetchCertificationCourses", id, current_page],
+    queryFn: () =>
+      fetchCertificationCourses(id as string, current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
+  // const { data, isLoading, error, refetch } = useQuery({
+  //   queryKey: ["fetchCertificationCourses", id],
+  //   queryFn: () => fetchCertificationCourses(id as string),
+  // });
   return (
     <>
       <div>
@@ -72,6 +89,14 @@ const Page = () => {
             </tbody>
           </table>
         </div>
+        {(data?.courses.next_page_url !== null ||
+          data?.courses.prev_page_url !== null) && (
+          <PaginationComponent
+            count={data?.courses?.last_page}
+            page={data?.courses.current_page}
+            handleChange={handlePageChange}
+          />
+        )}
       </div>
     </>
   );

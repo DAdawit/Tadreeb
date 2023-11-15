@@ -1,23 +1,33 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchSearchVenues } from "@/services/user";
 import ScheduleHero from "@/common/Heros/ScheduleHero";
 import Link from "next/link";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
+
   const {
     data: venues,
     isLoading: venueLoading,
     error: venueError,
     refetch: venueRefetch,
   } = useQuery({
-    queryKey: ["fetchVenues"],
-    queryFn: fetchSearchVenues,
+    queryKey: ["fetchSearchVenues", current_page],
+    queryFn: () => fetchSearchVenues(current_page as number),
   });
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
   return (
     <div>
       <ScheduleHero title={"Our Venues"} />
+      {/* <pre>{JSON.stringify(venues, null, 2)}</pre> */}
 
       <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
         <table className="text-center w-full mt-8 overflow-x-auto">
@@ -60,6 +70,13 @@ const Page = () => {
           </tbody>
         </table>
       </div>
+      {(venues?.links.next !== null || venues?.links.prev !== null) && (
+        <PaginationComponent
+          count={venues?.meta.last_page}
+          page={current_page}
+          handleChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
