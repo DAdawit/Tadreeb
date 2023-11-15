@@ -8,12 +8,13 @@ import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import api from "@/app/axios";
 const Navbar = () => {
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuthFalse } = useContext(AuthContext);
   const router = useRouter();
 
   const logout = () => {
     localStorage.removeItem("token");
     api.defaults.headers.common["Authorization"] = "";
+    setAuthFalse();
     router.push("/admin/login");
   };
 

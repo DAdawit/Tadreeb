@@ -9,6 +9,7 @@ type AuthContextType = {
   loading: boolean;
   setUserData: (user: UserType) => void;
   setLoadingFalse: (loading: boolean) => void;
+  setAuthFalse: () => void;
 };
 export const AuthContext = createContext<AuthContextType>({
   user: {} as UserType,
@@ -16,12 +17,14 @@ export const AuthContext = createContext<AuthContextType>({
   loading: true,
   setUserData: (user: UserType) => {},
   setLoadingFalse: (loading: boolean) => {},
+  setAuthFalse: () => {},
 } as {
   user: UserType;
   auth: boolean;
   loading: boolean;
   setUserData: (user: UserType) => void;
   setLoadingFalse: (loading: boolean) => void;
+  setAuthFalse: () => void;
 });
 export default class AuthContextProvider extends Component<{
   children: React.ReactNode;
@@ -38,6 +41,9 @@ export default class AuthContextProvider extends Component<{
   setLoadingFalse = (loading: boolean) => {
     this.setState({ loading: loading });
   };
+  setAuthFalse = () => {
+    this.setState({ auth: false });
+  };
 
   render() {
     return (
@@ -46,6 +52,7 @@ export default class AuthContextProvider extends Component<{
           ...this.state,
           setUserData: this.setUserData,
           setLoadingFalse: this.setLoadingFalse,
+          setAuthFalse: this.setAuthFalse,
         }}
       >
         {this.props.children}
