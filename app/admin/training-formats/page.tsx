@@ -5,12 +5,21 @@ import PageTitle from "@/common/PageTitle";
 import TrainingFormatsList from "@/components/Admin/TrainingFormats/TrainingFormatsList";
 import { Spinner } from "@/assets/icons/Spinner";
 import AddTrainingFormat from "@/components/Admin/TrainingFormats/AddTrainingFormat";
-
+import PaginationComponent from "@/common/Pagination/Pagination";
+import { useState } from "react";
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchSeedToMember"],
-    queryFn: fetchTrainingFormats,
+    queryKey: ["fetchTrainingFormats", current_page],
+    queryFn: () => fetchTrainingFormats(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
@@ -53,6 +62,11 @@ const Page = () => {
             </>
           </tbody>
         </table>
+        <PaginationComponent
+          count={data?.meta.last_page}
+          page={data?.meta.current_page}
+          handleChange={handlePageChange}
+        />
       </div>
     </div>
   );

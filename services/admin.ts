@@ -13,9 +13,9 @@ import {
 } from "@/Types";
 import api from "@/app/axios";
 
-export async function fetchTrainingFormats(): Promise<FormatsType> {
+export async function fetchTrainingFormats(page: number): Promise<FormatsType> {
   return await api
-    .get("/formats")
+    .get(`/formats?page=${page}`)
     .then((res) => {
       return res?.data;
     })
@@ -35,9 +35,9 @@ export async function fetchVenues(id: number): Promise<VenueType> {
     });
 }
 
-export async function fetchCategories(): Promise<VenueType> {
+export async function fetchCategories(page: number): Promise<VenueType> {
   return await api
-    .get("/categories")
+    .get(`/categories?page=${page}`)
     .then((res) => {
       return res?.data;
     })

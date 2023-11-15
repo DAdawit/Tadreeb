@@ -6,12 +6,21 @@ import PageTitle from "@/common/PageTitle";
 import { Spinner } from "@/assets/icons/Spinner";
 import AddCategories from "@/components/Admin/TrainingCategories/AddCategories";
 import CategoryList from "@/components/Admin/TrainingCategories/CategoryList";
+import PaginationComponent from "@/common/Pagination/Pagination";
 
 const Page = () => {
+  const [current_page, setCurrentPage] = useState<number>(1);
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["fetchCategories"],
-    queryFn: fetchCategories,
+    queryKey: ["fetchCategories", current_page],
+    queryFn: () => fetchCategories(current_page as number),
   });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div className="min-h-screeen py-8 container mx-auto px-5">
@@ -54,6 +63,11 @@ const Page = () => {
             </>
           </tbody>
         </table>
+        <PaginationComponent
+          count={data?.meta.last_page}
+          page={data?.meta.current_page}
+          handleChange={handlePageChange}
+        />
       </div>
     </div>
   );
