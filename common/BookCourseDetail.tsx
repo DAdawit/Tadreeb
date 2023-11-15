@@ -100,7 +100,13 @@ const BookCourseDetail: React.FC<PropType> = ({
                   <h1 className="text-gray-800 font-bold underline">
                     Course Description
                   </h1>
-                  <p className="text-gray-600">{course?.description}</p>
+                  <p
+                    className="text-textPrimary mt-5 lg:text-lg xll:text-xl"
+                    dangerouslySetInnerHTML={{
+                      __html: course?.description || "",
+                    }}
+                  ></p>
+                  {/* <p className="text-gray-600">{course?.description}</p> */}
                 </div>
               </div>
             </>
