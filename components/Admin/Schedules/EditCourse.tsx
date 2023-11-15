@@ -105,7 +105,7 @@ const EditCourse: React.FC<PropType> = ({
     refetch: venuesRefetch,
   } = useQuery({
     queryKey: ["fetchVenues"],
-    queryFn: fetchVenues,
+    queryFn: () => fetchVenues(),
   });
   const {
     data: formats,
@@ -114,7 +114,7 @@ const EditCourse: React.FC<PropType> = ({
     refetch: formatsRefetch,
   } = useQuery({
     queryKey: ["fetchTrainingFormats"],
-    queryFn: fetchTrainingFormats,
+    queryFn: () => fetchTrainingFormats(),
   });
   const [open, setOpen] = React.useState(false);
 

@@ -69,7 +69,7 @@ const EditTraining: React.FC<PropType> = ({
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["fetchCategories"],
-    queryFn: fetchCategories,
+    queryFn: () => fetchCategories(),
   });
   const [open, setOpen] = React.useState(false);
 

@@ -79,7 +79,7 @@ const Page: React.FC = () => {
     refetch: venuesRefetch,
   } = useQuery({
     queryKey: ["fetchVenues"],
-    queryFn: fetchVenues,
+    queryFn: () => fetchVenues(),
   });
   const {
     data: formats,
@@ -88,7 +88,7 @@ const Page: React.FC = () => {
     refetch: formatsRefetch,
   } = useQuery({
     queryKey: ["fetchTrainingFormats"],
-    queryFn: fetchTrainingFormats,
+    queryFn: () => fetchTrainingFormats(),
   });
 
   const {
@@ -98,7 +98,7 @@ const Page: React.FC = () => {
     refetch: refetchCertifications,
   } = useQuery({
     queryKey: ["fetchCertifications"],
-    queryFn: fetchCertifications,
+    queryFn: () => fetchCertifications(),
   });
   const {
     register,

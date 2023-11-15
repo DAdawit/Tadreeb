@@ -56,10 +56,10 @@ const BookCourse: React.FC<PropType> = ({ title, course_id, schedule_id }) => {
     resolver: zodResolver(schema),
   });
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["fetchCategories"],
-    queryFn: fetchCategories,
-  });
+  // const { data, isLoading, error } = useQuery({
+  //   queryKey: ["fetchCategories"],
+  //   queryFn: fetchCategories,
+  // });
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

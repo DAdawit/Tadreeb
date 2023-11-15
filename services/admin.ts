@@ -13,7 +13,9 @@ import {
 } from "@/Types";
 import api from "@/app/axios";
 
-export async function fetchTrainingFormats(page: number): Promise<FormatsType> {
+export async function fetchTrainingFormats(
+  page?: number
+): Promise<FormatsType> {
   return await api
     .get(`/formats?page=${page}`)
     .then((res) => {
@@ -24,9 +26,9 @@ export async function fetchTrainingFormats(page: number): Promise<FormatsType> {
     });
 }
 
-export async function fetchVenues(id: number): Promise<VenueType> {
+export async function fetchVenues(page?: number): Promise<VenueType> {
   return await api
-    .get(`/venues?page=${id}`)
+    .get(`/venues?page=${page}`)
     .then((res) => {
       return res?.data;
     })
@@ -35,7 +37,7 @@ export async function fetchVenues(id: number): Promise<VenueType> {
     });
 }
 
-export async function fetchCategories(page: number): Promise<VenueType> {
+export async function fetchCategories(page?: number): Promise<VenueType> {
   return await api
     .get(`/categories?page=${page}`)
     .then((res) => {
@@ -164,7 +166,7 @@ export async function fetchHeroSection(): Promise<HeroType[]> {
 }
 
 export async function fetchCertifications(
-  page: number
+  page?: number
 ): Promise<CertifcationType> {
   return await api
     .get(`/certificates?page=${page}`)

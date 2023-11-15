@@ -67,7 +67,7 @@ const AddTrainingDialog: React.FC<propType> = ({ refetch }) => {
     refetch: refetchCategories,
   } = useQuery({
     queryKey: ["fetchCategories"],
-    queryFn: fetchCategories,
+    queryFn: () => fetchCategories(),
   });
   const handleClickOpen = () => {
     setOpen(true);

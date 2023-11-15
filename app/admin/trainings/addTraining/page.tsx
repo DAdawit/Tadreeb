@@ -54,7 +54,7 @@ const Page: React.FC = () => {
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["fetchCategories"],
-    queryFn: fetchCategories,
+    queryFn: () => fetchCategories(),
   });
   const {
     register,

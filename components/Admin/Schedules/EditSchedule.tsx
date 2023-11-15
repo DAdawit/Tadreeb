@@ -61,7 +61,7 @@ const EditSchedule: React.FC<propType> = ({
     refetch: venuesRefetch,
   } = useQuery({
     queryKey: ["fetchVenues"],
-    queryFn: fetchVenues,
+    queryFn: () => fetchVenues(),
   });
   const {
     register,
