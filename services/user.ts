@@ -66,7 +66,7 @@ export async function fetchSearchTrainings(): Promise<TrainingSearchType> {
 }
 
 export async function fetchSearchTrainingFormats(
-  page: number
+  page?: number
 ): Promise<VenueType> {
   return await api
     .get(`/get-formats?page=${page}`)
@@ -78,7 +78,7 @@ export async function fetchSearchTrainingFormats(
     });
 }
 
-export async function fetchSearchVenues(page: number): Promise<VenueType> {
+export async function fetchSearchVenues(page?: number): Promise<VenueType> {
   return await api
     .get(`/get-venues?page=${page}`)
     .then((res) => {

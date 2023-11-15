@@ -6,13 +6,13 @@ import ScheduleHero from "@/common/Heros/ScheduleHero";
 import LatestCoursesList from "@/components/LoopComponents/LatestCoursesList";
 import { fetchCoursesWithSchedule } from "@/services/user";
 import { useQuery } from "@tanstack/react-query";
-
 import React from "react";
 import PaginationComponent from "@/common/Pagination/Pagination";
+import dayjs from "dayjs";
 
 const Page = () => {
   const [current_page, setCurrentPage] = useState<number>(1);
-
+  const formattedDate = dayjs().format("MMMM YYYY");
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["fetchCoursesWithSchedule", current_page],
     queryFn: () => fetchCoursesWithSchedule(current_page as number),
@@ -30,8 +30,10 @@ const Page = () => {
       <CourseCalenderHero title="Training Course Calendar" />
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
 
-      <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
-        <h1 className="mt-5 text-2xl xll:text-3xl">NOVEMBER 2023</h1>
+      <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16 px-5">
+        {/* <h1 className="mt-5 text-2xl xll:text-3xl">NOVEMBER 2023</h1> */}
+        <h1 className="mt-5 text-2xl xl:text-3xl">{formattedDate}</h1>
+
         <table className="text-center w-full mt-8 overflow-x-auto">
           <thead className="bg-secondary h-10">
             <tr className="text-white">

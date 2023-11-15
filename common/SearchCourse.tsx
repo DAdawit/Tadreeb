@@ -65,8 +65,8 @@ const SearchCourse = () => {
     error: venueError,
     refetch: venueRefetch,
   } = useQuery({
-    queryKey: ["fetchVenues"],
-    queryFn: fetchSearchVenues,
+    queryKey: ["fetchSearchVenues"],
+    queryFn: () => fetchSearchVenues(),
   });
 
   const {
@@ -75,8 +75,8 @@ const SearchCourse = () => {
     error: formatError,
     refetch: formatsRefetch,
   } = useQuery({
-    queryKey: ["fetchTrainingFormats"],
-    queryFn: fetchSearchTrainingFormats,
+    queryKey: ["fetchSearchTrainingFormats"],
+    queryFn: () => fetchSearchTrainingFormats(),
   });
 
   const {
