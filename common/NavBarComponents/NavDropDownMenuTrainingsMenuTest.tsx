@@ -21,7 +21,7 @@ const NavDropDownMenuTrainingsMenuTest: React.FC<PropType> = ({
             {title}
           </button>
 
-          <div className="absolute lg:-left-24 top-3  group-hover:translate-y-5 translate-y-0 invisible group-hover:opacity-100 group-hover:visible  group-hover:transform z-50 min-w-[520px] lg:min-w-[720px] transform">
+          <div className="absolute md:-left-52 lg:-left-64 top-3  group-hover:translate-y-5 translate-y-0 invisible group-hover:opacity-100 group-hover:visible  group-hover:transform z-50 min-w-[520px] lg:min-w-[720px] transform">
             <div className="relative top-3 p-6 bg-white shadow-xl w-full">
               {/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
 
