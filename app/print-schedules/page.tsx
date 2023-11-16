@@ -32,7 +32,7 @@ const Page = () => {
   // }
 
   return (
-    <div>
+    <div className="container mx-auto px-5">
       <div className="flex justify-end mx-auto px-8 max-w-7xl">
         <button
           className="px-5 py-2 rounded-full bg-primary text-white xll:px-8 xll:py-4 text-lg  xll:text-2xl mt-8"
@@ -68,9 +68,9 @@ const Page = () => {
                 <th className="border-r-2 border-gray-50">Date</th>
               </tr>
             </thead>
-            {data && data?.schedules.length === 0 && (
+            {/* {data && data?.schedules.length === 0 && (
               <p>No Schedule add for this course yet!.</p>
-            )}
+            )} */}
 
             <tbody>
               {data &&
