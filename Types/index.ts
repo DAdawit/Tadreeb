@@ -421,7 +421,7 @@ export interface BookType {
   lastName: string;
   email: string;
   phoneNumber: string;
-  address:string;
+  address: string;
   course_id?: number;
   schedule_id?: number;
   status: string;
@@ -840,6 +840,50 @@ export interface Daum {
 export interface Venue {
   id: number;
   name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AllSchedulesType {
+  id: number;
+  title: string;
+  description: string;
+  course_outline: string;
+  training_id: number;
+  venue_id: number;
+  format_id: number;
+  certificate_id: number;
+  category_id: number;
+  start_date: string;
+  end_date: string;
+  created_at: string;
+  updated_at: string;
+  schedules: Schedule[];
+  certificate: Certificate;
+}
+
+export interface Schedule {
+  id: number;
+  start_date: string;
+  end_date: string;
+  venue_id: number;
+  course_id: number;
+  created_at: string;
+  updated_at: string;
+  venue: Venue;
+}
+
+export interface Venue {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Certificate {
+  id: string;
+  name: string;
+  image: string;
   created_at: string;
   updated_at: string;
 }

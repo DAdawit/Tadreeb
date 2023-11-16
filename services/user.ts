@@ -1,5 +1,6 @@
 import {
   AllCoursesThisMonth,
+  AllSchedulesType,
   CategoryTrainings,
   CertifcationType,
   CertificationCoursesType,
@@ -10,6 +11,7 @@ import {
   LatestCoursesType,
   Links,
   SocialMediaType,
+  TrainingScheduleType,
   TrainingSearchType,
   TryType,
   VenueCouses,
@@ -317,6 +319,19 @@ export async function getTrainings(): Promise<FormatTypes[]> {
   return await api
     .get(`/category-trainings`)
     .then((res) => {
+      return res?.data.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+}
+
+export async function getAllSchedules(id: string): Promise<AllSchedulesType> {
+  return await api
+    .get(`/get-all-schedules/${id}`)
+    .then((res) => {
+      console.log(res.data);
+
       return res?.data.data;
     })
     .catch((err) => {

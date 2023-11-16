@@ -11,6 +11,7 @@ import BookCourse from "@/common/BookCourse";
 import PaginationComponent from "@/common/Pagination/Pagination";
 // import Description from "@/common/Description";
 import { usePDF } from "react-to-pdf";
+import Link from "next/link";
 
 const Page = () => {
   const { course } = useParams();
@@ -94,12 +95,12 @@ const Page = () => {
         )}
       </div>
       <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
-        <button
-          onClick={() => toPDF()}
+        <Link
+          href={`/print-schedules?course_id=${data?.id}`}
           className="px-5 py-2 rounded-full bg-primary text-white xll:px-8 xll:py-4 text-lg  xll:text-2xl "
         >
           Download PDF
-        </button>
+        </Link>
       </div>
 
       <Description description={data?.description} />

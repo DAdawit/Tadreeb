@@ -27,7 +27,8 @@ const NavDropDownMenuTrainingsMenuTest: React.FC<PropType> = ({
 
               <div className="flex flex-wrap gap-x-3 font-normal">
                 {categories &&
-                  categories?.map((Category, index) => (
+                  Array.isArray(categories) &&
+                  categories.map((Category, index) => (
                     <div key={index} className="grid h-min">
                       <h1 className="underline whitespace-nowrap text-base text-gray-500 underline-offset-4">
                         {Category.name}

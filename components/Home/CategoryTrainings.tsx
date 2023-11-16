@@ -30,6 +30,7 @@ const CategoryTrainings = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
           {data &&
+            Array.isArray(data) &&
             data.map((item, index) => (
               <button
                 key={index}
@@ -52,10 +53,11 @@ const CategoryTrainings = () => {
 
         <div className="mt-8">
           {data &&
+            Array.isArray(data) &&
             data
-              .filter((item) => item.name === activeTab)
+              .filter((item, index) => item.name === activeTab)
               .map((item) => (
-                <div key={item.id}>
+                <div key={item?.id}>
                   {item?.trainings.length > 0 ? (
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-8 max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto ">
                       {item?.trainings.map((training) => (
