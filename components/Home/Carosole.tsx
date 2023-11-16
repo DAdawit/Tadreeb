@@ -16,6 +16,7 @@ interface CarosoleProps {
 export default class Carosole extends Component<CarosoleProps> {
   render() {
     const settings = {
+      dots: true,
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -23,6 +24,26 @@ export default class Carosole extends Component<CarosoleProps> {
       speed: 1500,
       autoplaySpeed: 5000,
       cssEase: "linear",
+      appendDots: (dots: JSX.Element[]) => (
+        <div
+          style={{
+            position: "absolute",
+            top: "auto",
+            left: 0,
+            right: 0,
+            bottom: 8,
+            fontSize: "40px",
+            color: "red", // Change the color here
+            borderRadius: "10px",
+            padding: "10px",
+            zIndex: 0.9,
+          }}
+        >
+          <ul style={{ margin: "0", color: "red", listStyle: "none" }}>
+            {dots}
+          </ul>
+        </div>
+      ),
     };
 
     return (
@@ -81,13 +102,13 @@ export default class Carosole extends Component<CarosoleProps> {
                         </div>
                       </div>
                     </div>
-                    <div className="absolute bottom-3 w-full">
+                    {/* <div className="absolute bottom-3 w-full">
                       <div className="flex justify-center gap-x-3">
                         <button className="bg-white h-3 w-3 rounded-full"></button>
                         <button className="bg-white h-3 w-3 rounded-full"></button>
                         <button className="bg-white h-3 w-3 rounded-full"></button>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}

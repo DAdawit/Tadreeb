@@ -25,3 +25,12 @@
     )
     rgb(var(--background-start-rgb));
 } */
+.slick-dots ul li.slick-active button:before {
+  color: White !important;
+  font-size: 18px;
+}
+
+.slick-dots ul li button:before {
+  color: White !important;
+  font-size: 18px;
+}
