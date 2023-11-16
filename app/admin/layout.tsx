@@ -21,7 +21,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthCheck />
         <Navbar />
-
         <Toaster />
         {children}
       </body>
