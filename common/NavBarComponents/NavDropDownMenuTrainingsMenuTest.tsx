@@ -30,7 +30,7 @@ const NavDropDownMenuTrainingsMenuTest: React.FC<PropType> = ({
                   Array.isArray(categories) &&
                   categories.map((Category, index) => (
                     <div key={index} className="grid h-min">
-                      <h1 className="underline whitespace-nowrap text-base text-secondary underline-offset-4">
+                      <h1 className="underline whitespace-nowrap text-base text-secondary underline-offset-4 font-semibold">
                         {Category.name}
                       </h1>
                       <ul className=" ">
@@ -40,7 +40,7 @@ const NavDropDownMenuTrainingsMenuTest: React.FC<PropType> = ({
                             <li key={training.id}>
                               <Link
                                 href={`/trainings/${training.id}/courses`}
-                                className="text-gray-800 text-sm hover:text-secondary"
+                                className="text-gray-800 text-sm hover:text-secondary font-medium"
                               >
                                 {training.name}
                               </Link>

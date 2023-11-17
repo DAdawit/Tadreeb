@@ -13,7 +13,7 @@ const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
     <div className="group relative dropdown  px-4 text-white cursor-pointer  tracking-wide z-20">
       <h1 className="text-white text-sm xl:text-lg xxl:text-3xl">{title}</h1>
       <div className="group-hover:block dropdown-menu absolute hidden h-auto">
-        <ul className="translate-y-2 top-1 w-auto bg-white shadow px-6 py-3 text-base">
+        <ul className="translate-y-2 top-1 w-auto bg-white shadow px-6 py-3 font-normal">
           {/* <pre>{JSON.stringify(pages, null, 2)}</pre> */}
 
           {pages &&
@@ -22,7 +22,7 @@ const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
               <li key={page.id}>
                 <Link
                   href={`/${title}/${page.id}`}
-                  className="text-black lowercase font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary"
+                  className="text-gray-700 lowercase font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary"
                 >
                   {page.attributes.name}
                 </Link>
