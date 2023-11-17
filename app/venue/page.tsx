@@ -28,55 +28,56 @@ const Page = () => {
     <div>
       <ScheduleHero title={"Our Venues"} />
       {/* <pre>{JSON.stringify(venues, null, 2)}</pre> */}
-
-      <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
-        <table className="text-center w-full mt-8 overflow-x-auto">
-          <thead className="bg-secondary h-10">
-            <tr className="text-white">
-              <th className="border-r-2 border-gray-50">index</th>
-              <th className="border-r-2 border-gray-50">Venue</th>
-              <th className="border-r-2 border-gray-50">Action</th>
-            </tr>
-          </thead>
-          {venues && venues.data.length === 0 && (
-            <p>No Courses added for this training yet!.</p>
-          )}
-          <tbody>
-            {venues &&
-              Array.isArray(venues.data) &&
-              venues.data.map((venue, index) => (
-                <tr
-                  key={venue.id}
-                  className={
-                    (index + 1) % 2 == 0
-                      ? "bg-[#F3F3F3] h-10 text-[#595959] text-base xll:text-xl"
-                      : "bg-[#E7E7E7] h-10 text-[#595959] text-base xll:text-xl"
-                  }
-                >
-                  <td className="border-2 border-white">{index + 1}</td>
-                  <td className="border-2 border-white">
-                    {venue.attributes.name}
-                  </td>
-                  <td className="border-2 border-white h-full bg-primary">
-                    <Link
-                      href={`/venue/${venue.id}`}
-                      className="bg-primary h-full w-full text-white"
-                    >
-                      View Courses
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+      <div className="container mx-auto px-5">
+        <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
+          <table className="text-center w-full mt-8 overflow-x-auto">
+            <thead className="bg-secondary h-10">
+              <tr className="text-white">
+                <th className="border-r-2 border-gray-50">index</th>
+                <th className="border-r-2 border-gray-50">Venue</th>
+                <th className="border-r-2 border-gray-50">Action</th>
+              </tr>
+            </thead>
+            {venues && venues.data.length === 0 && (
+              <p>No Courses added for this training yet!.</p>
+            )}
+            <tbody>
+              {venues &&
+                Array.isArray(venues.data) &&
+                venues.data.map((venue, index) => (
+                  <tr
+                    key={venue.id}
+                    className={
+                      (index + 1) % 2 == 0
+                        ? "bg-[#F3F3F3] h-10 text-[#595959] text-base xll:text-xl"
+                        : "bg-[#E7E7E7] h-10 text-[#595959] text-base xll:text-xl"
+                    }
+                  >
+                    <td className="border-2 border-white">{index + 1}</td>
+                    <td className="border-2 border-white">
+                      {venue.attributes.name}
+                    </td>
+                    <td className="border-2 border-white h-full bg-primary">
+                      <Link
+                        href={`/venue/${venue.id}`}
+                        className="bg-primary h-full w-full text-white"
+                      >
+                        View Courses
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+        {(venues?.links.next !== null || venues?.links.prev !== null) && (
+          <PaginationComponent
+            count={venues?.meta.last_page}
+            page={current_page}
+            handleChange={handlePageChange}
+          />
+        )}
       </div>
-      {(venues?.links.next !== null || venues?.links.prev !== null) && (
-        <PaginationComponent
-          count={venues?.meta.last_page}
-          page={current_page}
-          handleChange={handlePageChange}
-        />
-      )}
     </div>
   );
 };

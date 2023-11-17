@@ -14,8 +14,6 @@ const UpcomingCourses = () => {
   });
   return (
     <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-
       <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
         Upcoming Training Programs
       </h1>

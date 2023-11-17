@@ -12,6 +12,7 @@ import PaginationComponent from "@/common/Pagination/Pagination";
 // import Description from "@/common/Description";
 import { usePDF } from "react-to-pdf";
 import Link from "next/link";
+import dayjs from "dayjs";
 
 const Page = () => {
   const { course } = useParams();
@@ -37,8 +38,8 @@ const Page = () => {
   return (
     <div>
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      <div ref={targetRef}>
-        <ScheduleHero title={data?.title} />
+      <ScheduleHero title={data?.title} />
+      <div className="container mx-auto px-5">
         <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
           <h1 className="text-gray-400 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl xll:text-4xl">
             Course Schedule
@@ -68,7 +69,8 @@ const Page = () => {
                     }
                   >
                     <td className="border-2 border-white text-center">
-                      {schedule.start_date}- {schedule.end_date}
+                      {dayjs(schedule?.start_date).format("MMM-D-YYYY")}{" "}
+                      {dayjs(schedule?.end_date).format("MMM-D-YYYY")}
                     </td>
                     <td className="border-2 border-white text-center">
                       {schedule.venue.name}
@@ -93,18 +95,18 @@ const Page = () => {
             handleChange={handlePageChange}
           />
         )}
-      </div>
-      <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
-        <Link
-          href={`/print-schedules?course_id=${data?.id}`}
-          className="px-5 py-2 rounded-full bg-primary text-white xll:px-8 xll:py-4 text-lg  xll:text-2xl "
-        >
-          Download PDF
-        </Link>
-      </div>
+        <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto my-16">
+          <Link
+            href={`/print-schedules?course_id=${data?.id}`}
+            className="px-5 py-2 rounded-full bg-primary text-white xll:px-8 xll:py-4 text-lg  xll:text-2xl "
+          >
+            Download PDF
+          </Link>
+        </div>
 
-      <Description description={data?.description} />
-      <CourseOutLine description={data?.course_outline} />
+        <Description description={data?.description} />
+        <CourseOutLine description={data?.course_outline} />
+      </div>
     </div>
   );
 };

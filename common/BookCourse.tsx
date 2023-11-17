@@ -188,8 +188,10 @@ const BookCourse: React.FC<PropType> = ({ title, course_id, schedule_id }) => {
                   )}
                 </div>
 
-                <button className="bg-primary rounded-lg text-white py-2 mt-3">
-                  Book Course{" "}
+                <button className="bg-primary rounded-lg text-white py-2 mt-3 flex justify-center items-center gap-x-2">
+                  <span>Book Course</span>
+
+                  {loading ? <Spinner /> : null}
                 </button>
               </div>
             </form>

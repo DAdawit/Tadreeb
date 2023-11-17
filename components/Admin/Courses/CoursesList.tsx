@@ -50,7 +50,7 @@ const CoursesList: React.FC<PropType> = ({ course, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">
           <Link
             href={`/admin/trainings/${id}/schedules/${course.id}`}
-            className="hover:text-primary"
+            className="hover:text-primary whitespace-nowrap"
           >
             {course.title}
           </Link>

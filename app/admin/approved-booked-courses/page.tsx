@@ -46,9 +46,9 @@ const Page = () => {
                 <th scope="col" className="px-6 py-3">
                   Phone Number
                 </th>
-                <th scope="col" className="px-6 py-3">
+                {/* <th scope="col" className="px-6 py-3">
                   Address
-                </th>
+                </th> */}
                 <th scope="col" className="px-6 py-3">
                   Status
                 </th>
@@ -58,6 +58,9 @@ const Page = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Detail
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Date
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Actions

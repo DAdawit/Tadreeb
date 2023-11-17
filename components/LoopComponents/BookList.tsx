@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { notify } from "@/app/toast";
 import Rejected from "@/common/status/Rejected";
 import { Spinner } from "@/assets/icons/Spinner";
+import dayjs from "dayjs";
 type PropType = {
   book: BookType | undefined;
   index: number;
@@ -54,13 +55,14 @@ const BookList: React.FC<PropType> = ({ book, index, refetch }) => {
         <td className="px-6 py-4 row-span-2">{book?.lastName}</td>
         {/* <td className="px-6 py-4 row-span-2">{book?.email}</td> */}
         <td className="px-6 py-4 row-span-2">{book?.phoneNumber}</td>
-        <td className="px-6 py-4 row-span-2">{book?.address}</td>
+        {/* <td className="px-6 py-4 row-span-2">{book?.address}</td> */}
 
         <td className="px-6 py-4 row-span-2">
           {book?.status === "pending" ? <Pending /> : null}
           {book?.status === "approved" ? <Approved /> : null}
           {book?.status === "rejected" ? <Rejected /> : null}
         </td>
+
         <td className="px-6 py-4 row-span-2">
           {book?.course !== null ? "Course" : "Schedule"}
         </td>
@@ -73,6 +75,9 @@ const BookList: React.FC<PropType> = ({ book, index, refetch }) => {
             phoneNumber={book?.phoneNumber}
             address={book?.address}
           />
+        </td>
+        <td className="px-6 py-4 row-span-2 whitespace-nowrap">
+          {dayjs(book?.created_at).format("MMM-D-YYYY")}
         </td>
         <td className="px-6 py-4 row-span-2 flex gap-x-3">
           <button

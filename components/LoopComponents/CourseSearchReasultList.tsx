@@ -5,6 +5,7 @@ import { CoursSearch } from "@/Types";
 
 import Link from "next/link";
 import BookCourse from "@/common/BookCourse";
+import dayjs from "dayjs";
 
 type PropType = {
   course: CoursSearch;
@@ -38,13 +39,14 @@ const CourseSearchReasultList: React.FC<PropType> = ({ course, index }) => {
           </Link>
         </td>
         <td className="px-6 py-4 row-span-2 border-2 border-white text-base whitespace-nowrap">
-          {course.start_date}- {course.end_date}
+          {dayjs(course?.start_date).format("MMM-D-YYYY")} -{" "}
+          {dayjs(course?.end_date).format("MMM-D-YYYY")}
         </td>
 
         <td className="px-6 py-4 row-span-2 border-2 border-white whitespace-nowrap">
           {course?.format.name}
         </td>
-        <td className="px-6 py-4 row-span-2 border-2 border-white ">
+        <td className="px-6 py-4 row-span-2 border-2 border-white whitespace-nowrap">
           {course?.training?.name}
         </td>
         <td className="px-6 py-4 row-span-2 border-2 border-white whitespace-nowrap">

@@ -2,6 +2,7 @@
 import { LatestCoursesType } from "@/Types";
 import Link from "next/link";
 import React from "react";
+import dayjs from "dayjs";
 type PropType = {
   course: LatestCoursesType | undefined;
   index: number;
@@ -29,10 +30,10 @@ const LatestCoursesList: React.FC<PropType> = ({ course, index }) => {
           {course?.venue.name}
         </td>
         <td className="border-2 border-white whitespace-nowrap">
-          {course?.start_date}
+          {dayjs(course?.start_date).format("MMM-D-YYYY")}
         </td>
         <td className="border-2 border-white whitespace-nowrap">
-          {course?.end_date}
+          {dayjs(course?.end_date).format("MMM-D-YYYY")}
         </td>
       </tr>
     </>
