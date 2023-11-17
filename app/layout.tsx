@@ -43,7 +43,6 @@ export default async function RootLayout({
           <AuthContextProvider>
             <Toaster />
             <NavBar />
-            {/* <Home /> */}
             {children}
             <Footer />
           </AuthContextProvider>

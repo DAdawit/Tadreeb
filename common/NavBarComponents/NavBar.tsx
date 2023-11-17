@@ -77,7 +77,7 @@ const NavBar: React.FC = () => {
               alt="logo"
               width={1000}
               height={1000}
-              className="h-12 w-24 xxl:h-24 xxl:w-32 object-contain"
+              className="h-28 w-32 xxl:h-24 xxl:w-32 object-contain"
             />
           </Link>
         </div>
@@ -95,7 +95,7 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="font-roboto text-sm  xxl:text-2xl text-textPrimary">
+                <h4 className="font-roboto text-sm  xxl:text-2xl text-gray-600">
                   about us
                 </h4>
               </div>
@@ -107,7 +107,7 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="font-roboto text-sm  xxl:text-2xl text-textPrimary">
+                <h4 className="font-roboto text-sm  xxl:text-2xl text-gray-600">
                   +971 000 0000
                 </h4>
               </div>
@@ -119,7 +119,7 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="font-roboto text-sm  xxl:text-2xl text-textPrimary">
+                <h4 className="font-roboto text-sm  xxl:text-2xl text-gray-600">
                   contact us
                 </h4>
               </div>

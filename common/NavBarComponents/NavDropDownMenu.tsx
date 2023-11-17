@@ -22,7 +22,7 @@ const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
               <li key={page.id}>
                 <Link
                   href={`/${title}/${page.id}`}
-                  className="text-gray-700 font-normal uppercase hover:text-gray-500 cursor-pointer whitespace-nowrap hover:underline text-small"
+                  className="text-black lowercase font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary"
                 >
                   {page.attributes.name}
                 </Link>
