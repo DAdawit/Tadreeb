@@ -40,8 +40,8 @@ const CategoryTrainings = () => {
                 <span
                   className={
                     activeTab === item.name
-                      ? `text-sm md:text-base xll:text-[22px] pb-4 bg-primary rounded-t-lg text-white py-3 w-full h-full`
-                      : "text-sm md:text-base  xll:text-[22px]  pb-4 bg-secondary rounded-t-lg text-white py-3 w-full h-full"
+                      ? `text-sm md:text-base xll:text-[22px] pb-4 bg-primary rounded-t-lg text-white py-3 w-full h-full p-x-2`
+                      : "text-sm md:text-base  xll:text-[22px]  pb-4 bg-secondary rounded-t-lg text-white py-3 w-full h-full p-x-2"
                   }
                 >
                   {item.name}

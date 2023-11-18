@@ -27,7 +27,8 @@ const Page = () => {
 
   return (
     <div className="container mx-auto px-5 ">
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre>
+      <pre>{JSON.stringify(error, null, 2)}</pre> */}
       <PageTitle title="Certifications " />
       <div className="flex justify-end py-6">
         <AddCertificate refetch={() => refetch()} />

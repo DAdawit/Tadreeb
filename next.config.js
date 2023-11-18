@@ -10,6 +10,11 @@ const nextConfig = {
         hostname: "localhost:3000",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "https://tadreeb.mozivol.com",
+        pathname: "/**",
+      },
     ],
   },
 };
