@@ -11,18 +11,20 @@ type PropType = {
 const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
   return (
     <div className="group relative dropdown  px-4 text-white cursor-pointer  tracking-wide z-20">
-      <h1 className="text-white text-sm xl:text-lg xxl:text-3xl">{title}</h1>
+      <h1 className="text-white text-sm xl:text-lg xxl:text-3xl capitalize">
+        {title}
+      </h1>
       <div className="group-hover:block dropdown-menu absolute hidden h-auto">
-        <ul className="translate-y-2 top-1 w-auto bg-white shadow px-6 py-3 font-normal">
+        <ul className="translate-y-2 top-1 w-52 bg-primary shadow px-6 py-3 font-normal">
           {/* <pre>{JSON.stringify(pages, null, 2)}</pre> */}
 
           {pages &&
             Array.isArray(pages) &&
             pages.map((page, index) => (
-              <li key={page.id}>
+              <li key={page.id} className="pb-2">
                 <Link
                   href={`/${title}/${page.id}`}
-                  className="text-gray-700 lowercase font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary"
+                  className="text-white capitalize font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary"
                 >
                   {page.attributes.name}
                 </Link>

@@ -40,8 +40,8 @@ const CategoryTrainings = () => {
                 <span
                   className={
                     activeTab === item.name
-                      ? `text-sm md:text-base xll:text-[22px] pb-4 bg-primary rounded-t-lg text-white py-3 w-full h-full p-x-2`
-                      : "text-sm md:text-base  xll:text-[22px]  pb-4 bg-secondary rounded-t-lg text-white py-3 w-full h-full p-x-2"
+                      ? `text-sm md:text-[15px] xll:text-[20px] pb-4 bg-primary rounded-t-lg text-white py-3 w-full h-full p-x-2`
+                      : "text-sm md:text-[15px]  xll:text-[20px]  pb-4 bg-secondary rounded-t-lg text-white py-3 w-full h-full p-x-2"
                   }
                 >
                   {item.name}
@@ -64,7 +64,7 @@ const CategoryTrainings = () => {
                         <Link
                           href={`/trainings/${training.id}/courses`}
                           key={training.id}
-                          className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full"
+                          className="flex justify-center items-center h-16 bg-bgSecondary text-center rounded-lg w-full text-sm md:text-[15px] xll:text-[22px]"
                         >
                           <h1 className="p-2">{training.name}</h1>
                         </Link>

@@ -95,9 +95,7 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="font-roboto text-sm  xxl:text-2xl text-gray-600">
-                  about us
-                </h4>
+                <h4 className="xxl:text-2xl text-gray-600">about us</h4>
               </div>
               <div className="flex items-center justify-center">
                 <Image
@@ -107,9 +105,7 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="font-roboto text-sm  xxl:text-2xl text-gray-600">
-                  +971 000 0000
-                </h4>
+                <h4 className="xxl:text-2xl text-gray-600">+971 000 0000</h4>
               </div>
               <div className="flex items-center justify-center">
                 <Image
@@ -119,9 +115,7 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="font-roboto text-sm  xxl:text-2xl text-gray-600">
-                  contact us
-                </h4>
+                <h4 className="xxl:text-2xl text-gray-600">contact us</h4>
               </div>
             </div>
             <div className="hidden md:flex gap-x-3 w-min justify-end items-center">
@@ -149,13 +143,13 @@ const NavBar: React.FC = () => {
         <div className="bg-secondary flex w-full justify-around items-center h-full gap-x-3 px-2">
           <Link
             href="/course-finder"
-            className="text-white text-sm xl:text-lg xxl:text-3xl whitespace-nowrap"
+            className="text-white text-sm xl:text-lg xxl:text-3xl whitespace-nowrap capitalize"
           >
             course finder
           </Link>
           <Link
             href="/training-course-calendar"
-            className="text-white text-sm xl:text-lg xxl:text-3xl whitespace-nowrap"
+            className="text-white text-sm xl:text-lg xxl:text-3xl whitespace-nowrap capitalize"
           >
             training calendar
           </Link>
