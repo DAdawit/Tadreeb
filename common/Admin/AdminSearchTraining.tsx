@@ -127,11 +127,11 @@ const AdminSearchTraining = () => {
               </div>
               <div className="w-full h-full">
                 <button
-                  className="bg-secondary text-white px-5 h-full py-2"
+                  className="bg-secondary text-white px-5 h-full py-2 flex justify-center items-center gap-x-1"
                   type="submit"
                 >
-                  <span></span>
-                  SEARCH
+                  <span>SEARCH</span>
+                  <span>{loading ? <Spinner /> : null}</span>
                 </button>
               </div>
             </div>
