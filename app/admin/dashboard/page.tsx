@@ -106,7 +106,7 @@ const Page = () => {
                   Total Number of Courses
                 </h1>
                 <h3 className="text-3xl font-semibold text-gray-900">
-                  {data?.trainings}
+                  {data?.courses}
                 </h3>
               </div>
             </div>

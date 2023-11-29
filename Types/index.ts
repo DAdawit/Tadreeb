@@ -887,3 +887,42 @@ export interface Certificate {
   created_at: string;
   updated_at: string;
 }
+
+export interface TrainingsSearch {
+  current_page: number;
+  data: Trainings[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Link[];
+  next_page_url: any;
+  path: string;
+  per_page: number;
+  prev_page_url: any;
+  to: number;
+  total: number;
+}
+
+export interface Trainings {
+  id: number;
+  name: string;
+  category_id: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  category: Category;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Link {
+  url?: string;
+  label: string;
+  active: boolean;
+}

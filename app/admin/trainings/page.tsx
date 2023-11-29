@@ -7,9 +7,13 @@ import Link from "next/link";
 import TrainingList from "@/components/Admin/Training/TrainingList";
 import { useState } from "react";
 import PaginationComponent from "@/common/Pagination/Pagination";
+// import SearchCourse from "@/common/SearchCourse";
+import AdminSearchTraining from "@/common/Admin/AdminSearchTraining";
 
 const Page = () => {
   const [current_page, setCurrentPage] = useState<number>(1);
+  const [searchIsOn, setSearIsOn] = useState<boolean>(false);
+  const [searchTrainings, setSearchTrainings] = useState();
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["fetchTrainings", current_page],
     queryFn: () => fetchTrainings(current_page as number),
@@ -34,6 +38,8 @@ const Page = () => {
           Add Training
         </Link>
       </div>
+      {/* <AdminSearchTraining /> */}
+
       <div className="relative overflow-x-auto">
         <table className="text-center w-full mt-8 overflow-x-auto">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
