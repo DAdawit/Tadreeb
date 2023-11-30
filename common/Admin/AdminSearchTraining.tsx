@@ -14,10 +14,12 @@ import {
 } from "@/services/user";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
-import { SearchReasultCourseType } from "@/Types";
+import { SearchReasultCourseType, TrainingsSearch } from "@/Types";
 import CoursesList from "@/components/Admin/Courses/CoursesList";
 import CourseSearchReasultList from "@/components/LoopComponents/CourseSearchReasultList";
 import { usePathname } from "next/navigation";
+import TrainingList from "@/components/Admin/Training/TrainingList";
+import TrainingSearchResultList from "./TrainingSearchResultList";
 type FormValues = {
   category_id?: string;
   search?: string;
@@ -27,15 +29,22 @@ const schema: ZodType<FormValues> = z.object({
   category_id: z.string(),
   search: z.string(),
 });
-
-const AdminSearchTraining = () => {
+type PropType = {
+  setSearchResult: React.Dispatch<React.SetStateAction<TrainingsSearch | null>>;
+  setSearIsOn: React.Dispatch<React.SetStateAction<boolean>>;
+  refetch?: () => void;
+};
+const AdminSearchTraining: React.FC<PropType> = ({
+  refetch,
+  setSearIsOn,
+  setSearchResult,
+}) => {
   const path = usePathname();
   // console.log(path);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<boolean>(false);
-  const [searchResults, setSearchResult] =
-    useState<SearchReasultCourseType | null>(null);
+
   const {
     data: courses,
     isLoading: coursesLoading,
@@ -71,6 +80,7 @@ const AdminSearchTraining = () => {
     }
     setLoading(true);
     setSearch(true);
+    setSearIsOn(true);
     api
       .get("/admin-search-training", { params: values })
       .then((res) => {
@@ -88,12 +98,14 @@ const AdminSearchTraining = () => {
   const ClearSearch = () => {
     setSearchResult(null);
     setSearch(false);
+    setSearIsOn(false);
   };
+
   // console.log(courses);
 
   return (
     <>
-      <div className="bg-bgPrimary py-8 flex px-5 ">
+      <div className=" py-8 flex px-5 ">
         <div className="max-w-6xl xll:max-w-7xl mx-auto">
           <form onSubmit={handleSubmit(submitData)} className="">
             <div className="w-full grid grid-cols-2 md:flex justify-between gap-5 ">
@@ -127,7 +139,7 @@ const AdminSearchTraining = () => {
               </div>
               <div className="w-full h-full">
                 <button
-                  className="bg-secondary text-white px-5 h-full py-2 flex justify-center items-center gap-x-1"
+                  className="bg-primary text-white px-5 h-full py-2 flex justify-center items-center gap-x-1"
                   type="submit"
                 >
                   <span>SEARCH</span>
@@ -140,7 +152,7 @@ const AdminSearchTraining = () => {
       </div>
       {search ? (
         <>
-          <pre>{JSON.stringify(searchResults, null, 2)}</pre>
+          {/* <pre>{JSON.stringify(searchResults, null, 2)}</pre> */}
           {/* <div className="max-w-6xl mx-auto  xll:max-w-7xl xll:mx-auto mb-8 px-5">
             <div className="relative overflow-x-auto m  bg-white px-5 mt-8">
               <button
@@ -186,18 +198,18 @@ const AdminSearchTraining = () => {
                 </thead>
 
                 <>
-                  {" "}
                   <tbody>
                     {loading ? <Spinner /> : null}
                     <>
                       {searchResults?.total === 0 && <p>empty.</p>}
                       {searchResults?.data &&
                         Array.isArray(searchResults.data) &&
-                        searchResults.data.map((course, index) => (
-                          <CourseSearchReasultList
+                        searchResults.data.map((training, index) => (
+                          <TrainingSearchResultList
                             key={index}
-                            course={course}
+                            training={training}
                             index={index}
+                            // refetch={refetch}
                           />
                         ))}
                     </>
