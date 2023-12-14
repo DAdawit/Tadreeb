@@ -7,7 +7,7 @@ const Hero = () => {
     <div className="overflow-x-hidden">
       <div className="h-[80vh] w-screen relative">
         <Image
-          src="/about 1.png"
+          src="/about2.jpg"
           alt="spector"
           fill
           className="w-screen h-[80vh] object-cover brightness-50"
