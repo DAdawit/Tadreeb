@@ -6,6 +6,7 @@ import ConfirmDelete from "@/common/ConfirmDelete";
 import Link from "next/link";
 import React, { useState } from "react";
 import moment from "moment";
+import MessageDetail from "@/common/MessageDetail";
 
 type PropType = {
   contact: ContactType | undefined;
@@ -45,6 +46,9 @@ const ContactUsList: React.FC<PropType> = ({ contact, index, refetch }) => {
         </td>
         <td className="px-6 py-4 row-span-2">
           {contact?.attributes.phoneNumber}
+        </td>
+        <td className="px-6 py-4 row-span-2">
+          <MessageDetail message={contact?.attributes.message} />
         </td>
         <td className="px-6 py-4 row-span-2">
           {contact?.attributes?.created_at

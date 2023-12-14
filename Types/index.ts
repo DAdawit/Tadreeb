@@ -675,6 +675,7 @@ export interface Attributes {
   location: string;
   phoneNumber: string;
   email: string;
+  message: string;
   created_at: String;
 }
 

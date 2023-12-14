@@ -1,17 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Resolver } from "react-hook-form";
 import { ZodType, z } from "zod";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
 import { Spinner } from "@/assets/icons/Spinner";
-
+import { usePathname } from "next/navigation";
 type FormValues = {
   fullName: string;
   location: string;
   email: string; // Add the email field here
   phoneNumber: number;
+  message?: string;
 };
 
 const schema: ZodType<FormValues> = z.object({
@@ -19,12 +20,16 @@ const schema: ZodType<FormValues> = z.object({
   location: z.string().min(1, "Location Number is required"),
   email: z.string().min(1, "email is required"),
   phoneNumber: z.number().min(1, "Phone Number is required"),
+  message: z.string(),
 });
 type PropsType = {
   buttonLabel: string;
 };
 
 const ContactUsForm: React.FC<PropsType> = ({ buttonLabel }) => {
+  const [hideMessageInput, setHideMessageInput] = useState(false);
+  const pathname = usePathname();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [addError, setAddError] = useState<string>("");
   const {
@@ -53,6 +58,11 @@ const ContactUsForm: React.FC<PropsType> = ({ buttonLabel }) => {
         setLoading(false);
       });
   };
+  useEffect(() => {
+    if (pathname.startsWith("/contact-us")) {
+      setHideMessageInput(true);
+    }
+  }, [pathname]);
   return (
     <>
       <div className="w-full flex items-center">
@@ -110,6 +120,15 @@ const ContactUsForm: React.FC<PropsType> = ({ buttonLabel }) => {
                 </small>
               )}
             </div>
+            {hideMessageInput && (
+              <div className="grid mt-3">
+                <textarea
+                  {...register("message")}
+                  placeholder="your message"
+                  className="h-36"
+                ></textarea>
+              </div>
+            )}
 
             <button className="bg-primary rounded-lg text-white py-2 mt-3 flex justify-center items-center gap-x-3">
               <span> {buttonLabel}</span>

@@ -5,7 +5,7 @@ import React from "react";
 const Hero = () => {
   return (
     <div className="overflow-x-hidden">
-      <div className="h-[80vh] w-screen relative">
+      <div className="h-[100vh] w-screen relative">
         <Image
           src="/contactus.jpg"
           alt="spector"
@@ -21,7 +21,7 @@ const Hero = () => {
               Contact Us
             </h1>
 
-            <p className=" text-white text-xl  tracking-widest max-w-4xl text-center px-5 mt-8">
+            <p className=" text-white text-lg  tracking-widest max-w-4xl text-center px-5 mt-8">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
               tempora labore consequatur quae earum, optio beatae soluta
               deserunt, ducimus vitae sunt quam! Ab iusto mollitia aperiam sed
