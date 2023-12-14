@@ -6,6 +6,7 @@ import { ZodType, z } from "zod";
 import api from "@/app/axios";
 import { notify } from "@/app/toast";
 import { Spinner } from "@/assets/icons/Spinner";
+import ContactUsForm from "../ContactUs/ContactUsForm";
 
 type FormValues = {
   fullName: string;
@@ -79,73 +80,7 @@ const AboutUs = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full flex items-center">
-              <form
-                action="#"
-                className="w-full"
-                onSubmit={handleSubmit(submitData)}
-              >
-                <div className="grid max-w-sm mx-auto ">
-                  <div className="grid mt-3">
-                    <input
-                      type="text"
-                      className=""
-                      placeholder="Your Full Name"
-                      {...register("fullName")}
-                    />
-                    {errors?.fullName && (
-                      <small className="text-red-500 pl-2">
-                        {errors.fullName.message}
-                      </small>
-                    )}
-                  </div>
-                  <div className="grid mt-3">
-                    <input
-                      type="text"
-                      className=""
-                      placeholder="Your Location"
-                      {...register("location")}
-                    />
-                    {errors?.location && (
-                      <small className="text-red-500 pl-2">
-                        {errors.location.message}
-                      </small>
-                    )}
-                  </div>
-                  <div className="grid mt-3">
-                    <input
-                      type="text"
-                      className=""
-                      placeholder="Your Contact Number"
-                      {...register("phoneNumber", { valueAsNumber: true })}
-                    />
-                    {errors?.phoneNumber && (
-                      <small className="text-red-500 pl-2">
-                        {errors.phoneNumber.message}
-                      </small>
-                    )}
-                  </div>
-                  <div className="grid mt-3">
-                    <input
-                      type="email"
-                      className=""
-                      placeholder="Your Email"
-                      {...register("email")}
-                    />
-                    {errors?.email && (
-                      <small className="text-red-500 pl-2">
-                        {errors.email.message}
-                      </small>
-                    )}
-                  </div>
-
-                  <button className="bg-primary rounded-lg text-white py-2 mt-3 flex justify-center items-center gap-x-3">
-                    <span>Request a Call Back</span>
-                    {loading ? <Spinner /> : null}
-                  </button>
-                </div>
-              </form>
-            </div>
+            <ContactUsForm buttonLabel="Request a Call Back" />
           </div>
         </div>
       </div>

@@ -95,7 +95,9 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="xxl:text-2xl text-gray-600">about us</h4>
+                <Link href="about-us" className="xxl:text-2xl text-gray-600">
+                  about us
+                </Link>
               </div>
               <div className="flex items-center justify-center">
                 <Image
@@ -115,7 +117,9 @@ const NavBar: React.FC = () => {
                   height={1000}
                   className="h-6 w-6 xxl:h-11 xxl:w-11 object-contain"
                 />
-                <h4 className="xxl:text-2xl text-gray-600">contact us</h4>
+                <Link href="contact-us" className="xxl:text-2xl text-gray-600">
+                  contact us
+                </Link>
               </div>
             </div>
             <div className="hidden md:flex gap-x-3 w-min justify-end items-center">
