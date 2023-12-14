@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 // const links = await getSocialMediaLinks();
 import { HeroType, Links } from "@/Types";
 import Loader from "@/common/Loader/Loader";
+import ContactUsMap from "@/components/ContactUsMap";
 
 type CarosoleProps = {
   data: HeroType[];
@@ -41,6 +42,7 @@ const Home: React.FC = () => {
           <UpcomingCourses />
           <Certificates />
           <AboutUs />
+          {/* <ContactUsMap /> */}
         </>
       )}
     </main>
