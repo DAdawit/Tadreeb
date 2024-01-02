@@ -58,6 +58,7 @@ const ContactUsForm: React.FC<PropsType> = ({ buttonLabel }) => {
         setLoading(false);
       });
   };
+
   useEffect(() => {
     if (pathname.startsWith("/contact-us")) {
       setHideMessageInput(true);
@@ -120,15 +121,14 @@ const ContactUsForm: React.FC<PropsType> = ({ buttonLabel }) => {
                 </small>
               )}
             </div>
-            {hideMessageInput && (
-              <div className="grid mt-3">
-                <textarea
-                  {...register("message")}
-                  placeholder="your message"
-                  className="h-36"
-                ></textarea>
-              </div>
-            )}
+
+            <div className={!hideMessageInput ? "hidden" : "grid mt-3"}>
+              <textarea
+                {...register("message")}
+                placeholder="your message"
+                className="h-36"
+              ></textarea>
+            </div>
 
             <button className="bg-primary rounded-lg text-white py-2 mt-3 flex justify-center items-center gap-x-3">
               <span> {buttonLabel}</span>
