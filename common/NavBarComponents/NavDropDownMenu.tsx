@@ -24,7 +24,7 @@ const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
               <li key={page.id} className="pb-2">
                 <Link
                   href={`/${title}/${page.id}`}
-                  className="text-white capitalize font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary"
+                  className="text-white capitalize font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary truncate"
                 >
                   {page.attributes.name}
                 </Link>
