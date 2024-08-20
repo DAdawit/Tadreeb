@@ -15,6 +15,7 @@ import {
   getTrainingVenues,
   getTrainings,
 } from "@/services/user";
+import NavDropDownMenuCertifications from "./NavDropDownMenuCertifications";
 
 // type PropsType = {
 //   formats: VenueType | undefined;
@@ -164,7 +165,10 @@ const NavBar: React.FC = () => {
           />
 
           <NavDropDownMenu title="venue" pages={venues} />
-          <NavDropDownMenu title="certification" pages={certificates} />
+          <NavDropDownMenuCertifications
+            title="certification"
+            pages={certificates}
+          />
           <NavDropDownMenu title="format" pages={formats} />
         </div>
         <div className="bg-primary h-full hidden lg:flex items-center justify-center px-3">
