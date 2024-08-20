@@ -21,10 +21,10 @@ const NavDropDownMenu: React.FC<PropType> = ({ title, pages }) => {
           {pages &&
             Array.isArray(pages) &&
             pages.map((page, index) => (
-              <li key={page.id} className="pb-2">
+              <li key={page.id} className="pb-2 w-32">
                 <Link
                   href={`/${title}/${page.id}`}
-                  className="text-white capitalize font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary"
+                  className="text-white capitalize font-normal cursor-pointer whitespace-nowrap text-small hover:text-secondary truncate w-32"
                 >
                   {page.attributes.name}
                 </Link>

@@ -191,13 +191,6 @@ const EditTraining: React.FC<PropType> = ({
                   description={description2}
                   setDescription={setDescription2}
                 />
-                {/* <ReactQuill
-                  style={{ height: "200px" }}
-                  theme="snow"
-                  value={description2}
-                  modules={toolbarOptions}
-                  onChange={setDescription2}
-                /> */}
 
                 {errors?.description && (
                   <small className="text-red-500 pl-2">

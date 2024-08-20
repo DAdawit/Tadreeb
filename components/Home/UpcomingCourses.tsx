@@ -18,10 +18,12 @@ const UpcomingCourses = () => {
         Upcoming Training Programs
       </h1>
       <div className="relative overflow-x-auto  mt-8">
-        <table className="text-center w-full mt-8 overflow-x-auto">
+        <table className="w-full mt-8 overflow-x-auto">
           <thead className="bg-secondary h-10">
-            <tr className="text-white">
-              <th className="border-r-2 border-gray-50">Program Title</th>
+            <tr className="text-white ">
+              <th className="border-r-2 border-gray-50 text-center">
+                Program Title
+              </th>
               <th className="border-r-2 border-gray-50">Location</th>
               <th className="border-r-2 border-gray-50">Start Date</th>
               <th className="border-r-2 border-gray-50">End Date</th>
@@ -36,7 +38,11 @@ const UpcomingCourses = () => {
             {data &&
               Array.isArray(data) &&
               data.map((course, index) => (
-                <LatestCoursesList key={index} index={index} course={course} />
+                <LatestCoursesList
+                  key={course.id}
+                  index={index}
+                  course={course}
+                />
               ))}
           </tbody>
         </table>

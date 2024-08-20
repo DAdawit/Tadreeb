@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ZodType, z } from "zod";
@@ -48,7 +46,6 @@ const UserLogin: React.FC<PropType> = ({ setLogin }) => {
     api
       .post("/login", values)
       .then((res) => {
-        console.log(res.data.data);
         setUserData(res.data.data.user);
         localStorage.setItem("token", res?.data?.data?.token);
         api.defaults.headers.common[
